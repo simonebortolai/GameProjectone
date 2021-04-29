@@ -7,7 +7,6 @@ Mappa/Rooms ->
 Controller/main/gestione varia -> 
 Iterazione ->
 Generazione mostri ->
-Printer ->
 
 To do:
 
