@@ -8,9 +8,13 @@ class LivingEntity: public Entity{
         int life;
         int strength;
     public:
+        LivingEntity(int x, int y, char sprite,int life, int strength);
         void addLife(int n);
         void subLife(int n);
         int getLife();
+        void setLife(int n);
+        int getStrength();
+        void setStrength(int n);
 };
 
 
