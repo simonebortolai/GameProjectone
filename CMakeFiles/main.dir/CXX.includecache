@@ -1,0 +1,40 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/viole/Desktop/code_folder/cpp_projects/GameProjectone/classes/entity.hpp
+misc.hpp
+/home/viole/Desktop/code_folder/cpp_projects/GameProjectone/classes/misc.hpp
+
+/home/viole/Desktop/code_folder/cpp_projects/GameProjectone/classes/keymanager.hpp
+
+/home/viole/Desktop/code_folder/cpp_projects/GameProjectone/classes/map.hpp
+misc.hpp
+/home/viole/Desktop/code_folder/cpp_projects/GameProjectone/classes/misc.hpp
+room.hpp
+/home/viole/Desktop/code_folder/cpp_projects/GameProjectone/classes/room.hpp
+
+/home/viole/Desktop/code_folder/cpp_projects/GameProjectone/classes/misc.hpp
+people.hpp
+/home/viole/Desktop/code_folder/cpp_projects/GameProjectone/classes/people.hpp
+
+/home/viole/Desktop/code_folder/cpp_projects/GameProjectone/classes/people.hpp
+entity.hpp
+/home/viole/Desktop/code_folder/cpp_projects/GameProjectone/classes/entity.hpp
+
+/home/viole/Desktop/code_folder/cpp_projects/GameProjectone/classes/room.hpp
+
+/home/viole/Desktop/code_folder/cpp_projects/GameProjectone/main.cpp
+ncurses.h
+-
+./classes/keymanager.hpp
+/home/viole/Desktop/code_folder/cpp_projects/GameProjectone/classes/keymanager.hpp
+./classes/map.hpp
+/home/viole/Desktop/code_folder/cpp_projects/GameProjectone/classes/map.hpp
+./classes/misc.hpp
+/home/viole/Desktop/code_folder/cpp_projects/GameProjectone/classes/misc.hpp
+
