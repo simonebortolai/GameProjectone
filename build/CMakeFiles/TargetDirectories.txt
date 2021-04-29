@@ -1,3 +1,0 @@
-/home/viole/Desktop/code_folder/cpp_projects/GameProjectone/build/CMakeFiles/rebuild_cache.dir
-/home/viole/Desktop/code_folder/cpp_projects/GameProjectone/build/CMakeFiles/edit_cache.dir
-/home/viole/Desktop/code_folder/cpp_projects/GameProjectone/build/CMakeFiles/main.dir
