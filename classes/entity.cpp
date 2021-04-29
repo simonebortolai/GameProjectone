@@ -6,10 +6,10 @@ Entity::Entity(char sprite){
     this->sprite=sprite;
 }
 
-Entity::Entity(int x, int y, char sprite){
+Entity::Entity(point position, char sprite){
     this->sprite=sprite;
-    position->x=x;
-    position->y=y;
+    position->x=position->x;
+    position->y=position->y;
 }
 
 void Entity::setPosition(point position){

@@ -9,7 +9,7 @@ class Entity{
         char sprite;
     public:
         Entity(char sprite);
-        Entity(int x, int y, char sprite);
+        Entity(point position, char sprite);
         void setPosition(point position);
         point getPosition();
         point getDesiredPosition();

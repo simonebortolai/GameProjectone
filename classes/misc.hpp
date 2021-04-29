@@ -1,8 +1,7 @@
 #ifndef MISC_HPP_INCLUDED
 #define MISC_HPP_INCLUDED
-
-#include "bullet.hpp"
-#include "livingentity.hpp"
+//#include "bullet.hpp"
+//#include "./livingentityentity.hpp"
 
 struct point {
     int x;
@@ -16,6 +15,7 @@ struct boxPoints {
     int height;
 };
 
+/*
 
 struct bulletList {
     Bullet *value;
@@ -42,5 +42,5 @@ struct allEntity {
 
 typedef entityList *pEntityList;
 
-
+*/
 #endif

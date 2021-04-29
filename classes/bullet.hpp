@@ -3,13 +3,13 @@
 
 #include "entity.hpp"
 
-class Bullet: public Entity{
+class Bullet : public Entity{
     private:
-    int speed;
+        int speed;
     public:
-    Bullet(int speed);
-    int getSpeed();
-    void setSpeed(int s);
+        Bullet(int speed);
+        int getSpeed();
+        void setSpeed(int s);
 };
 
 

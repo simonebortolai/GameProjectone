@@ -1,1 +1,1 @@
-/usr/bin/c++     CMakeFiles/main.dir/main.cpp.o  -o main 
+/usr/bin/c++     CMakeFiles/main.dir/main.cpp.o  -o main   -L/home/viole/Desktop/code_folder/cpp_projects/GameProjectone/classes  -Wl,-rpath,/home/viole/Desktop/code_folder/cpp_projects/GameProjectone/classes -lcurses /usr/lib/x86_64-linux-gnu/libform.so classes/libclasses.a 

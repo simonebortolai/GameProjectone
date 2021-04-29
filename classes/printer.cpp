@@ -1,8 +1,9 @@
 #include <ncurses.h>
 #include "printer.hpp"
+#include "misc.hpp"
 
 void startDraw() {
-    clear();
+    erase();
 }
 
 //disegna le tutto in una volta quello che c'è nel buffer
@@ -50,9 +51,8 @@ void printRoom(char ** cont, int x, int y, int width, int heigth) {
     }
 }
 
-void printEverything(point dim, Player player) {
+void printEverything(point dim) {
     startDraw();
-    
     drawRect(0,0, dim.x, dim.y);
     endDraw();
 }

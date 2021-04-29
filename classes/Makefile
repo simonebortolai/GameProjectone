@@ -56,17 +56,6 @@ CMAKE_BINARY_DIR = /home/viole/Desktop/code_folder/cpp_projects/GameProjectone
 #=============================================================================
 # Targets provided globally by CMake.
 
-# Special rule for the target rebuild_cache
-rebuild_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/usr/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : rebuild_cache
-
-# Special rule for the target rebuild_cache
-rebuild_cache/fast: rebuild_cache
-
-.PHONY : rebuild_cache/fast
-
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
@@ -78,16 +67,27 @@ edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
 
+# Special rule for the target rebuild_cache
+rebuild_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
+	/usr/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : rebuild_cache
+
+# Special rule for the target rebuild_cache
+rebuild_cache/fast: rebuild_cache
+
+.PHONY : rebuild_cache/fast
+
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/viole/Desktop/code_folder/cpp_projects/GameProjectone/CMakeFiles /home/viole/Desktop/code_folder/cpp_projects/GameProjectone/CMakeFiles/progress.marks
-	$(MAKE) -f CMakeFiles/Makefile2 all
+	cd /home/viole/Desktop/code_folder/cpp_projects/GameProjectone && $(CMAKE_COMMAND) -E cmake_progress_start /home/viole/Desktop/code_folder/cpp_projects/GameProjectone/CMakeFiles /home/viole/Desktop/code_folder/cpp_projects/GameProjectone/classes/CMakeFiles/progress.marks
+	cd /home/viole/Desktop/code_folder/cpp_projects/GameProjectone && $(MAKE) -f CMakeFiles/Makefile2 classes/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/viole/Desktop/code_folder/cpp_projects/GameProjectone/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	$(MAKE) -f CMakeFiles/Makefile2 clean
+	cd /home/viole/Desktop/code_folder/cpp_projects/GameProjectone && $(MAKE) -f CMakeFiles/Makefile2 classes/clean
 .PHONY : clean
 
 # The main clean target
@@ -97,71 +97,60 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	$(MAKE) -f CMakeFiles/Makefile2 preinstall
+	cd /home/viole/Desktop/code_folder/cpp_projects/GameProjectone && $(MAKE) -f CMakeFiles/Makefile2 classes/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	$(MAKE) -f CMakeFiles/Makefile2 preinstall
+	cd /home/viole/Desktop/code_folder/cpp_projects/GameProjectone && $(MAKE) -f CMakeFiles/Makefile2 classes/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/viole/Desktop/code_folder/cpp_projects/GameProjectone && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
-#=============================================================================
-# Target rules for targets named main
+# Convenience name for target.
+classes/CMakeFiles/classes.dir/rule:
+	cd /home/viole/Desktop/code_folder/cpp_projects/GameProjectone && $(MAKE) -f CMakeFiles/Makefile2 classes/CMakeFiles/classes.dir/rule
+.PHONY : classes/CMakeFiles/classes.dir/rule
 
-# Build rule for target.
-main: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 main
-.PHONY : main
+# Convenience name for target.
+classes: classes/CMakeFiles/classes.dir/rule
 
-# fast build rule for target.
-main/fast:
-	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/build
-.PHONY : main/fast
-
-#=============================================================================
-# Target rules for targets named classes
-
-# Build rule for target.
-classes: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 classes
 .PHONY : classes
 
 # fast build rule for target.
 classes/fast:
-	$(MAKE) -f classes/CMakeFiles/classes.dir/build.make classes/CMakeFiles/classes.dir/build
+	cd /home/viole/Desktop/code_folder/cpp_projects/GameProjectone && $(MAKE) -f classes/CMakeFiles/classes.dir/build.make classes/CMakeFiles/classes.dir/build
 .PHONY : classes/fast
 
-main.o: main.cpp.o
+printer.o: printer.cpp.o
 
-.PHONY : main.o
+.PHONY : printer.o
 
 # target to build an object file
-main.cpp.o:
-	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/main.cpp.o
-.PHONY : main.cpp.o
+printer.cpp.o:
+	cd /home/viole/Desktop/code_folder/cpp_projects/GameProjectone && $(MAKE) -f classes/CMakeFiles/classes.dir/build.make classes/CMakeFiles/classes.dir/printer.cpp.o
+.PHONY : printer.cpp.o
 
-main.i: main.cpp.i
+printer.i: printer.cpp.i
 
-.PHONY : main.i
+.PHONY : printer.i
 
 # target to preprocess a source file
-main.cpp.i:
-	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/main.cpp.i
-.PHONY : main.cpp.i
+printer.cpp.i:
+	cd /home/viole/Desktop/code_folder/cpp_projects/GameProjectone && $(MAKE) -f classes/CMakeFiles/classes.dir/build.make classes/CMakeFiles/classes.dir/printer.cpp.i
+.PHONY : printer.cpp.i
 
-main.s: main.cpp.s
+printer.s: printer.cpp.s
 
-.PHONY : main.s
+.PHONY : printer.s
 
 # target to generate assembly for a file
-main.cpp.s:
-	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/main.cpp.s
-.PHONY : main.cpp.s
+printer.cpp.s:
+	cd /home/viole/Desktop/code_folder/cpp_projects/GameProjectone && $(MAKE) -f classes/CMakeFiles/classes.dir/build.make classes/CMakeFiles/classes.dir/printer.cpp.s
+.PHONY : printer.cpp.s
 
 # Help Target
 help:
@@ -169,13 +158,12 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... rebuild_cache"
 	@echo "... edit_cache"
-	@echo "... main"
+	@echo "... rebuild_cache"
 	@echo "... classes"
-	@echo "... main.o"
-	@echo "... main.i"
-	@echo "... main.s"
+	@echo "... printer.o"
+	@echo "... printer.i"
+	@echo "... printer.s"
 .PHONY : help
 
 
@@ -187,6 +175,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/viole/Desktop/code_folder/cpp_projects/GameProjectone && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

@@ -28,8 +28,6 @@ class Map {
         point virtualToReal(point point);
         point realToVirtual(point point);
         
-
-        
 };
 
 #endif

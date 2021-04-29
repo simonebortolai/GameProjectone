@@ -2,11 +2,12 @@
 #define KEYMANAGER_HPP_INCLUDED
 
 class KeyManager{
-    protected:
-        int getPressedKey();
+    private:
+        //LivingEntity *player;
 
     public:
-        int keyManage();
+        KeyManager();
+        int selectAction();
         
 };
 

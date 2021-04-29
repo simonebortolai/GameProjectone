@@ -1,34 +1,52 @@
 #include <ncurses.h>
-#include "./classes/keymanager.hpp"
-#include "./classes/map.hpp"
+//#include "./classes/keymanager.hpp"
+//#include "./classes/map.hpp"
 #include "./classes/misc.hpp"
+#include "./classes/printer.hpp"
 
+//da spostare
+void initScreen() {
+    initscr();
+    cbreak();
+    nodelay(stdscr, TRUE);
+    curs_set(FALSE);
+    keypad(stdscr, true);
+    noecho();
+}
 
-point dimension {23, 79};
-
-
+point dimension {79, 23};
 
 
 int main() {
 
-    int exit;
+    int exit = 0;
 
-    // Objects
-    KeyManager km;
-    Map gameMap(dimension);
+    /* 
+    //Objects
+    
+    allEntity *listAllEntity;
+
+    //Map gameMap(dimension);
+    //KeyManager km();
+    */
 
     // esce se viene premuto il tasto F4 o il personaggio muore
-    while(exit != -1) {
 
-        exit = km.keyManage();
+    initScreen();
+    //initEntity();
+
+
+    while(exit != -1) {
         
         //checkAllMovement()
         //moveAll()
         //checkInteraction()
         //gameMap.updateEntity()
-        //printEverything()
+        printEverything(dimension);
         //loop()
+        timeout(50);   
     }
     
+    endwin();
 
 }
