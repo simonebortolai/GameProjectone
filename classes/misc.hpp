@@ -1,8 +1,8 @@
 #ifndef MISC_HPP_INCLUDED
 #define MISC_HPP_INCLUDED
 
-
-#include "people.hpp"
+#include "bullet.hpp"
+#include "livingentity.hpp"
 
 struct point {
     int x;
@@ -37,7 +37,7 @@ struct allEntity {
     LivingEntity *player;
     monsterList *head;
     bulletList *head;
-}
+};
 
 
 typedef entityList *pEntityList;

@@ -1,12 +1,12 @@
-#ifndef PEOPLE_HPP_INCLUDED
-#define PEOPLE_HPP_INCLUDED
+#ifndef LIVINGENTITY_HPP_INCLUDED
+#define LIVINGENTITY_HPP_INCLUDED
 
 #include "entity.hpp"
 
 class LivingEntity: public Entity{
     private:
         int life;
-        int strenght;
+        int strength;
     public:
         void addLife(int n);
         void subLife(int n);
