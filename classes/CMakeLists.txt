@@ -1,6 +1,11 @@
 set(test2_files
+        entity.hpp
+        entity.cpp
+        livingentity.hpp
+        livingentity.cpp
         misc.hpp
-        printer.cpp
+        misc.cpp
         printer.hpp
+        printer.cpp
         )
 add_library(classes ${test2_files})

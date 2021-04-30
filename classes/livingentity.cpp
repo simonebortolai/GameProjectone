@@ -1,9 +1,8 @@
-#include <ncurses.h>
-#include <iostream>
 #include "entity.hpp"
+#include "misc.hpp"
 
 
-LivingEntity::LivingEntity(int x, int y, char sprite,int life, int strength):Entity(x,y,sprite){
-    this->life=life;
-    this->strength=strength;
+LivingEntity::LivingEntity(point * dim, char sprite,int life, int strength) : Entity(dim, sprite){
+    this->life = life;
+    this->strength = strength;
 }

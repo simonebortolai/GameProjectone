@@ -1,9 +1,9 @@
-#include "keymanager.hpp"
 #include <ncurses.h>
-//#include "./classes/misc"
+#include "keymanager.hpp"
+#include "misc.hpp"
 
-KeyManager::KeyManager() {
-    //this->player = allEnt.player;
+KeyManager::KeyManager(allEntity *allEnt) {
+    this->player = (*allEnt).player;
 }
 
 

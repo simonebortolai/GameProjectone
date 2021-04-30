@@ -1,12 +1,14 @@
 #ifndef MISC_HPP_INCLUDED
 #define MISC_HPP_INCLUDED
 //#include "bullet.hpp"
-//#include "./livingentityentity.hpp"
+#include "livingentity.hpp"
+
 
 struct point {
     int x;
     int y;
 };
+
 
 struct boxPoints {
     int startX;
@@ -16,31 +18,27 @@ struct boxPoints {
 };
 
 /*
-
 struct bulletList {
     Bullet *value;
     bulletList *next;
 };
+
 
 struct monsterList {
     LivingEntity *value;
     monsterList *next;
 };
 
-struct entityList {
-    Entity *value;
-    entityList *next;
-};
-
-
-struct allEntity {
-    LivingEntity *player;
-    monsterList *head;
-    bulletList *head;
-};
-
-
-typedef entityList *pEntityList;
-
 */
+
+struct allEntityList {
+    LivingEntity *player;
+    //monsterList *headMonster;
+    //bulletList *headBullet;
+};
+
+
+void initScreen();
+allEntityList * initEntity(point dimension);
+
 #endif

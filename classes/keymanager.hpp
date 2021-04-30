@@ -1,12 +1,15 @@
 #ifndef KEYMANAGER_HPP_INCLUDED
 #define KEYMANAGER_HPP_INCLUDED
 
+#include "misc.hpp"
+#include "livingentity.hpp"
+
 class KeyManager{
     private:
-        //LivingEntity *player;
+        LivingEntity *player;
 
     public:
-        KeyManager();
+        KeyManager(allEntity *allEnt);
         int selectAction();
         
 };

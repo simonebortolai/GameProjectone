@@ -3,7 +3,7 @@
 
 #include "entity.hpp"
 
-class Bullet : public Entity{
+class Bullet : public Entity {
     private:
         int speed;
     public:

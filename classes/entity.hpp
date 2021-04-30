@@ -3,16 +3,16 @@
 
 #include "misc.hpp"
 
-class Entity{
+class Entity {
     protected:
-        point position;
+        point * position;
         char sprite;
     public:
         Entity(char sprite);
-        Entity(point position, char sprite);
-        void setPosition(point position);
-        point getPosition();
-        point getDesiredPosition();
+        Entity(point * position, char sprite);
+        void setPosition(point * position);
+        point * getPosition();
+        point * getDesiredPosition();
 
 };
 
