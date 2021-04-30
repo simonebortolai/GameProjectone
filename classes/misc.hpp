@@ -3,6 +3,7 @@
 
 #include <ncurses.h>
 
+
 struct point {
     int x;
     int y;
@@ -16,7 +17,8 @@ struct boxPoints {
     int height;
 };
 
-
 void initScreen();
+void loop();
+
 
 #endif

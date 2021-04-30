@@ -2,31 +2,38 @@
 #include "keymanager.hpp"
 #include "misc.hpp"
 
-KeyManager::KeyManager(allEntity *allEnt) {
-    this->player = (*allEnt).player;
+KeyManager::KeyManager(allEntityList * allEnt, Map * map) {
+    allEntities = allEnt;
+    this->map = map;
 }
 
 
 
 int KeyManager::selectAction() {
     int keyPressed = getch();
-    if (keyPressed == KEY_UP) {
+    LivingEntity * player = this->allEntities->player;
 
-    } else if (keyPressed == KEY_DOWN) {
-
-    } else if (keyPressed == KEY_LEFT) {
-
-    } else if (keyPressed == KEY_RIGHT) {
-
+    if(player->getLife() <= 0) {
+        return -1;
+    }
+    
+    //muovo il giocatore
+    if (keyPressed == KEY_UP || keyPressed == KEY_DOWN || keyPressed == KEY_LEFT || keyPressed == KEY_RIGHT)
+    {
+        player->setDesiredPosition(keyPressed);
+        return 0;
     } 
-    else if (keyPressed == 'e') {
-
+    else if (keyPressed == 'e')
+    {
+        // nuovo sparo
+        return 0;
     } 
-    else if (keyPressed == KEY_F(4)) {
-
-    } 
-    else if (keyPressed == KEY_UP) {
-
+    else if (keyPressed == KEY_F(4)) //esco
+    {
+        return -1;
+    }
+    else {
+        return 0;
     }
     
 }

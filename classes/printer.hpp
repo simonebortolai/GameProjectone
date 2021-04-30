@@ -5,7 +5,7 @@
 #include "misc.hpp"
 #include "./entities/livingentity.hpp"
 
-// lo scopo di questo insieme di funzioni è quello di stampare
+// lo scopo di questo insieme di funzioni è quello di stampare sulla finestra di ncurses
 
 void startDraw();
 void endDraw();

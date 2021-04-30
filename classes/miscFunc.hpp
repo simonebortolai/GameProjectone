@@ -1,3 +1,6 @@
+#ifndef MISCFUNC_HPP_INCLUDED
+#define MISCFUNC_HPP_INCLUDED
+
 #include "./entities/bullet.hpp"
 #include "./entities/livingentity.hpp"
 
@@ -20,3 +23,13 @@ struct allEntityList {
     bulletList *headBullet;
 };
 
+
+//funzioni per gestire le liste
+/*
+nuovoSparo
+nuovoMostro
+eliminaSparo
+eliminaMostro
+*/
+
+#endif

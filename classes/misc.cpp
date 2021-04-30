@@ -9,4 +9,7 @@ void initScreen() {
     noecho();
 }
 
+void loop() {
+    timeout(50);
+}
     

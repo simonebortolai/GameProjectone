@@ -6,13 +6,14 @@
 
 class KeyManager{
     private:
-        allEntityList *allEntities;
-        Map map;
+        allEntityList * allEntities;
+        Map * map;
 
     public:
-        KeyManager(allEntityList *allEnt);
+        KeyManager(allEntityList * allEnt, Map * map);
         int selectAction();
 
+        //funzioni da fare
         //checkMovement()
         //moveAll()
         //interaction()

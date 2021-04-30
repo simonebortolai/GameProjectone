@@ -5,32 +5,39 @@
 
 int main() {
     
+    //Datas
     int exit = 0;
 
+
+    //Structs
+    struct point dimension {79, 23};
+    //setto da qua tutte le proprietà di player, inizializzo a null la lista dei mostri e dei bullets
+    struct allEntityList listAllEntity {new LivingEntity({2, 22}, '@', 100, 10), NULL, NULL};
+
     /*
-    inizializzo le entità
-    inizializzo la mappa (gli passo le entità)
-    inizializzo l'iteratore/keyManager
+    //Objects
+    Map map(&listAllEntity)                 //inizializzo la mappa (gli passo le entità)
+    KeyMenager km(&listAllEntity, &map)     //inizializzo l'iteratore/keyManager
     */
 
-    //Objects
-    struct point dimension {79, 23};
-
-    struct allEntityList listAllEntity {new LivingEntity({2, 22}, '@', 100, 10), NULL, NULL};
 
     initScreen();
 
 
     while(exit != -1) {
 
-        getch();
-        //checkAllMovement()
-        //moveAll()
-        //checkInteraction()
-        //gameMap.updateEntity(listAllEntity) -> bello peso da fare forse, si dovrebbe cancellare gli sprite e riscriverli nei punti aggiornati
-        printEverything(listAllEntity.player, dimension); //passaggio di player temporanero, dopo si passa solo la stanza
-        //loop()
-        
+        getch(); //temporaneo
+        /*
+        da implementare
+        exit = kayManager.selection()   -> prende il tasto premuto, cambia la desired position del player, crea spari
+        km.checkAllMovement()           -> controlla se le entità si pussono muovere nelle desired position
+        km.moveAll()                    -> aggiorna le posizioni
+        km.checkInteraction()           -> controlla le iterazioni tra sparo-nemici e nemici-giocatore
+        map.updateEntity()              -> cancellare gli sprite e riscriverli nei punti aggiornati
+        printEverything(&currentWindow, dimention)
+        */
+        printEverything(listAllEntity.player, dimension); //temporaneo
+        loop();
     }
     
     endwin();

@@ -7,10 +7,17 @@
 class Bullet : public Entity {
     private:
         int speed;
+        int damage;
+        
     public:
+        //costruttori
         Bullet(point position, char sprite, int speed);
-        int getSpeed();
+
+        //set functions
         void setSpeed(int s);
+
+        //get function
+        int getSpeed();
 };
 
 

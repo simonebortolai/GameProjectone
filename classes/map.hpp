@@ -19,10 +19,12 @@ class Map {
     protected:
         pRoomList currentRoom;
         allEntityList * allEntity;
+
         void addTailRoom();
 
     public:
         Map(point dimension);
+        
         void writeCharInRoom(char ch, point point);
         void writeStringInRoom(char* ch, point point);
         point virtualToReal(point point);

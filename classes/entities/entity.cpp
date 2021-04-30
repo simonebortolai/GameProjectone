@@ -16,9 +16,15 @@ void Entity::setPosition(point position){
     this->position = position;
 }
 
+
+void Entity::setDesiredPosition(int where) {
+    //caterva di if per key up e down
+}
+
 char Entity::getSprite() {
     return sprite;
 }
+
 
 point Entity::getPosition(){
     return position;
@@ -26,9 +32,9 @@ point Entity::getPosition(){
 
 
 point Entity::getDesiredPosition(){
-    //da mettere gli if che modificano la posizione
-    return position;
+    return desiredPos;
 }
+
 
 const char * Entity::toString() {
     const char * temp = "Sono un entità";
