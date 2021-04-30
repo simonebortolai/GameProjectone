@@ -1,12 +1,2 @@
 *.o
-main
 *.json
-
-
-#makefile stuff
-CmakeCache.txt
-cmake_install.cmake
-Makefile
-CMakeFiles/*
-libclasses.a
-classes/CMakeFiles/*
