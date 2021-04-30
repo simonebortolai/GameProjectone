@@ -3,6 +3,7 @@
 #include "./classes/miscFunc.hpp"
 #include "./classes/printer.hpp"
 
+
 int main() {
     
     //Datas
@@ -25,8 +26,6 @@ int main() {
 
 
     while(exit != -1) {
-
-        getch(); //temporaneo
         /*
         da implementare
         exit = kayManager.selection()   -> prende il tasto premuto, cambia la desired position del player, crea spari
@@ -34,7 +33,7 @@ int main() {
         km.moveAll()                    -> aggiorna le posizioni
         km.checkInteraction()           -> controlla le iterazioni tra sparo-nemici e nemici-giocatore
         map.updateEntity()              -> cancellare gli sprite e riscriverli nei punti aggiornati
-        printEverything(&currentWindow, dimention)
+        printEverything(currentWindow, dimention)
         */
         printEverything(listAllEntity.player, dimension); //temporaneo
         loop();
