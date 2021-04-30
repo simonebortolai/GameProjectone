@@ -3,7 +3,7 @@
 
 #include <ncurses.h>
 #include "misc.hpp"
-#include "livingentity.hpp"
+#include "./entities/livingentity.hpp"
 
 // lo scopo di questo insieme di funzioni è quello di stampare
 

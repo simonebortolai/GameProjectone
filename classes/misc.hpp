@@ -1,6 +1,7 @@
 #ifndef MISC_HPP_INCLUDED
 #define MISC_HPP_INCLUDED
 
+#include <ncurses.h>
 
 struct point {
     int x;
@@ -14,5 +15,8 @@ struct boxPoints {
     int width;
     int height;
 };
+
+
+void initScreen();
 
 #endif

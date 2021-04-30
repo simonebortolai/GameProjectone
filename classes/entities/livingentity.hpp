@@ -2,7 +2,7 @@
 #define LIVINGENTITY_HPP_INCLUDED
 
 #include "entity.hpp"
-#include "misc.hpp"
+#include "../misc.hpp"
 
 
 class LivingEntity : public Entity {

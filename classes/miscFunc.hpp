@@ -1,8 +1,7 @@
-#include <ncurses.h>
-//#include "bullet.hpp"
-#include "livingentity.hpp"
+#include "./entities/bullet.hpp"
+#include "./entities/livingentity.hpp"
 
-/*
+
 struct bulletList {
     Bullet *value;
     bulletList *next;
@@ -14,14 +13,10 @@ struct monsterList {
     monsterList *next;
 };
 
-*/
 
 struct allEntityList {
     LivingEntity *player;
-    //monsterList *headMonster;
-    //bulletList *headBullet;
+    monsterList *headMonster;
+    bulletList *headBullet;
 };
 
-
-void initScreen();
-void initEntity(allEntityList * allEntity, point dimension);

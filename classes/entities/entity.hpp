@@ -1,7 +1,7 @@
 #ifndef ENTITY_HPP_INCLUDED
 #define ENTITY_HPP_INCLUDED
 
-#include "misc.hpp"
+#include "../misc.hpp"
 #include <cstring>
 
 class Entity {

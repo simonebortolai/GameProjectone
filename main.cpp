@@ -15,22 +15,22 @@ int main() {
 
     //Objects
     struct point dimension {79, 23};
-    struct point playerStartingPosition {2, 22};
 
-    allEntityList listAllEntity {new LivingEntity(playerStartingPosition, '@', 100, 10)};
+    struct allEntityList listAllEntity {new LivingEntity({2, 22}, '@', 100, 10), NULL, NULL};
 
     initScreen();
 
 
     while(exit != -1) {
+
         getch();
         //checkAllMovement()
         //moveAll()
         //checkInteraction()
-        //gameMap.updateEntity()
-        printEverything(listAllEntity.player, dimension);
+        //gameMap.updateEntity(listAllEntity) -> bello peso da fare forse, si dovrebbe cancellare gli sprite e riscriverli nei punti aggiornati
+        printEverything(listAllEntity.player, dimension); //passaggio di player temporanero, dopo si passa solo la stanza
         //loop()
-        timeout(50);
+        
     }
     
     endwin();
