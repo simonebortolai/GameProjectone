@@ -17,6 +17,12 @@ struct boxPoints {
     int height;
 };
 
+struct roomPoint {
+    int nRoom;
+    int x;
+    int y;
+};
+
 void initScreen();
 void loop();
 

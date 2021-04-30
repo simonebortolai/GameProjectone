@@ -17,7 +17,9 @@ typedef roomList *pRoomList;
 
 class Map {
     protected:
+        point boxDim;
         pRoomList currentRoom;
+        pRoomList firstRoom;
         allEntityList * allEntity;
 
         void addTailRoom();
@@ -27,8 +29,8 @@ class Map {
         
         void writeCharInRoom(char ch, point point);
         void writeStringInRoom(char* ch, point point);
-        point virtualToReal(point point);
-        point realToVirtual(point point);
+        roomPoint virtualToReal(point point);
+        point realToVirtual(roomPoint point);
         bool isPointAviable(point point);
 };
 

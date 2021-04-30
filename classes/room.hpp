@@ -1,7 +1,7 @@
 #ifndef ROOM_HPP_INCLUDED
 #define ROOM_HPP_INCLUDED
 
-#include "misc.hpp";
+#include "misc.hpp"
 
 
 class Room {
