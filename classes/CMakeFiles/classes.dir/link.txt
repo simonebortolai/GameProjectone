@@ -1,2 +1,0 @@
-/usr/bin/ar qc libclasses.a  CMakeFiles/classes.dir/printer.cpp.o
-/usr/bin/ranlib libclasses.a
