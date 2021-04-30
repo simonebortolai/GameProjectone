@@ -6,20 +6,10 @@ Map::Map(point dimension) {
 }
 
 
-void Map::writeCharInRoom(char ch, point point) {
-
-}
-
-
-void Map::writeStringInRoom(char * ch, point point) {
-
-}
-
-
-roomPoint Map::virtualToReal(point point) {
-    int nRoom = point.x%point.x;
-    int x = point.x-point.x%point.x;
-    int y = point.y;
+roomPoint Map::virtualToReal(point p) {
+    int nRoom = p.x%boxDim.x;
+    int x = p.x-(p.x%boxDim.x);
+    int y = p.y;
     roomPoint temp {nRoom, x, y};
     return temp;
 }
@@ -34,8 +24,8 @@ point Map::realToVirtual(roomPoint rPoint) {
 
 
 bool Map::isPointAviable(point p) {
-    int room = virtualToReal(p).nRoom;                          //trovo la stanza a cui fa riferimento
-    point pTemp = {virtualToReal(p).x, virtualToReal(p).y};     //prendo il punto a cui fa riferimento della stanza
+    int room = virtualToReal(p).nRoom;                          //trovo la stanza
+    point pTemp = {virtualToReal(p).x, virtualToReal(p).y};     //prendo il punto
     pRoomList temp = firstRoom;
 
     //ciclo per puntare alla stanza giusta
@@ -43,4 +33,29 @@ bool Map::isPointAviable(point p) {
         temp = temp->next;
 
     return temp->value->isEmpty(pTemp);
+}
+
+
+void Map::writeCharInRoom(char ch, point p) {
+
+}
+
+
+void Map::writeStringInRoom(char * ch, point p) {
+
+}
+
+
+char ** Map::getVisualizedWindow() {
+    //super mega iper funzione di fabio del progetto di prima
+}
+
+
+pRoomList Map::getCurrentRoom() {
+    return currentRoom;
+}
+
+
+pRoomList Map::getFirstRoom() {
+    return firstRoom;
 }

@@ -25,13 +25,22 @@ class Map {
         void addTailRoom();
 
     public:
+        //costruttore
         Map(point dimension);
-        
-        void writeCharInRoom(char ch, point point);
-        void writeStringInRoom(char* ch, point point);
-        roomPoint virtualToReal(point point);
-        point realToVirtual(roomPoint point);
-        bool isPointAviable(point point);
+
+        roomPoint virtualToReal(point p);
+        point realToVirtual(roomPoint rPoint);
+        bool isPointAviable(point p);
+
+        //set function
+        void writeCharInRoom(char ch, point p);
+        void writeStringInRoom(char* ch, point p);
+
+        //get function
+        pRoomList getCurrentRoom();
+        pRoomList getFirstRoom();
+        char ** getVisualizedWindow();
+
 };
 
 #endif
