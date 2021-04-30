@@ -11,7 +11,7 @@ int main() {
 
 
     //Structs
-    struct point dimension {79, 23};
+    struct point dimension {79, 23};    //dimensione finestra
     //setto da qua tutte le proprietà di player, inizializzo a null la lista dei mostri e dei bullets
     struct allEntityList listAllEntity {new LivingEntity({2, 22}, '@', 100, 10), NULL, NULL};
 
