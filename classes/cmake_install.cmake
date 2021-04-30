@@ -1,4 +1,4 @@
-# Install script for directory: /home/viole/Desktop/code_folder/cpp_projects/GameProjectone/classes
+# Install script for directory: /home/genos/Desktop/Repos/GameProjectone/classes
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

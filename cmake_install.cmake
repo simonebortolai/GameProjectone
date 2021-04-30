@@ -1,4 +1,4 @@
-# Install script for directory: /home/viole/Desktop/code_folder/cpp_projects/GameProjectone
+# Install script for directory: /home/genos/Desktop/Repos/GameProjectone
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -39,7 +39,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/viole/Desktop/code_folder/cpp_projects/GameProjectone/classes/cmake_install.cmake")
+  include("/home/genos/Desktop/Repos/GameProjectone/classes/cmake_install.cmake")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT)
@@ -50,5 +50,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/viole/Desktop/code_folder/cpp_projects/GameProjectone/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/genos/Desktop/Repos/GameProjectone/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

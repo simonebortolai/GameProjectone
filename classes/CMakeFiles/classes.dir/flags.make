@@ -6,5 +6,5 @@ CXX_FLAGS =
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/viole/Desktop/code_folder/cpp_projects/GameProjectone/classes 
+CXX_INCLUDES = -I/home/genos/Desktop/Repos/GameProjectone/classes 
 

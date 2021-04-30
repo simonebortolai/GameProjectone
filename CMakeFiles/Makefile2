@@ -44,10 +44,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/viole/Desktop/code_folder/cpp_projects/GameProjectone
+CMAKE_SOURCE_DIR = /home/genos/Desktop/Repos/GameProjectone
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/viole/Desktop/code_folder/cpp_projects/GameProjectone
+CMAKE_BINARY_DIR = /home/genos/Desktop/Repos/GameProjectone
 
 #=============================================================================
 # Directory level rules for the build root directory
@@ -94,14 +94,14 @@ classes/clean: classes/CMakeFiles/classes.dir/clean
 CMakeFiles/main.dir/all: classes/CMakeFiles/classes.dir/all
 	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/depend
 	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/viole/Desktop/code_folder/cpp_projects/GameProjectone/CMakeFiles --progress-num=3,4 "Built target main"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/genos/Desktop/Repos/GameProjectone/CMakeFiles --progress-num=3,4 "Built target main"
 .PHONY : CMakeFiles/main.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/main.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/viole/Desktop/code_folder/cpp_projects/GameProjectone/CMakeFiles 4
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/genos/Desktop/Repos/GameProjectone/CMakeFiles 4
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/main.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/viole/Desktop/code_folder/cpp_projects/GameProjectone/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/genos/Desktop/Repos/GameProjectone/CMakeFiles 0
 .PHONY : CMakeFiles/main.dir/rule
 
 # Convenience name for target.
@@ -121,14 +121,14 @@ CMakeFiles/main.dir/clean:
 classes/CMakeFiles/classes.dir/all:
 	$(MAKE) -f classes/CMakeFiles/classes.dir/build.make classes/CMakeFiles/classes.dir/depend
 	$(MAKE) -f classes/CMakeFiles/classes.dir/build.make classes/CMakeFiles/classes.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/viole/Desktop/code_folder/cpp_projects/GameProjectone/CMakeFiles --progress-num=1,2 "Built target classes"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/genos/Desktop/Repos/GameProjectone/CMakeFiles --progress-num=1,2 "Built target classes"
 .PHONY : classes/CMakeFiles/classes.dir/all
 
 # Build rule for subdir invocation for target.
 classes/CMakeFiles/classes.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/viole/Desktop/code_folder/cpp_projects/GameProjectone/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/genos/Desktop/Repos/GameProjectone/CMakeFiles 2
 	$(MAKE) -f CMakeFiles/Makefile2 classes/CMakeFiles/classes.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/viole/Desktop/code_folder/cpp_projects/GameProjectone/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/genos/Desktop/Repos/GameProjectone/CMakeFiles 0
 .PHONY : classes/CMakeFiles/classes.dir/rule
 
 # Convenience name for target.

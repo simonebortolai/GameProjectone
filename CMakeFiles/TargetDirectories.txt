@@ -1,6 +1,6 @@
-/home/viole/Desktop/code_folder/cpp_projects/GameProjectone/CMakeFiles/rebuild_cache.dir
-/home/viole/Desktop/code_folder/cpp_projects/GameProjectone/CMakeFiles/edit_cache.dir
-/home/viole/Desktop/code_folder/cpp_projects/GameProjectone/CMakeFiles/main.dir
-/home/viole/Desktop/code_folder/cpp_projects/GameProjectone/classes/CMakeFiles/edit_cache.dir
-/home/viole/Desktop/code_folder/cpp_projects/GameProjectone/classes/CMakeFiles/rebuild_cache.dir
-/home/viole/Desktop/code_folder/cpp_projects/GameProjectone/classes/CMakeFiles/classes.dir
+/home/genos/Desktop/Repos/GameProjectone/CMakeFiles/rebuild_cache.dir
+/home/genos/Desktop/Repos/GameProjectone/CMakeFiles/edit_cache.dir
+/home/genos/Desktop/Repos/GameProjectone/CMakeFiles/main.dir
+/home/genos/Desktop/Repos/GameProjectone/classes/CMakeFiles/edit_cache.dir
+/home/genos/Desktop/Repos/GameProjectone/classes/CMakeFiles/rebuild_cache.dir
+/home/genos/Desktop/Repos/GameProjectone/classes/CMakeFiles/classes.dir

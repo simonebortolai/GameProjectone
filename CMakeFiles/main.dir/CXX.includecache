@@ -6,19 +6,19 @@
 
 #IncludeRegexTransform: 
 
-/home/viole/Desktop/code_folder/cpp_projects/GameProjectone/classes/misc.hpp
+/home/genos/Desktop/Repos/GameProjectone/classes/misc.hpp
 
-/home/viole/Desktop/code_folder/cpp_projects/GameProjectone/classes/printer.hpp
+/home/genos/Desktop/Repos/GameProjectone/classes/printer.hpp
 ncurses.h
 -
 misc.hpp
-/home/viole/Desktop/code_folder/cpp_projects/GameProjectone/classes/misc.hpp
+/home/genos/Desktop/Repos/GameProjectone/classes/misc.hpp
 
-/home/viole/Desktop/code_folder/cpp_projects/GameProjectone/main.cpp
+/home/genos/Desktop/Repos/GameProjectone/main.cpp
 ncurses.h
 -
 ./classes/misc.hpp
-/home/viole/Desktop/code_folder/cpp_projects/GameProjectone/classes/misc.hpp
+/home/genos/Desktop/Repos/GameProjectone/classes/misc.hpp
 ./classes/printer.hpp
-/home/viole/Desktop/code_folder/cpp_projects/GameProjectone/classes/printer.hpp
+/home/genos/Desktop/Repos/GameProjectone/classes/printer.hpp
 

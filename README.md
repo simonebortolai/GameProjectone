@@ -10,10 +10,11 @@ Generazione mostri ->
 
 To do:
 
-Entità varie
-Giocatore
-Sparo
-Mostri
+Entità:
+    Giocatore
+    Sparo
+    Mostri
+    Bonus/Malus (opzionali per dopo)
 
 # come compilare
 - Se avete creato nuovi file che non sono in `classes/CMakeLists.txt`: 
