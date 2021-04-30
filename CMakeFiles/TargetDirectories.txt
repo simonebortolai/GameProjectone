@@ -1,6 +1,0 @@
-/home/genos/Desktop/Repos/GameProjectone/CMakeFiles/rebuild_cache.dir
-/home/genos/Desktop/Repos/GameProjectone/CMakeFiles/edit_cache.dir
-/home/genos/Desktop/Repos/GameProjectone/CMakeFiles/main.dir
-/home/genos/Desktop/Repos/GameProjectone/classes/CMakeFiles/edit_cache.dir
-/home/genos/Desktop/Repos/GameProjectone/classes/CMakeFiles/rebuild_cache.dir
-/home/genos/Desktop/Repos/GameProjectone/classes/CMakeFiles/classes.dir
