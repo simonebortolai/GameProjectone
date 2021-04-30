@@ -10,7 +10,7 @@ class LivingEntity : public Entity {
         int life;
         int strength;
     public:
-        LivingEntity(point * dim, char sprite, int life, int strength);
+        LivingEntity(point dim, char sprite, int life, int strength);
         void addLife(int n);
         void subLife(int n);
         void setLife(int n);

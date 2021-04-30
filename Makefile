@@ -8,11 +8,11 @@ main.o: main.cpp
 printer.o: ./classes/printer.cpp
 	g++ -c -Wall ./classes/printer.cpp
 
-entity.o: ./classes/entity.cpp
-	g++ -c -Wall ./classes/entity.cpp
-
 misc.o: ./classes/misc.cpp
 	g++ -c -Wall ./classes/misc.cpp
+
+entity.o: ./classes/entity.cpp
+	g++ -c -Wall ./classes/entity.cpp
 
 livingentity.o: ./classes/livingentity.cpp
 	g++ -c -Wall ./classes/livingentity.cpp

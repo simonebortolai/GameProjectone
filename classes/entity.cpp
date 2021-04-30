@@ -1,6 +1,4 @@
-#include <stdio.h>
 #include "entity.hpp"
-#include "misc.hpp"
 
 
 Entity::Entity(char sprite){
@@ -8,25 +6,31 @@ Entity::Entity(char sprite){
 }
 
 
-Entity::Entity(point * position, char sprite){
+Entity::Entity(point position, char sprite){
     this->sprite = sprite;
-    position->x = position->x;
-    position->y = position->y;
+    this->position = position;
 }
 
 
-void Entity::setPosition(point * position){
-    this->position->x=position->x;
-    this->position->y=position->y;
+void Entity::setPosition(point position){
+    this->position = position;
 }
 
+char Entity::getSprite() {
+    return sprite;
+}
 
-point * Entity::getPosition(){
+point Entity::getPosition(){
     return position;
 }
 
 
-point * Entity::getDesiredPosition(){
+point Entity::getDesiredPosition(){
     //da mettere gli if che modificano la posizione
-    return NULL;
+    return position;
+}
+
+const char * Entity::toString() {
+    const char * temp = "Sono un entità";
+    return temp;
 }

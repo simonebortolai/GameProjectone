@@ -24,4 +24,4 @@ struct allEntityList {
 
 
 void initScreen();
-allEntityList * initEntity(point dimension);
+void initEntity(allEntityList * allEntity, point dimension);

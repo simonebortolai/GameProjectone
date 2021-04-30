@@ -1,6 +1,4 @@
-#include <ncurses.h>
 #include "printer.hpp"
-#include "misc.hpp"
 
 void startDraw() {
     erase();
@@ -12,29 +10,30 @@ void endDraw() {
 }
 
 //disegna un carattere ch in una posizione definita (x,y)
-void printChar(int x, int y, char ch) {
-    move(y, x);
+void printChar(point point, char ch) {
+    move(point.y, point.x);
     printw("%c", ch);
 }
 
 //scrive una stringa in una posizione definita (x,y)
-void printString(point pointXY, char* string) {
-
+void printString(point point, const char* string) {
+    move(point.y, point.x);
+    printw("%s", string);
 }
 
 //date basi e altezza disegna un rettangolo 
 void drawRect(int startX, int startY, int mwidth, int mheigth) {
-    for(int y = 0; y < mheigth; y++) {
-        for(int x = 0; x < mwidth; x++) {
-            if(y == 0 ||  y == (mheigth - 1)) {
+    for(int y = 0; y <= mheigth; y++) {
+        for(int x = 0; x <= mwidth; x++) {
+            if(y == 0 ||  y == mheigth) {
                 move(startY+y, startX+x);
                 printw("-");
             }
-            else if(x == (mwidth - 1) || x == 0){
+            else if(x == mwidth || x == 0){
                 move(startY+y, startX+x);
                 printw("|");
             }
-            if((x==0 && y==0)||(x==0 && y==(mheigth-1))||(x==(mwidth-1) && y==0)||(x==(mwidth-1) && y==(mheigth-1))) {
+            if((x==0 && y==0)||(x==0 && y==mheigth)||(x==mwidth && y==0)||(x==mwidth && y==mheigth)) {
                 move(startY+y, startX+x);
                 printw("+");
             }
@@ -51,8 +50,14 @@ void printRoom(char ** cont, int x, int y, int width, int heigth) {
     }
 }
 
-void printEverything(point dim) {
+void printEverything(LivingEntity * player, point dim) {
     startDraw();
     drawRect(0,0, dim.x, dim.y);
+    //NOTA: queste stampe sono per ora temporeanee
+    //      idealmente il giocatore dovrebbe essere scritto nelle stanze e qui ci
+    //      dovrebbe solo essere printRoom
+
+    printChar((*player).getPosition(), (*player).getSprite());
+
     endDraw();
 }

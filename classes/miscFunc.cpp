@@ -11,11 +11,12 @@ void initScreen() {
 }
 
 
-allEntityList * initEntity(point dimension) {
-    allEntityList * listOfAllEntity;
-
+void initEntity(allEntityList * allEntity, point dimension) {
+    
     struct point p {dimension.x/2, 2};
 
-    listOfAllEntity->player = new LivingEntity(&p, '@', 100, 10);
+    struct allEntityList temp {new LivingEntity(p, '@', 100, 10)};
+    allEntity = &temp;
+ 
 }
     

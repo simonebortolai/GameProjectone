@@ -2,17 +2,21 @@
 #define ENTITY_HPP_INCLUDED
 
 #include "misc.hpp"
+#include <cstring>
 
 class Entity {
     protected:
-        point * position;
+        struct point position;
         char sprite;
     public:
         Entity(char sprite);
-        Entity(point * position, char sprite);
-        void setPosition(point * position);
-        point * getPosition();
-        point * getDesiredPosition();
+        Entity(point position, char sprite);
+        void setPosition(point position);
+        char getSprite();
+        point getPosition();
+        point getDesiredPosition();
+
+        const char * toString();
 
 };
 

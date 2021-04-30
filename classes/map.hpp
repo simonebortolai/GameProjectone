@@ -2,8 +2,8 @@
 #define MAP_HPP_INCLUDED
 
 #include "misc.hpp"
+#include "miscFunc.hpp"
 #include "room.hpp"
-
 
 
 struct roomList {
@@ -18,7 +18,7 @@ typedef roomList *pRoomList;
 class Map {
     protected:
         pRoomList currentRoom;
-        //lista_enemy:
+        allEntityList * allEntity;
         void addTailRoom();
 
     public:
@@ -27,7 +27,7 @@ class Map {
         void writeStringInRoom(char* ch, point point);
         point virtualToReal(point point);
         point realToVirtual(point point);
-        
+        bool isPointAviable(point point);
 };
 
 #endif
