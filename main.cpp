@@ -1,39 +1,26 @@
 #include <ncurses.h>
-//#include "./classes/keymanager.hpp"
-//#include "./classes/map.hpp"
 #include "./classes/misc.hpp"
+#include "./classes/miscFunc.hpp"
 #include "./classes/printer.hpp"
-
-//da spostare
-void initScreen() {
-    initscr();
-    cbreak();
-    nodelay(stdscr, TRUE);
-    curs_set(FALSE);
-    keypad(stdscr, true);
-    noecho();
-}
-
-point dimension {79, 23};
 
 
 int main() {
-
+    
     int exit = 0;
 
-    /* 
-    //Objects
-    
-    allEntity *listAllEntity;
-
-    //Map gameMap(dimension);
-    //KeyManager km();
+    /*
+    inizializzo le entità
+    inizializzo la mappa (gli passo le entità)
+    inizializzo l'iteratore/keyManager
     */
 
-    // esce se viene premuto il tasto F4 o il personaggio muore
+    //Objects
+    struct point dimension {79, 23};
+
+    allEntityList * listAllEntity;
 
     initScreen();
-    //initEntity();
+    listAllEntity = initEntity(dimension);
 
 
     while(exit != -1) {

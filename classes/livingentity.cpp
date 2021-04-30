@@ -1,5 +1,4 @@
-#include "entity.hpp"
-#include "misc.hpp"
+#include "livingentity.hpp"
 
 
 LivingEntity::LivingEntity(point * dim, char sprite,int life, int strength) : Entity(dim, sprite){

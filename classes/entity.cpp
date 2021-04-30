@@ -28,5 +28,5 @@ point * Entity::getPosition(){
 
 point * Entity::getDesiredPosition(){
     //da mettere gli if che modificano la posizione
-    //return null;
+    return NULL;
 }
