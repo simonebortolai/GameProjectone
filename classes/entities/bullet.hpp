@@ -15,9 +15,11 @@ class Bullet : public Entity {
 
         //set functions
         void setSpeed(int s);
+        void setDamage(int d);
 
         //get function
         int getSpeed();
+        int getDamage();
 };
 
 

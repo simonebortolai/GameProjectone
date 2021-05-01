@@ -5,3 +5,27 @@ LivingEntity::LivingEntity(point dim, char sprite,int life, int strength) : Enti
     this->life = life;
     this->strength = strength;
 }
+
+void LivingEntity::addLife(int life){
+    this->life=this->life+life;
+}
+
+void LivingEntity::subLife(int life){
+    this->life=this->life-life;
+}
+
+void LivingEntity::setLife(int life){
+    this->life=life;
+}
+
+void LivingEntity::setStrength(int strength){
+    this->strength=strength;
+}
+
+int LivingEntity::getLife(){
+    return life;
+}
+
+int LivingEntity::getStrength(){
+    return strength;
+}
