@@ -48,6 +48,7 @@ void Map::writeStringInRoom(char * ch, point p) {
 
 char ** Map::getVisualizedWindow() {
     //super mega iper funzione di fabio del progetto di prima
+    return NULL;
 }
 
 

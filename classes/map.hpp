@@ -1,6 +1,7 @@
 #ifndef MAP_HPP_INCLUDED
 #define MAP_HPP_INCLUDED
 
+#include <ncurses.h>
 #include "misc.hpp"
 #include "miscFunc.hpp"
 #include "room.hpp"
@@ -20,12 +21,12 @@ class Map {
         point boxDim;
         pRoomList currentRoom;
         pRoomList firstRoom;
+        
         allEntityList * allEntity;
 
         void addTailRoom();
 
     public:
-        //costruttore
         Map(point dimension);
 
         roomPoint virtualToReal(point p);

@@ -18,13 +18,14 @@ int main() {
     /*
     //Objects
     Map map(&listAllEntity)                 //inizializzo la mappa (gli passo le entità)
-    KeyMenager km(&listAllEntity, &map)     //inizializzo l'iteratore/keyManager
+    KeyMenager km(&listAllEntity, &map)     //inizializzo keyManager
+    iteratore                               -> da pensare
     */
 
 
     initScreen();
 
-
+    //game loop
     while(exit != -1) {
         /*
         da implementare
