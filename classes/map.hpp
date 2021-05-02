@@ -18,6 +18,7 @@ typedef roomList *pRoomList;
 
 class Map {
     protected:
+        int counter;
         point boxDim;
         pRoomList currentRoom;
         pRoomList firstRoom;
@@ -27,6 +28,7 @@ class Map {
         void addRoomToTail();
         void writeAllEntities();
         void eraseAllEntities();
+        void checkPlayerPosition();
 
     public:
         Map(allEntityList * al, point dimension);

@@ -6,6 +6,7 @@ Map::Map(allEntityList * al, point dimension) {
     this->boxDim = dimension;
     currentRoom = NULL;
     firstRoom = NULL;
+    counter = 0;
     addRoomToTail();
 }
 
@@ -28,29 +29,33 @@ void Map::addRoomToTail() {
         firstRoom = add;
         firstRoom->prev = NULL;
     }
+    
+    ++counter;
+}
+
+
+void Map::checkPlayerPosition() {
+    roomPoint playerPos = virtualToReal((*allEntity->player).getDesiredPosition());
+    if(playerPos.nRoom == counter && playerPos.x > (boxDim.x/4)-1) {
+        addRoomToTail();
+    }
 }
 
 
 void Map::moveAllEntities() {
-    // cancella le entità
-    eraseAllEntities();
-    // le scrive dove si devono muovere e setta la nuova posizione
-    writeAllEntities();
+    eraseAllEntities(); //cancella le entità
+    writeAllEntities(); //le scrive dove si devono muovere e setta la nuova posizione
 }
 
 
 // dopo aver disegnato nelle stanze la posizione dell'entità,
-// posso impostare quel punto come vera posizione, inoltre
-// se il giocatore va oltre un certo punto crea la nuova stanza
+// posso impostare quel punto come vera posizione
 void Map::writeAllEntities() {
     //write player
     roomPoint playerPos = virtualToReal((*allEntity->player).getDesiredPosition());
     writeCharInRoom((*allEntity->player).getSprite(), playerPos);
     (*allEntity->player).setPosition((*allEntity->player).getDesiredPosition());
-
-    //aggiungo una stanza se il giocatore va oltre un certo punto
-    if(playerPos.x > (boxDim.x/4)-1)
-        addRoomToTail();
+    checkPlayerPosition();
 
     //write monsters
     monsterList * ml = allEntity->headMonster;
