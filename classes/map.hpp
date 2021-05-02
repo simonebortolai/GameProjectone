@@ -18,16 +18,16 @@ typedef roomList *pRoomList;
 
 class Map {
     protected:
-        int counter;
-        point boxDim;
+        int counter;            //contatore di stanza
+        point boxDim;           //dimensione stanze
         pRoomList currentRoom;
         pRoomList firstRoom;
         
         allEntityList * allEntity;
 
         void addRoomToTail();
-        void writeAllEntities();
         void eraseAllEntities();
+        void writeAllEntities();
         void checkPlayerPosition();
 
     public:

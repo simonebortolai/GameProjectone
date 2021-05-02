@@ -18,10 +18,10 @@ int main() {
 
     
     //Objects
-    Map map(&listAllEntity, dimension);                //inizializzo la mappa (gli passo le entità)
+    Map map(&listAllEntity, dimension);
     /*
-    KeyMenager km(&listAllEntity, &map)     //inizializzo keyManager
-    iteratore                               -> da pensare
+    KeyMenager km(&listAllEntity, &map);
+    iteratore  -> da pensare
     */
 
 

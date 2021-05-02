@@ -7,7 +7,7 @@ Map::Map(allEntityList * al, point dimension) {
     currentRoom = NULL;
     firstRoom = NULL;
     counter = 0;
-    addRoomToTail();
+    addRoomToTail(); //creo la prima stanza
 }
 
 
@@ -34,6 +34,10 @@ void Map::addRoomToTail() {
 }
 
 
+/*
+questa funzione aggiunge una stanza se il giocatore va oltre
+un certo punto dell'ultima stanza
+*/
 void Map::checkPlayerPosition() {
     roomPoint playerPos = virtualToReal((*allEntity->player).getDesiredPosition());
     if(playerPos.nRoom == counter && playerPos.x > (boxDim.x/4)-1) {
