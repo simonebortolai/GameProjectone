@@ -24,7 +24,7 @@ class Map {
         
         allEntityList * allEntity;
 
-        void addTailRoom();
+        void addRoomToTail();
         void writeAllEntities();
         void eraseAllEntities();
 
