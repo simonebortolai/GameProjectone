@@ -29,13 +29,14 @@ class Map {
     public:
         Map(point dimension);
 
+        void writeAllEntities();
         roomPoint virtualToReal(point p);
         point realToVirtual(roomPoint rPoint);
         bool isPointAviable(point p);
 
         //set function
-        void writeCharInRoom(char ch, point p);
-        void writeStringInRoom(char* ch, point p);
+        void writeCharInRoom(char ch, roomPoint rPoint);
+        void writeStringInRoom(char* ch, roomPoint rPoint);
 
         //get function
         pRoomList getCurrentRoom();

@@ -6,6 +6,26 @@ Map::Map(point dimension) {
 }
 
 
+void Map::writeAllEntities() {
+    //write player
+    writeCharInRoom((*allEntity->player).getSprite(), virtualToReal((*allEntity->player).getPosition()));
+
+    //write monsters
+    monsterList * ml = allEntity->headMonster;
+    while(ml != NULL) {
+        writeCharInRoom((*ml->value).getSprite(), virtualToReal((*ml->value).getPosition()));
+        ml = ml->next;
+    }
+
+    //write bullets
+    bulletList * bl = allEntity->headBullet;
+    while(bl != NULL) {
+        writeCharInRoom((*bl->value).getSprite(), virtualToReal((*bl->value).getPosition()));
+        bl = bl->next;
+    }
+}
+
+
 roomPoint Map::virtualToReal(point p) {
     int nRoom = p.x%boxDim.x;
     int x = p.x-(p.x%boxDim.x);
@@ -36,12 +56,12 @@ bool Map::isPointAviable(point p) {
 }
 
 
-void Map::writeCharInRoom(char ch, point p) {
+void Map::writeCharInRoom(char ch, roomPoint p) {
 
 }
 
 
-void Map::writeStringInRoom(char * ch, point p) {
+void Map::writeStringInRoom(char * ch, roomPoint p) {
 
 }
 

@@ -6,10 +6,11 @@
 
 class Room {
     protected:
-        char** content;
+        char ** content;
         //lista nemici?
 
     public:
+        //generateMonster
         void generateRoom();
         char ** getContent();
         bool isEmpty(point p);
