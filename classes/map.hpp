@@ -25,11 +25,13 @@ class Map {
         allEntityList * allEntity;
 
         void addTailRoom();
+        void writeAllEntities();
+        void eraseAllEntities();
 
     public:
-        Map(point dimension);
+        Map(allEntityList * al, point dimension);
 
-        void writeAllEntities();
+        void moveAllEntities();
         roomPoint virtualToReal(point p);
         point realToVirtual(roomPoint rPoint);
         bool isPointAviable(point p);

@@ -1,26 +1,60 @@
 #include "map.hpp"
 
 
-Map::Map(point dimension) {
+Map::Map(allEntityList * al, point dimension) {
+    this->allEntity = al;
     this->boxDim = dimension;
 }
 
 
+void Map::moveAllEntities() {
+    // cancella le entità
+    eraseAllEntities();
+    // le scrive dove si devono muovere e setta la nuova posizione
+    writeAllEntities();
+}
+
+
+// dopo aver disegnato nelle stanze la posizione dell'entità,
+// posso impostare quel punto come vera posizione
 void Map::writeAllEntities() {
     //write player
-    writeCharInRoom((*allEntity->player).getSprite(), virtualToReal((*allEntity->player).getPosition()));
+    writeCharInRoom((*allEntity->player).getSprite(), virtualToReal((*allEntity->player).getDesiredPosition()));
+    (*allEntity->player).setPosition((*allEntity->player).getDesiredPosition());
 
     //write monsters
     monsterList * ml = allEntity->headMonster;
     while(ml != NULL) {
-        writeCharInRoom((*ml->value).getSprite(), virtualToReal((*ml->value).getPosition()));
+        writeCharInRoom((*ml->value).getSprite(), virtualToReal((*ml->value).getDesiredPosition()));
+        (*ml->value).setPosition((*ml->value).getDesiredPosition());
         ml = ml->next;
     }
 
     //write bullets
     bulletList * bl = allEntity->headBullet;
     while(bl != NULL) {
-        writeCharInRoom((*bl->value).getSprite(), virtualToReal((*bl->value).getPosition()));
+        writeCharInRoom((*bl->value).getSprite(), virtualToReal((*bl->value).getDesiredPosition()));
+        (*bl->value).setPosition((*bl->value).getDesiredPosition());
+        bl = bl->next;
+    }
+}
+
+
+void Map::eraseAllEntities() {
+    //erase player
+    writeCharInRoom(' ', virtualToReal((*allEntity->player).getPosition()));
+
+    //erase monsters
+    monsterList * ml = allEntity->headMonster;
+    while(ml != NULL) {
+        writeCharInRoom(' ', virtualToReal((*ml->value).getPosition()));
+        ml = ml->next;
+    }
+
+    //erase bullets
+    bulletList * bl = allEntity->headBullet;
+    while(bl != NULL) {
+        writeCharInRoom(' ', virtualToReal((*bl->value).getPosition()));
         bl = bl->next;
     }
 }

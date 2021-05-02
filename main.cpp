@@ -2,6 +2,7 @@
 #include "./classes/misc.hpp"
 #include "./classes/miscFunc.hpp"
 #include "./classes/printer.hpp"
+#include "./classes/map.hpp"
 
 
 int main() {
@@ -11,13 +12,14 @@ int main() {
 
 
     //Structs
-    struct point dimension {79, 23};    //dimensione finestra
+    point dimension {79, 23};    //dimensione finestra
     //setto da qua tutte le proprietà di player, inizializzo a null la lista dei mostri e dei bullets
-    struct allEntityList listAllEntity {new LivingEntity({2, 22}, '@', 100, 10), NULL, NULL};
+    allEntityList listAllEntity {new LivingEntity({2, 22}, '@', 100, 10), NULL, NULL};
 
-    /*
+    
     //Objects
-    Map map(&listAllEntity)                 //inizializzo la mappa (gli passo le entità)
+    Map map(&listAllEntity, dimension);                //inizializzo la mappa (gli passo le entità)
+    /*
     KeyMenager km(&listAllEntity, &map)     //inizializzo keyManager
     iteratore                               -> da pensare
     */
@@ -33,10 +35,9 @@ int main() {
         km.checkAllMovement()           -> controlla se le entità si pussono muovere nelle desired position
         km.moveAll()                    -> aggiorna le posizioni
         km.checkInteraction()           -> controlla le iterazioni tra sparo-nemici e nemici-giocatore
-        map.updateEntity()              -> cancellare gli sprite e riscriverli nei punti aggiornati
-        printEverything(currentWindow, dimention)
         */
-        printEverything(listAllEntity.player, dimension); //temporaneo
+        map.moveAllEntities();              //cancella la precedente posizione delle entità e le riscrive nelle desired position
+        printEverything('@', dimension);    //da sostituire a: printEverything(map.getVisualizedWindow(), dimension);
         loop();
     }
     
