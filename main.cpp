@@ -2,6 +2,7 @@
 #include "./classes/misc.hpp"
 #include "./classes/miscFunc.hpp"
 #include "./classes/printer.hpp"
+#include "./classes/room.hpp"
 
 
 int main() {
@@ -21,6 +22,11 @@ int main() {
     KeyMenager km(&listAllEntity, &map)     //inizializzo l'iteratore/keyManager
     */
 
+    //DEBUG
+    point roomSize {dimension.x-1, dimension.y-1};
+    Room stanza (roomSize, 0);
+    point start {1, 1};
+    
 
     initScreen();
 
@@ -35,7 +41,11 @@ int main() {
         map.updateEntity()              -> cancellare gli sprite e riscriverli nei punti aggiornati
         printEverything(currentWindow, dimention)
         */
+
+        startDraw();
+        printRoom(stanza.getContent(), start, roomSize);
         printEverything(listAllEntity.player, dimension); //temporaneo
+        endDraw();
         loop();
     }
     

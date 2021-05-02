@@ -1,5 +1,5 @@
-main: main.o printer.o misc.o entity.o livingentity.o miscFunc.o bullet.o
-	g++ -o main main.o printer.o misc.o entity.o livingentity.o miscFunc.o bullet.o -lcurses
+main: main.o printer.o misc.o entity.o livingentity.o miscFunc.o bullet.o room.o
+	g++ -o main main.o printer.o misc.o entity.o livingentity.o miscFunc.o room.o bullet.o -lcurses
 	rm *.o
 
 main.o: main.cpp
@@ -22,6 +22,9 @@ miscFunc.o: ./classes/miscFunc.cpp
 
 bullet.o: ./classes/entities/bullet.cpp
 	g++ -c -Wall ./classes/entities/bullet.cpp
+
+room.o: ./classes/room.cpp
+	g++ -c -Wall ./classes/room.cpp
 
 clean:
 	rm *.o
