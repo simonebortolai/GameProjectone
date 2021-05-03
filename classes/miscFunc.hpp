@@ -1,6 +1,7 @@
 #ifndef MISCFUNC_HPP_INCLUDED
 #define MISCFUNC_HPP_INCLUDED
 
+#include <ncurses.h>
 #include "./entities/bullet.hpp"
 #include "./entities/livingentity.hpp"
 

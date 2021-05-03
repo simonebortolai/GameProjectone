@@ -24,9 +24,9 @@ pMonster newMonster(pMonster list, LivingEntity *b){
 }
 
 pBullet removeBullet(pBullet list, Bullet *b){
-
+    return NULL;
 }
 
 pMonster removeMonster(pMonster list, LivingEntity *b){
-
+    return NULL;
 }
