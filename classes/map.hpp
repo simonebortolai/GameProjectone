@@ -1,6 +1,7 @@
 #ifndef MAP_HPP_INCLUDED
 #define MAP_HPP_INCLUDED
 
+#include <ncurses.h>
 #include "misc.hpp"
 #include "miscFunc.hpp"
 #include "room.hpp"
@@ -17,19 +18,35 @@ typedef roomList *pRoomList;
 
 class Map {
     protected:
+        int counter;            //contatore di stanza
+        point boxDim;           //dimensione stanze
         pRoomList currentRoom;
+        pRoomList firstRoom;
+        
         allEntityList * allEntity;
 
-        void addTailRoom();
+        void addRoomToTail();
+        void eraseAllEntities();
+        void writeAllEntities();
+        void checkPlayerPosition();
 
     public:
-        Map(point dimension);
-        
-        void writeCharInRoom(char ch, point point);
-        void writeStringInRoom(char* ch, point point);
-        point virtualToReal(point point);
-        point realToVirtual(point point);
-        bool isPointAviable(point point);
+        Map(allEntityList * al, point dimension);
+
+        void moveAllEntities();
+        roomPoint virtualToReal(point p);
+        point realToVirtual(roomPoint rPoint);
+        bool isPointAviable(point p);
+
+        //set function
+        void writeCharInRoom(char ch, roomPoint rPoint);
+        void writeStringInRoom(char* ch, roomPoint rPoint);
+
+        //get function
+        pRoomList getCurrentRoom();
+        pRoomList getFirstRoom();
+        char ** getVisualizedWindow();
+
 };
 
 #endif

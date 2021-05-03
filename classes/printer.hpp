@@ -13,6 +13,9 @@ void printChar(point point, char ch);
 void printString(point point, const char* string);
 void drawRect(int startX, int startY, int width, int heigth);
 void printRoom(char ** cont, int x, int y, int width, int heigth);
-void printEverything(LivingEntity * player, point dim);
+void printEverything(char ** room, point dim);
+
+//temporaneo
+void printEverything(char ch, point dim);
 
 #endif

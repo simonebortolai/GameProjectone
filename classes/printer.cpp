@@ -50,14 +50,17 @@ void printRoom(char ** cont, int x, int y, int width, int heigth) {
     }
 }
 
-void printEverything(LivingEntity * player, point dim) {
+void printEverything(char ** room, point dim) {
     startDraw();
     drawRect(0,0, dim.x, dim.y);
-    //NOTA: queste stampe sono per ora temporeanee
-    //      idealmente il giocatore dovrebbe essere scritto nelle stanze e qui ci
-    //      dovrebbe solo essere printRoom
+    printRoom(room, 0, 0, dim.x, dim.y);
+    endDraw();
+}
 
-    printChar((*player).getPosition(), (*player).getSprite());
 
+void printEverything(char ch, point dim) {
+    startDraw();
+    drawRect(0,0, dim.x, dim.y);
+    printChar(dim, ch);
     endDraw();
 }

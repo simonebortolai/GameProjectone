@@ -2,7 +2,6 @@
 #define ENTITY_HPP_INCLUDED
 
 #include "../misc.hpp"
-#include <cstring>
 
 class Entity {
     protected:
@@ -12,7 +11,7 @@ class Entity {
         char sprite;
 
     public:
-        //costruttori
+        //costructors
         Entity(char sprite);
         Entity(point position, char sprite);
 

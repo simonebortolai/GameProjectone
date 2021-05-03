@@ -1,4 +1,4 @@
-#include "room.hpp";
+#include "room.hpp"
 
 
 //simo/ceci, create 3 prototipi di stanze grandezza {23, 79}
@@ -11,7 +11,9 @@ char ** room3 = ["    ",
                  "    "];
 */
 
-
+char ** Room::getContent() {
+    return content;
+}
 
 bool Room::isEmpty(point p) {
     return true;
