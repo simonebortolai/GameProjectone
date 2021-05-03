@@ -5,6 +5,7 @@
 #include "./classes/room.hpp"
 
 
+
 int main() {
     
     //Datas
@@ -44,7 +45,7 @@ int main() {
 
         startDraw();
         printRoom(stanza.getContent(), start, roomSize);
-        printEverything(listAllEntity.player, dimension); //temporaneo
+        //printEverything(listAllEntity.player, dimension); //temporaneo
         endDraw();
         loop();
     }

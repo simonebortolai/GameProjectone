@@ -2,25 +2,21 @@
 #define ROOM_HPP_INCLUDED
 
 #include "misc.hpp"
+#include "space2d.hpp"
 
 
-class Room {
+class Room : public Space2d {
     protected:
-        point dimension;
-        char** content;
         void generateRoom(int level);
         //lista nemici?
 
     public:
-        Room(point dimension, int level);
-        char ** getContent();
+        Room(point size, int level);
         bool isEmpty(point p);
 
 };
 
 
-/*
-Sono costretto a dichiarare content pointer of pointer anche se in realtà il size è fissato e conosciuto durante la compilazione, C++ non è abbastanza intelligente 
-*/
+
 
 #endif
