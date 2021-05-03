@@ -36,12 +36,19 @@ void Map::addRoomToTail() {
 
 /*
 questa funzione aggiunge una stanza se il giocatore va oltre
-un certo punto dell'ultima stanza
+un certo punto dell'ultima stanza e punta la currentRoom giusta
 */
 void Map::checkPlayerPosition() {
     roomPoint playerPos = virtualToReal((*allEntity->player).getDesiredPosition());
     if(playerPos.nRoom == counter && playerPos.x > (boxDim.x/4)-1) {
         addRoomToTail();
+    } else {
+        currentRoom = firstRoom;
+
+        //punto alla stanza corrente
+        for(int i = 0; i < playerPos.nRoom; i++)
+            currentRoom = currentRoom->next;
+         
     }
 }
 
@@ -140,8 +147,38 @@ void Map::writeStringInRoom(char * ch, roomPoint p) {
 
 
 char ** Map::getVisualizedWindow() {
-    //super mega iper funzione di fabio del progetto di prima
-    return NULL;
+    int diff = virtualToReal((*allEntity->player).getPosition()).x - (boxDim.x/4);
+    char ** res;
+    char ** content;
+
+    if(counter <= 1) {
+        content = (*firstRoom->value).getContent();
+    } else {
+        char ** part1 = (*(currentRoom->value)).getContent();
+        char ** part2;
+        if (diff > 0) part2 = (*(currentRoom->next->value)).getContent();
+        else part2 = (*(currentRoom->prev->value)).getContent();
+
+        //combine the two rooms
+        res = new char * [boxDim.y];
+        for (int row = 0; row < boxDim.y; row++) {
+            *(res+row) = new char [boxDim.x];
+            for (int col = 0; col < boxDim.x; col++) {
+                if (diff > 0) {
+                    if (col < boxDim.x-diff) res[row][col] = part1[row][col+diff];
+                    else res[row][col] = part2[row][col-boxDim.x+diff];
+                }
+                else if (diff < 0) {
+                    if (col+diff < 0) res[row][col] = part2[row][col+boxDim.x+diff];
+                    else res[row][col] = part1[row][col+diff];
+                } 
+                else res[row][col] = part1[row][col];
+            }
+        }
+        return res;
+    }
+
+    return content;
 }
 
 

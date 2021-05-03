@@ -11,7 +11,9 @@ char ** room3 = ["    ",
                  "    "];
 */
 
-
+char ** Room::getContent() {
+    return content;
+}
 
 bool Room::isEmpty(point p) {
     return true;
