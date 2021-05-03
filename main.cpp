@@ -8,11 +8,11 @@
 int main() {
     
     //Datas
-    int exit = 0;
+    bool exit = false;
 
 
     //Structs
-    point dimension {79, 23};    //dimensione finestra
+    point dimension {79, 23};    //dimensione finestra dove si gioca
     //setto da qua tutte le proprietà di player, inizializzo a null la lista dei mostri e dei bullets
     allEntityList listAllEntity {new LivingEntity({2, 22}, '@', 100, 10), NULL, NULL};
 
@@ -25,10 +25,11 @@ int main() {
     */
 
 
-    initScreen();
+    initScreen();   //creo la window con ncurses
+
 
     //game loop
-    while(exit != -1) {
+    while(!exit) {
         /*
         da implementare
         exit = kayManager.selection()   -> prende il tasto premuto, cambia la desired position del player, crea spari

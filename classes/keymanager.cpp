@@ -14,26 +14,26 @@ int KeyManager::selectAction() {
     LivingEntity * player = this->allEntities->player;
 
     if(player->getLife() <= 0) {
-        return -1;
+        return true;
     }
     
     //muovo il giocatore
     if (keyPressed == KEY_UP || keyPressed == KEY_DOWN || keyPressed == KEY_LEFT || keyPressed == KEY_RIGHT)
     {
         player->setDesiredPosition(keyPressed);
-        return 0;
+        return false;
     } 
     else if (keyPressed == 'e')
     {
         // nuovo sparo
-        return 0;
+        return false;
     } 
     else if (keyPressed == KEY_F(4)) //esco
     {
-        return -1;
+        return true;
     }
     else {
-        return 0;
+        return false;
     }
     
 }

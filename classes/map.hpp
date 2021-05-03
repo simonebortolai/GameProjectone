@@ -31,7 +31,7 @@ class Map {
         void checkPlayerPosition();
 
     public:
-        Map(allEntityList * al, point dimension);
+        Map(allEntityList * al, point dim);
 
         void moveAllEntities();
         roomPoint virtualToReal(point p);

@@ -11,7 +11,7 @@ class KeyManager{
 
     public:
         KeyManager(allEntityList * allEnt, Map * map);
-        int selectAction();
+        bool selectAction();
 
         //funzioni da fare
         //checkMovement()
