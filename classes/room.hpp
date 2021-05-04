@@ -8,6 +8,7 @@
 class Room : public Space2d {
     protected:
         void generateRoom(int level);
+        void generatePlatform();
         //lista nemici?
 
     public:
