@@ -10,6 +10,11 @@ void initScreen() {
 }
 
 void loop() {
-    timeout(50);
+    //timeout(50);
 }
     
+
+int max(int a, int b) {
+    if (a>b) return a;
+    else return b;
+}

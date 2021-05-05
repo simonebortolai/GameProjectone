@@ -5,10 +5,24 @@
 #include "space2d.hpp"
 
 
+struct platformInfo {
+    int y; 
+    int lastX;
+    int lastLen;
+    int sideSpace;
+    int minLen; 
+    int maxLen;
+};
+
+
+
 class Room : public Space2d {
     protected:
         void generateRoom(int level);
-        void generatePlatform();
+
+        void generatePlatform(platformInfo & info);
+        void generateAllPlatform(int n, int y_span, platformInfo & info);
+        void drawPlatform(point start, int len);
         //lista nemici?
 
     public:

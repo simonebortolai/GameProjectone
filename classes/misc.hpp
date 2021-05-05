@@ -25,6 +25,7 @@ struct roomPoint {
 
 void initScreen();
 void loop();
+int max(int a, int b);
 
 
 

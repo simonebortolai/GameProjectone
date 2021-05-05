@@ -3,9 +3,13 @@
 #include "./classes/miscFunc.hpp"
 #include "./classes/printer.hpp"
 #include "./classes/map.hpp"
+#include <stdlib.h>     /* srand, rand */
+#include <time.h>     /* time (per srand e rand) */
+
 
 
 int main() {
+    srand(time(NULL)); 
     
     //Datas
     bool exit = false;
