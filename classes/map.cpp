@@ -16,7 +16,7 @@ void Map::addRoomToTail() {
 
     //creo la nuova stanza
     pRoomList add = new roomList;
-    add->value = new Room();
+    add->value = new Room(boxDim, 0);
     add->next = NULL;
 
     if(firstRoom != NULL) {
