@@ -3,6 +3,7 @@
 
 #include <ncurses.h>
 #include <unistd.h>
+#include <stdlib.h>     /* srand, rand */
 
 
 struct point {
@@ -26,7 +27,12 @@ struct roomPoint {
 
 void initScreen();
 void loop();
+
+
+
+/* General purpouse functionz :) */
 int max(int a, int b);
+int random(int min, int max);
 
 
 
