@@ -5,6 +5,7 @@
 #include "misc.hpp"
 #include "miscFunc.hpp"
 #include "room.hpp"
+#include "printer.hpp"
 
 
 struct roomList {
@@ -18,17 +19,17 @@ typedef roomList *pRoomList;
 
 class Map {
     protected:
-        int counter;            //contatore di stanza    [[[]]]
+        int counter;            //contatore di stanza
         point boxDim;           //dimensione stanze     
         pRoomList currentRoom;
-        pRoomList firstRoom;        //  [[[]]]
-        
+        pRoomList firstRoom;     
         allEntityList * allEntity;
 
+        void writePlayer(LivingEntity * player);
         void addRoomToTail();
         void eraseAllEntities();
         void writeAllEntities();
-        void checkPlayerPosition();
+        void checkPlayerPosition(roomPoint pPos);
 
     public:
         Map(allEntityList * al, point dim);
@@ -42,8 +43,6 @@ class Map {
         void writeCharInRoom(char ch, roomPoint rPoint);
 
         //get function
-        pRoomList getCurrentRoom();
-        pRoomList getFirstRoom();
         char ** getVisualizedWindow();
 
 };

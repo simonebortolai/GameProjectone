@@ -51,7 +51,7 @@ void printRoom(char ** cont, point start, point size) {
 }
 
 void printEverything(char ** room, point roomSize, point dim) {
-    startDraw();
+    //startDraw();
     printRoom(room, {1,1}, roomSize);
     drawRect(0,0, dim.x, dim.y);
     endDraw();

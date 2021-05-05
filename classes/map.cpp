@@ -4,82 +4,67 @@
 Map::Map(allEntityList * al, point dim) {
     this->allEntity = al;
     this->boxDim = dim;
-    currentRoom = NULL;
-    firstRoom = NULL;
-    counter = 0;
-    addRoomToTail();    //creo la prima stanza
+    counter = -1;
+
+    //creo la prima stanza
+    firstRoom->value = new Room(boxDim, ++counter);
+    firstRoom->next = NULL;
+    firstRoom->prev = NULL;
+    currentRoom = firstRoom;
 }
 
 
 void Map::addRoomToTail() {
     pRoomList tmp = firstRoom;
 
-    //creo la nuova stanza
-    pRoomList add = new roomList;
-    add->value = new Room(boxDim, counter);
-    add->next = NULL;
+    while(tmp->next != NULL)
+        tmp = tmp->next;
 
-
-    if(firstRoom != NULL) {
-        while(tmp->next != NULL)
-            tmp = tmp->next;
-
-        tmp->next = add;
-        tmp->next->prev = tmp;
-    } else {
-        firstRoom = add;
-        firstRoom->prev = NULL;
-    }
-    
-    ++counter;
+    tmp->next = new roomList;
+    tmp->next->value = new Room(boxDim, ++counter);
+    tmp->next->next = NULL;
+    tmp->next->prev = tmp;
 }
 
 
-/*
-questa funzione fa due cose (le quali si possono spezzare in due funzioni volendo):
-Prende la posizione di player e
-1. aggiunge una stanza se è nell'ultima stanza e supera un punto preciso
-2. setta la currentRoom giusta
-*/
-void Map::checkPlayerPosition() {
-    roomPoint playerPos = virtualToReal((*allEntity->player).getDesiredPosition());
+void Map::checkPlayerPosition(roomPoint playerPos) {
 
-
-    //aggiungi stanza
-    if(playerPos.nRoom == counter && playerPos.x > (boxDim.x/4)-1)
+    if(playerPos.nRoom == counter && playerPos.x >= boxDim.x-1) {
         addRoomToTail();
-    
-    //punto alla stanza corrente
-    currentRoom = firstRoom;
-    for(int i = 0; i < playerPos.nRoom; i++)
-        currentRoom = currentRoom->next;
+    }
+    if(playerPos.nRoom != (*currentRoom->value).getLevel()) {
+        pRoomList tmp = firstRoom;
+        for(int i = 0; i < counter; i++) {
+            currentRoom = tmp->next;
+        }
+    }
 }
 
 
-/*
-è un modo brutale per muovere tutte le entità ma
-dovrebbe funzionare, volendo si può cercare un modo per
-muovere solo le entità che si sono mosse, ma in teoria si
-muovono tutte quindi è inutile fare una cosa del genere
-*/
 void Map::moveAllEntities() {
     eraseAllEntities(); //cancella le entità
     writeAllEntities(); //le scrive dove si devono muovere e setta la nuova posizione
 }
 
 
-/*
-dopo aver disegnato nelle stanze la posizione dell'entità
-setto la posizione dell'entità usando desiredPosition,
-inoltre controllo la posizone del giocatore ed eseguo
-checkPlayerPosition()
-*/
+void Map::writePlayer(LivingEntity * player) {
+    //prendo in che stanza è il giocatore
+    roomPoint playerPos = virtualToReal((*player).getDesiredPosition());
+    
+    
+
+
+
+    checkPlayerPosition(playerPos); //controllo
+
+    //setto
+    writeCharInRoom('@', playerPos);
+    (*player).setPosition((*player).getDesiredPosition());
+}
+
 void Map::writeAllEntities() {
     //write player
-    roomPoint playerPos = virtualToReal((*allEntity->player).getDesiredPosition());
-    writeCharInRoom((*allEntity->player).getSprite(), playerPos);
-    (*allEntity->player).setPosition((*allEntity->player).getDesiredPosition());
-    checkPlayerPosition();
+    writePlayer(allEntity->player);
 
     //write monsters
     monsterList * ml = allEntity->headMonster;
@@ -129,8 +114,6 @@ roomPoint Map::virtualToReal(point p) {
 }
 
 
-
-
 point Map::realToVirtual(roomPoint rPoint) {
     int x = rPoint.nRoom*rPoint.x + rPoint.x;
     int y = rPoint.y;
@@ -163,56 +146,8 @@ void Map::writeCharInRoom(char ch, roomPoint p) {
     temp->value->setPixel({p.x,p.y}, ch);
 }
 
-/*
-FUNZIONE DA CONTROLLARE
-ho copiato e incollato la funzione dal progetto
-prima modificando solo i nomi delle variabili.
-Quello che dovrebbe fare questa funzione è ritornare la
-stanza che visualizza il giocatore e ritornarla, così printer la
-stampa. Non l'ho ancora provata perché serve l'implementazione
-delle stanze.
-*/
+
+/*telecamera fissa*/
 char ** Map::getVisualizedWindow() {
-    int diff = virtualToReal((*allEntity->player).getPosition()).x - ((boxDim.x/4)-1);
-    char ** res;
-    char ** content;
-
-    if(counter <= 1) {
-        content = (*firstRoom->value).getContent();
-    } else {
-        char ** part1 = (*(currentRoom->value)).getContent();
-        char ** part2;
-        if (diff > 0) part2 = (*(currentRoom->next->value)).getContent();
-        else part2 = (*(currentRoom->prev->value)).getContent();
-
-        //combine the two rooms
-        res = new char * [boxDim.y];
-        for (int row = 0; row < boxDim.y; row++) {
-            *(res+row) = new char [boxDim.x];
-            for (int col = 0; col < boxDim.x; col++) {
-                if (diff > 0) {
-                    if (col < boxDim.x-diff) res[row][col] = part1[row][col+diff];
-                    else res[row][col] = part2[row][col-boxDim.x+diff];
-                }
-                else if (diff < 0) {
-                    if (col+diff < 0) res[row][col] = part2[row][col+boxDim.x+diff];
-                    else res[row][col] = part1[row][col+diff];
-                } 
-                else res[row][col] = part1[row][col];
-            }
-        }
-        return res;
-    }
-
-    return content;
-}
-
-
-pRoomList Map::getCurrentRoom() {
-    return currentRoom;
-}
-
-
-pRoomList Map::getFirstRoom() {
-    return firstRoom;
+    return (*currentRoom->value).getContent();
 }

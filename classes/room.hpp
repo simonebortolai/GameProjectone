@@ -18,6 +18,7 @@ struct platformInfo {
 
 class Room : public Space2d {
     protected:
+        int level;
         void generateRoom(int level);
 
         void generatePlatform(platformInfo & info);
@@ -28,6 +29,7 @@ class Room : public Space2d {
     public:
         Room(point size, int level);
         bool isEmpty(point p);
+        int getLevel();
 
 };
 

@@ -7,6 +7,7 @@
 
 
 Room::Room(point size, int level) : Space2d(size) {
+    this->level = level;
     generateRoom(level);
 }
 
@@ -103,6 +104,10 @@ void Room::generateAllPlatform(int n, int y_span, platformInfo & info) {
         info.y += y_span;
         if (info.lastX == -1) break;
     }
+}
+
+int Room::getLevel() {
+    return level;
 }
 
 

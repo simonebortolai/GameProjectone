@@ -3,27 +3,23 @@
 #include "./classes/miscFunc.hpp"
 #include "./classes/printer.hpp"
 #include "./classes/map.hpp"
-#include <stdlib.h>     /* srand, rand */
+#include <stdlib.h>   /* srand, rand */
 #include <time.h>     /* time (per srand e rand) */
 
-
-
 int main() {
-    srand(time(NULL)); 
     
-    //Datas
+    //init
+    srand(time(NULL)); 
     bool exit = false;
 
 
     //Structs
     point dimension {79, 23};    //dimensione finestra dove si gioca
-    //setto da qua tutte le proprietà di player, inizializzo a null la lista dei mostri e dei bullets
-    allEntityList listAllEntity {new LivingEntity({5, 10}, '@', 100, 10), NULL, NULL};
+    allEntityList listAllEntity {new LivingEntity({1, 10}, '@', 100, 10), NULL, NULL};
 
     
-    //Objects
-    
     /*
+    //Objects
     KeyMenager km(&listAllEntity, &map);
     iteratore  -> da pensare
     */
@@ -46,12 +42,13 @@ int main() {
         km.moveAll()                    -> aggiorna le posizioni
         km.checkInteraction()           -> controlla le iterazioni tra sparo-nemici e nemici-giocatore
         */
-                     //cancella la precedente posizione delle entità e le riscrive nelle desired position
         
+        // debug
         point tmp = (*player).getPosition();
         tmp.x++;
         (*player).setDesiredPosition(tmp);
-        map.moveAllEntities(); 
+
+        map.moveAllEntities();
         printEverything(map.getVisualizedWindow(), roomSize, dimension);
         loop();
     }

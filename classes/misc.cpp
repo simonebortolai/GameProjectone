@@ -1,4 +1,5 @@
 #include "misc.hpp"
+#include <unistd.h>
 
 void initScreen() {
     initscr();
@@ -10,7 +11,7 @@ void initScreen() {
 }
 
 void loop() {
-    timeout(50);
+    usleep(100000);
 }
     
 
