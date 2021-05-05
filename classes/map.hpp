@@ -40,7 +40,6 @@ class Map {
 
         //set function
         void writeCharInRoom(char ch, roomPoint rPoint);
-        void writeStringInRoom(char* ch, roomPoint rPoint);
 
         //get function
         pRoomList getCurrentRoom();

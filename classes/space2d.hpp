@@ -14,12 +14,12 @@ class Space2d {
         point size;
         char ** content;
         void allocateContent();
-        char getPixel(point p);
-        void setPixel(point p, char a);
 
     public:
         Space2d(point size);
         char ** getContent();
+        void setPixel(point p, char a);
+        char getPixel(point p);
         
 };
 

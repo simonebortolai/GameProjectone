@@ -14,7 +14,7 @@ int main() {
     //Structs
     point dimension {79, 23};    //dimensione finestra dove si gioca
     //setto da qua tutte le proprietà di player, inizializzo a null la lista dei mostri e dei bullets
-    allEntityList listAllEntity {new LivingEntity({10, 10}, '@', 100, 10), NULL, NULL};
+    allEntityList listAllEntity {new LivingEntity({5, 5}, '@', 100, 10), NULL, NULL};
 
     
     //Objects

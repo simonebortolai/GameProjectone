@@ -150,14 +150,14 @@ bool Map::isPointAviable(point p) {
 
 
 void Map::writeCharInRoom(char ch, roomPoint p) {
+    pRoomList temp = firstRoom;
 
+    //ciclo per puntare alla stanza giusta
+    for (int i = 0; i < p.nRoom; i++)
+        temp = temp->next;
+
+    temp->value->setPixel({p.x,p.y}, ch);
 }
-
-
-void Map::writeStringInRoom(char * ch, roomPoint p) {
-
-}
-
 
 /*
 FUNZIONE DA CONTROLLARE
