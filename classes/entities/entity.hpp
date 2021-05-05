@@ -17,7 +17,7 @@ class Entity {
 
         //set function
         void setPosition(point position);
-        void setDesiredPosition(int where);
+        void setDesiredPosition(point where);
 
         //get function
         char getSprite();

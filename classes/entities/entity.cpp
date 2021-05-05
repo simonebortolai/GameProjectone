@@ -17,8 +17,8 @@ void Entity::setPosition(point position){
 }
 
 
-void Entity::setDesiredPosition(int where) {
-    //caterva di if per key up e down
+void Entity::setDesiredPosition(point where) {
+    desiredPos = where;
 }
 
 char Entity::getSprite() {

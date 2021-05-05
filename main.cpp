@@ -18,7 +18,7 @@ int main() {
     //Structs
     point dimension {79, 23};    //dimensione finestra dove si gioca
     //setto da qua tutte le proprietà di player, inizializzo a null la lista dei mostri e dei bullets
-    allEntityList listAllEntity {new LivingEntity({5, 5}, '@', 100, 10), NULL, NULL};
+    allEntityList listAllEntity {new LivingEntity({5, 10}, '@', 100, 10), NULL, NULL};
 
     
     //Objects
@@ -31,6 +31,7 @@ int main() {
     //DEBUG
     point roomSize {dimension.x-1, dimension.y-1};
     Map map(&listAllEntity, roomSize);
+    LivingEntity * player = listAllEntity.player;
     
 
     initScreen();   //creo la window con ncurses
@@ -45,7 +46,12 @@ int main() {
         km.moveAll()                    -> aggiorna le posizioni
         km.checkInteraction()           -> controlla le iterazioni tra sparo-nemici e nemici-giocatore
         */
-        map.moveAllEntities();              //cancella la precedente posizione delle entità e le riscrive nelle desired position
+                     //cancella la precedente posizione delle entità e le riscrive nelle desired position
+        
+        point tmp = (*player).getPosition();
+        tmp.x++;
+        (*player).setDesiredPosition(tmp);
+        map.moveAllEntities(); 
         printEverything(map.getVisualizedWindow(), roomSize, dimension);
         loop();
     }

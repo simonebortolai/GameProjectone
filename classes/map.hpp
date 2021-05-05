@@ -18,10 +18,10 @@ typedef roomList *pRoomList;
 
 class Map {
     protected:
-        int counter;            //contatore di stanza
-        point boxDim;           //dimensione stanze
+        int counter;            //contatore di stanza    [[[]]]
+        point boxDim;           //dimensione stanze     
         pRoomList currentRoom;
-        pRoomList firstRoom;
+        pRoomList firstRoom;        //  [[[]]]
         
         allEntityList * allEntity;
 

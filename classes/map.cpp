@@ -16,8 +16,9 @@ void Map::addRoomToTail() {
 
     //creo la nuova stanza
     pRoomList add = new roomList;
-    add->value = new Room(boxDim, 0);
+    add->value = new Room(boxDim, counter);
     add->next = NULL;
+
 
     if(firstRoom != NULL) {
         while(tmp->next != NULL)
@@ -42,6 +43,7 @@ Prende la posizione di player e
 */
 void Map::checkPlayerPosition() {
     roomPoint playerPos = virtualToReal((*allEntity->player).getDesiredPosition());
+
 
     //aggiungi stanza
     if(playerPos.nRoom == counter && playerPos.x > (boxDim.x/4)-1)
@@ -125,6 +127,8 @@ roomPoint Map::virtualToReal(point p) {
     roomPoint temp {nRoom, x, y};
     return temp;
 }
+
+
 
 
 point Map::realToVirtual(roomPoint rPoint) {

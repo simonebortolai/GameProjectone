@@ -10,7 +10,7 @@ void initScreen() {
 }
 
 void loop() {
-    //timeout(50);
+    timeout(50);
 }
     
 

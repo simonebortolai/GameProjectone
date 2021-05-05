@@ -81,19 +81,15 @@ void Room::generatePlatform(platformInfo & info) {
 
         if (info.lastX == start.x) destra = false;    
 
-        //TEMPORANEO
-        if ( (start.x - length < 7 && !destra) || (start.x + length > size.x - 7   && destra)) {
+        /* lancio errori quando invade sideSpace */
+        if ( (start.x - length < info.sideSpace && !destra) || (start.x + length > size.x - info.sideSpace   && destra)) {
             std::string a = "("  + std::to_string(start.x) + ", " + std::to_string(start.y) + ")\ncon length: " + std::to_string(length) + "\nlastX:" + std::to_string(info.lastX) + "    lastLen: " + std::to_string(info.lastLen) + "\ndestra:" + std::to_string(destra) + "\n start.x - length < 7:" + std::to_string(start.x - length < 7);
             throw std::runtime_error(std::string("Bad platform") + a);
         }
     }
 
-    if (destra) {
-        drawPlatform(start, length);
-    } else {
-        start.x = start.x - length;
-        drawPlatform(start, length);
-    }
+    if (!destra) start.x = start.x - length;
+    drawPlatform(start, length);
 
     info.lastX = start.x;
     info.lastLen = length;
