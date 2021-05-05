@@ -3,6 +3,8 @@
 #include "./classes/miscFunc.hpp"
 #include "./classes/printer.hpp"
 #include "./classes/map.hpp"
+#include "./classes/room.hpp"
+
 
 
 int main() {
@@ -24,6 +26,11 @@ int main() {
     iteratore  -> da pensare
     */
 
+    //DEBUG
+    point roomSize {dimension.x-1, dimension.y-1};
+    Room stanza (roomSize, 0);
+    point start {1, 1};
+    
 
     initScreen();   //creo la window con ncurses
 

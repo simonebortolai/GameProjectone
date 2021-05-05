@@ -2,19 +2,22 @@
 #define ROOM_HPP_INCLUDED
 
 #include "misc.hpp"
+#include "space2d.hpp"
 
 
-class Room {
+class Room : public Space2d {
     protected:
-        char ** content;
+        void generateRoom(int level);
+        void generatePlatform();
         //lista nemici?
 
     public:
-        //generateMonster
-        void generateRoom();
-        char ** getContent();
+        Room(point size, int level);
         bool isEmpty(point p);
 
 };
+
+
+
 
 #endif
