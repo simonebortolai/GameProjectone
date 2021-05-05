@@ -2,7 +2,7 @@
 
 
 Bullet::Bullet(point position, char sprite, int speed) : Entity(position, sprite) {
-    this->speed = sprite;
+    this->speed = speed;
 }
 
 
