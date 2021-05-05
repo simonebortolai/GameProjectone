@@ -10,7 +10,7 @@ void initScreen() {
 }
 
 void loop() {
-    usleep(100000);
+    usleep(50);
 }
     
 
