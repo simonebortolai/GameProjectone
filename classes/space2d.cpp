@@ -1,5 +1,7 @@
 #include "space2d.hpp"
 #include <stdexcept>
+#include <string>
+
 
 Space2d::Space2d(point size) {
     this->size = size;
@@ -37,7 +39,8 @@ char Space2d::getPixel(point p) {
     if (row >= 0 && row < size.y && col >= 0 && col < size.x) {
         return *(*(this->content+row)+col);
     } else {
-        throw std::invalid_argument( "Stai cercando di leggere nu pixel fori dalla memoria" );
+        std::string a = "("  + std::to_string(p.x) + ", " + std::to_string(p.y) + ")";
+        throw std::runtime_error(std::string("Stai cercando di leggere fuori dalla memoria: ") + a);
     }
 }
 
@@ -48,6 +51,7 @@ void Space2d::setPixel(point p, char a) {
     if (row >= 0 && row < size.y && col >= 0 && col < size.x) {
         *(*(this->content+row)+col) = a;
     } else {
-        throw std::invalid_argument( "Stai cercando di scrivere su nu pixel fori dalla memoria" );
+        std::string a = "("  + std::to_string(p.x) + ", " + std::to_string(p.y) + ")";
+        throw std::runtime_error(std::string("Voi scrivere fori dalla memoria: ") + a);
     }
 }

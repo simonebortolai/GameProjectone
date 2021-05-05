@@ -19,6 +19,7 @@ struct boxPoints {
 
 void initScreen();
 void loop();
+int max(int a, int b);
 
 
 

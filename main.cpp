@@ -3,10 +3,13 @@
 #include "./classes/miscFunc.hpp"
 #include "./classes/printer.hpp"
 #include "./classes/room.hpp"
+#include <stdlib.h>     /* srand, rand */
+#include <time.h>     /* time (per srand e rand) */
 
 
 
 int main() {
+    srand(time(NULL)); 
     
     //Datas
     int exit = 0;
@@ -22,12 +25,7 @@ int main() {
     Map map(&listAllEntity)                 //inizializzo la mappa (gli passo le entità)
     KeyMenager km(&listAllEntity, &map)     //inizializzo l'iteratore/keyManager
     */
-
-    //DEBUG
-    point roomSize {dimension.x-1, dimension.y-1};
-    Room stanza (roomSize, 0);
-    point start {1, 1};
-    
+   
 
     initScreen();
 
@@ -43,9 +41,15 @@ int main() {
         printEverything(currentWindow, dimention)
         */
 
+       //DEBUG
+        point roomSize {dimension.x-1, dimension.y-1};
+        Room stanza (roomSize, 0);
+        point start {1, 1};
+    
+
         startDraw();
         printRoom(stanza.getContent(), start, roomSize);
-        //printEverything(listAllEntity.player, dimension); //temporaneo
+        printEverything(listAllEntity.player, dimension); //temporaneo
         endDraw();
         loop();
     }
