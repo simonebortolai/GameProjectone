@@ -2,6 +2,7 @@
 #define MISC_HPP_INCLUDED
 
 #include <ncurses.h>
+#include <stdlib.h>     /* srand, rand */
 
 
 struct point {
@@ -20,7 +21,7 @@ struct boxPoints {
 void initScreen();
 void loop();
 int max(int a, int b);
-
+int random(int min, int max);
 
 
 
