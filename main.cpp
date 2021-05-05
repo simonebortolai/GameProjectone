@@ -1,3 +1,4 @@
+#include <iostream>
 #include <ncurses.h>
 #include "./classes/misc.hpp"
 #include "./classes/miscFunc.hpp"
@@ -5,6 +6,7 @@
 #include "./classes/map.hpp"
 #include <stdlib.h>   /* srand, rand */
 #include <time.h>     /* time (per srand e rand) */
+using namespace std;
 
 int main() {
     
@@ -24,15 +26,16 @@ int main() {
     iteratore  -> da pensare
     */
 
-    //DEBUG
     point roomSize {dimension.x-1, dimension.y-1};
     Map map(&listAllEntity, roomSize);
+
+    //DEBUG
     LivingEntity * player = listAllEntity.player;
     
 
     initScreen();   //creo la window con ncurses
 
-
+    int lr = 0;
     //game loop
     while(!exit) {
         /*
@@ -45,8 +48,14 @@ int main() {
         
         // debug
         point tmp = (*player).getPosition();
-        tmp.x++;
+
+        if (tmp.x == 120) lr = 1;
+        if(lr == 1) tmp.x--;
+        else tmp.x++;
+
         (*player).setDesiredPosition(tmp);
+
+
 
         map.moveAllEntities();
         printEverything(map.getVisualizedWindow(), roomSize, dimension);

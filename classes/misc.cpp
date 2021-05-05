@@ -1,5 +1,4 @@
 #include "misc.hpp"
-#include <unistd.h>
 
 void initScreen() {
     initscr();

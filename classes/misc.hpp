@@ -2,6 +2,7 @@
 #define MISC_HPP_INCLUDED
 
 #include <ncurses.h>
+#include <unistd.h>
 
 
 struct point {
