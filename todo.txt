@@ -1,0 +1,7 @@
+Gestione tastiera
+Generazione mostri (fatta nelle stanze)
+Implementazione spari
+Gestione iterazioni
+Gravità
+Salto
+Oggetti bonus

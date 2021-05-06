@@ -1,5 +1,4 @@
 #include "misc.hpp"
-#include <unistd.h>
 
 void initScreen() {
     initscr();
@@ -11,11 +10,15 @@ void initScreen() {
 }
 
 void loop() {
-    usleep(100000);
+    usleep(50);
 }
     
 
 int max(int a, int b) {
     if (a>b) return a;
     else return b;
+}
+
+int random(int min, int max) {
+    return min + (rand() % (max - min));
 }

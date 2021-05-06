@@ -9,7 +9,7 @@ Entity::Entity(char sprite){
 Entity::Entity(point position, char sprite){
     this->sprite = sprite;
     this->position = position;
-    desiredPos = {0,0};
+    this->desiredPos = this->position;
 }
 
 

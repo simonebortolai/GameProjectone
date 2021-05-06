@@ -13,18 +13,8 @@ Room::Room(point size, int level) : Space2d(size) {
 
 
 void Room::generateRoom(int level) {
-    //we can remove it
-    int height = this->size.y;
-    int width = this->size.x;
-
-    for (int row = 0; row < height; row++) {
-        for (int col = 0; col < width; col++) {
-            if ((row == 0 && col == 0) || (row == height-1 && col == 0) || (row == 0 && col == width-1) || (row == height-1 && col == width-1)) {
-                point tmp {col, row};
-                setPixel(tmp, (char)((int)'a' + level));
-            } 
-        }
-    }
+    point tmp {size.x-1, 0};
+    setPixel(tmp, (char)((int)'a' + level));
 
     platformInfo info;
     info.y = 4; 
@@ -58,33 +48,51 @@ void Room::drawPlatform(point start, int len) {
 }
 
 
+/*
+void Room::calculatePositionAndLength(platformInfo & info, int & x, int & len) {
+    len = random(info.minLen, info.maxLen);
+
+    if (info.lastX != -1 && (info.lastX - len < info.sideSpace && info.lastX + info.lastLen + len > size.x - info.sideSpace) ) {
+        len = max(info.lastX - info.sideSpace, (size.x - info.sideSpace) - (info.lastX + info.lastLen));
+    }
+}
+*/
+
+
+
 void Room::generatePlatform(platformInfo & info) {
     point start {-1, size.y - info.y};
     bool destra = true;
-    int length = info.minLen + (rand() % (info.maxLen - info.minLen));
-    
-    /* controllo che la lunghezza non sia troppa da ambe le parti */
-    if (info.lastX != -1 && (info.lastX - length < info.sideSpace && info.lastX + info.lastLen + length > size.x - info.sideSpace) ) {
-        length = max(info.lastX - info.sideSpace, (size.x - info.sideSpace) - (info.lastX + info.lastLen));
-    }
+    int length = random(info.minLen, info.maxLen);
 
     /* Decide se randomizzare x, o cacciarlo a sinistra o a destra della scorsa piattaforma */
-    if (info.lastX == -1) {
-        start.x = info.sideSpace + ( rand() % (size.x - (info.sideSpace*2) - length) );
-    } else {
-        if (info.lastX - length < info.sideSpace) start.x = info.lastX + info.lastLen;
-        else if (info.lastX + info.lastLen + length > size.x- info.sideSpace) start.x = info.lastX;
+    if (info.lastX == -1)
+        start.x = random(info.sideSpace, size.x - info.sideSpace - length);
+    else {
+        bool excedLeft = info.lastX - length < info.sideSpace;
+        bool excedRight = info.lastX + info.lastLen + length > size.x-info.sideSpace;
+        
+        if (excedLeft && excedRight) {
+            int leftFreeSpace = info.lastX - info.sideSpace;
+            int rightFreeSpace = size.x - info.sideSpace - info.lastX - info.lastLen;
+            length = max(leftFreeSpace, rightFreeSpace);
+        }
+
+        excedLeft = info.lastX - length < info.sideSpace;
+        excedRight = info.lastX + info.lastLen + length > size.x-info.sideSpace;
+        
+        if (excedLeft) start.x = info.lastX + info.lastLen;
+        else if (excedRight) start.x = info.lastX;
         else {
             int choiche = rand() % 2;
             start.x = info.lastX*(1-choiche) + (info.lastX + info.lastLen)*(choiche);    //giochetto matematico
         }
 
-
         if (info.lastX == start.x) destra = false;    
 
         /* lancio errori quando invade sideSpace */
         if ( (start.x - length < info.sideSpace && !destra) || (start.x + length > size.x - info.sideSpace   && destra)) {
-            std::string a = "("  + std::to_string(start.x) + ", " + std::to_string(start.y) + ")\ncon length: " + std::to_string(length) + "\nlastX:" + std::to_string(info.lastX) + "    lastLen: " + std::to_string(info.lastLen) + "\ndestra:" + std::to_string(destra) + "\n start.x - length < 7:" + std::to_string(start.x - length < 7);
+            std::string a = "("  + std::to_string(start.x) + ", " + std::to_string(start.y) + ")\ncon length: " + std::to_string(length) + "\nlastX:" + std::to_string(info.lastX) + "    lastLen: " + std::to_string(info.lastLen) + "\ndestra:" + std::to_string(destra) + "\n start.x - length < 7:" + std::to_string(start.x - length < 7) + "\n("  + std::to_string(excedRight) + ", " + std::to_string(excedLeft) + ")\n" ;
             throw std::runtime_error(std::string("Bad platform") + a);
         }
     }
@@ -102,7 +110,6 @@ void Room::generateAllPlatform(int n, int y_span, platformInfo & info) {
     for (int i = 0; i < n; i++) {
         generatePlatform(info);
         info.y += y_span;
-        if (info.lastX == -1) break;
     }
 }
 
