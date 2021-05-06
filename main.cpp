@@ -31,16 +31,10 @@ int main() {
 
     //game loop
     while(!exit) {
-
         exit = km.selectAction();
         km.moveEntities();
         km.checkAllMovement();
-
-        /*
-        //da implementare
-        km.checkInteraction()   -> controlla le iterazioni tra sparo-nemici e nemici-giocatore
-        */
-        
+        km.checkInteraction();
         map.moveAllEntities();
         printEverything(map.getVisualizedWindow(), roomSize, dimension);
         loop();

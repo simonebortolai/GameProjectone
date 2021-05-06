@@ -17,11 +17,13 @@ bool KeyManager::selectAction() {
     if(player->getLife() <= 0)
         return true;
     
-    if (keyPressed == KEY_UP || keyPressed == KEY_DOWN || keyPressed == KEY_LEFT || keyPressed == KEY_RIGHT)
+    if (keyPressed == KEY_UP || keyPressed == KEY_LEFT || keyPressed == KEY_RIGHT)
         (*player).setDesiredPosition(keyPressed);
-    else if ((char)keyPressed == 'e')
-        bl = newBullet(bl, new Bullet((*player).getPosition(), '-', 1, 10));
-    else if (keyPressed == KEY_F(4))
+    else if ((char)keyPressed == 'e'){
+        point tmp = (*player).getPosition();
+        tmp.x++;
+        bl = newBullet(bl, new Bullet(tmp, '-', 1, 10));
+    } else if (keyPressed == KEY_F(4))
         return true;
 
 
