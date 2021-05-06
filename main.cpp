@@ -10,7 +10,7 @@
 int main() {
     
     //init
-    srand(time(NULL)); 
+    srand(time(NULL));
     bool exit = false;
 
 

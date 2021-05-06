@@ -1,8 +1,9 @@
 #include "bullet.hpp"
 
 
-Bullet::Bullet(point position, char sprite, int speed) : Entity(position, sprite) {
+Bullet::Bullet(point position, char sprite, int speed, int damage) : Entity(position, sprite) {
     this->speed = speed;
+    this->damage = damage;
 }
 
 

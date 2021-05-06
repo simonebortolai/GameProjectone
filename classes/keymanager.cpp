@@ -11,7 +11,7 @@ KeyManager::KeyManager(allEntityList * allEnt, Map * map, point dimension) {
 bool KeyManager::selectAction() {
     int keyPressed = getch();
     LivingEntity * player = this->allEntities->player;
-    //bulletList * bl = allEntities->headBullet;
+    bulletList * bl = allEntities->headBullet;
 
     //se il giocatore muore finisce il gioco
     if(player->getLife() <= 0)
@@ -19,10 +19,8 @@ bool KeyManager::selectAction() {
     
     if (keyPressed == KEY_UP || keyPressed == KEY_DOWN || keyPressed == KEY_LEFT || keyPressed == KEY_RIGHT)
         (*player).setDesiredPosition(keyPressed);
-    else if ((char)keyPressed == 'e') {
-        //perché non funzia?
-        //bl = newBullet(bl, new Bullet((*player).getPosition(), '-', 2));
-    }
+    else if ((char)keyPressed == 'e')
+        bl = newBullet(bl, new Bullet((*player).getPosition(), '-', 1, 10));
     else if (keyPressed == KEY_F(4))
         return true;
 
@@ -67,7 +65,34 @@ void KeyManager::moveBullets() {
 }
 
 
-void KeyManager::moveMonster() {}
+void KeyManager::moveMonster() {
+    monsterList * ml = allEntities->headMonster;
+    point mPos, pPos = (*this->allEntities->player).getPosition();
+    
+    // va verso il giocatore
+    while (ml != NULL) {
+        mPos = (*ml->value).getPosition();
+        if(pPos.x > mPos.x)
+            mPos.x--;
+        else if(pPos.x < mPos.x)
+            mPos.x++;
+        (*ml->value).setDesiredPosition(mPos);
+        ml = ml->next;
+    }
+}
+
+
+//togliere punti al mostro se sono vicini
+bool KeyManager::iteractionBulletMonster(LivingEntity * monster, Bullet * bullet) {
+    point bp = (*bullet).getPosition(), mp = (*monster).getPosition();
+    if(bp.y == mp.y){
+        if(mp.x - bp.x <= 1 && mp.x - bp.x >= 0) {
+            (*monster).subLife((*bullet).getDamage());
+            return true;
+        }
+    }
+    return false;
+}
 
 
 void KeyManager::moveEntities() {
@@ -91,4 +116,22 @@ void KeyManager::checkAllMovement() {
         entityCheck(bl->value, true);
         bl = bl->next;
     }
+}
+
+void KeyManager::checkInteraction() {
+    bool hitted;
+    monsterList * ml = allEntities->headMonster;
+    bulletList * bl = allEntities->headBullet;
+
+    while (bl!= NULL) {
+        while (ml!= NULL) {
+            hitted = iteractionBulletMonster(ml->value, bl->value);
+
+            if(hitted)
+                removeBullet(allEntities->headBullet, bl->value);
+
+            ml = ml->next;
+        }
+        bl = bl->next;
+    }  
 }

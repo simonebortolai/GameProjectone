@@ -1,23 +1,25 @@
 #include "miscFunc.hpp"
 
 pBullet newBullet(pBullet list, Bullet * b){
-    pBullet tmp=new bulletList;
+    /*pBullet tmp=new bulletList;
 
     tmp->value=b;
     tmp->next=list;
     list->next=tmp;
 
-    return list;
+    return list;*/
+    return NULL;
 }
 
 pMonster newMonster(pMonster list, LivingEntity * b){
-    pMonster tmp=new monsterList;
+    /*pMonster tmp=new monsterList;
 
     tmp->value=b;
     tmp->next=list;
     list->next=tmp;
 
-    return list;
+    return list;*/
+    return NULL;
 }
 
 pBullet removeBullet(pBullet list, Bullet *b){

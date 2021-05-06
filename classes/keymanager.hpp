@@ -14,7 +14,8 @@ class KeyManager{
 
         void entityCheck(Entity * ml, bool isBullet);
         void moveBullets();
-        void moveMonster(); //se vogliamo implementare una sorta di movimento verso il giocatore o un movimento ciclico
+        void moveMonster();
+        bool iteractionBulletMonster(LivingEntity * monster, Bullet * bullet);
 
     public:
         KeyManager(allEntityList * allEnt, Map * map, point dimension);
@@ -22,6 +23,7 @@ class KeyManager{
         bool selectAction();
         void moveEntities();
         void checkAllMovement();
+        void checkInteraction();
 
         //funzioni da fare
         //interaction()
