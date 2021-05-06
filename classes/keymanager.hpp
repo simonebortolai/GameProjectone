@@ -10,9 +10,10 @@ class KeyManager{
     private:
         allEntityList * allEntities;
         Map * map;
+        point dimension;
 
     public:
-        KeyManager(allEntityList * allEnt, Map * map);
+        KeyManager(allEntityList * allEnt, Map * map, point dimension);
 
         bool selectAction();
         void checkAllMovement();

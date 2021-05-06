@@ -1,6 +1,6 @@
 #include "miscFunc.hpp"
 
-pBullet newBullet(pBullet list, Bullet *b){
+pBullet newBullet(pBullet list, Bullet * b){
     pBullet tmp=new bulletList;
 
     tmp->value=b;
@@ -8,10 +8,9 @@ pBullet newBullet(pBullet list, Bullet *b){
     list->next=tmp;
 
     return list;
-
 }
 
-pMonster newMonster(pMonster list, LivingEntity *b){
+pMonster newMonster(pMonster list, LivingEntity * b){
     pMonster tmp=new monsterList;
 
     tmp->value=b;
@@ -19,8 +18,6 @@ pMonster newMonster(pMonster list, LivingEntity *b){
     list->next=tmp;
 
     return list;
-
-
 }
 
 pBullet removeBullet(pBullet list, Bullet *b){

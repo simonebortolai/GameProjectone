@@ -9,7 +9,6 @@
 
 int main() {
     
-    
     //init
     srand(time(NULL)); 
     bool exit = false;
@@ -17,13 +16,13 @@ int main() {
 
     //Structs
     point dimension {79, 23};    //dimensione finestra dove si gioca
+    point roomSize {dimension.x-1, dimension.y-1};
     allEntityList listAllEntity {new LivingEntity({1, 10}, '@', 100, 10), NULL, NULL};
 
 
     //Objects
-    point roomSize {dimension.x-1, dimension.y-1};
     Map map(&listAllEntity, roomSize);
-    KeyManager km(&listAllEntity, &map);
+    KeyManager km(&listAllEntity, &map, dimension);
     //iteratore?
 
 
