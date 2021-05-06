@@ -18,6 +18,20 @@ void Entity::setPosition(point position){
 }
 
 
+void Entity::setDesiredPosition(int keyPressed) {
+    if (keyPressed == KEY_UP) {
+        desiredPos.y--;
+        //jump
+    }else if(keyPressed == KEY_LEFT) {
+        desiredPos.x--;
+    }else if(keyPressed == KEY_RIGHT) {
+        desiredPos.x++;
+    } else if(keyPressed == KEY_DOWN) {
+        desiredPos.y++;
+        //gravity
+    }
+}
+
 void Entity::setDesiredPosition(point where) {
     desiredPos = where;
 }

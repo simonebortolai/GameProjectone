@@ -1,6 +1,7 @@
 #ifndef ENTITY_HPP_INCLUDED
 #define ENTITY_HPP_INCLUDED
 
+#include <ncurses.h>
 #include "../misc.hpp"
 
 class Entity {
@@ -18,6 +19,7 @@ class Entity {
         //set function
         void setPosition(point position);
         void setDesiredPosition(point where);
+        ;
 
         //get function
         char getSprite();
