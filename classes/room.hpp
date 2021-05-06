@@ -3,7 +3,7 @@
 
 #include "misc.hpp"
 #include "space2d.hpp"
-
+#include <iostream>
 
 struct platformInfo {
     int y; 

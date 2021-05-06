@@ -13,6 +13,8 @@ class Bullet : public Entity {
         //costruttori
         Bullet(point position, char sprite, int speed);
 
+        void goForward();
+
         //set functions
         void setSpeed(int s);
         void setDamage(int d);

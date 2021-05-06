@@ -2,6 +2,7 @@
 #define MAP_HPP_INCLUDED
 
 #include <ncurses.h>
+#include <iostream>
 #include "misc.hpp"
 #include "miscFunc.hpp"
 #include "room.hpp"
@@ -30,6 +31,7 @@ class Map {
         void eraseAllEntities();
         void writeAllEntities();
         void checkPlayerPosition(roomPoint pPos);
+        void changePos();
 
     public:
        

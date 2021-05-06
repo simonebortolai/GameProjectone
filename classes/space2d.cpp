@@ -37,7 +37,7 @@ char Space2d::getPixel(point p) {
     int row = p.y;
     int col = p.x;
     if (row >= 0 && row < size.y && col >= 0 && col < size.x) {
-        return *(*(this->content+row)+col);
+        return (*(*(this->content+row)+col));
     } else {
         std::string a = "("  + std::to_string(p.x) + ", " + std::to_string(p.y) + ")";
         throw std::runtime_error(std::string("Stai cercando di leggere fuori dalla memoria: ") + a);

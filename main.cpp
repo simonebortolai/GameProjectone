@@ -34,14 +34,14 @@ int main() {
     while(!exit) {
 
         exit = km.selectAction();
+        km.checkAllMovement();
 
         /*
         //da implementare
-        km.checkAllMovement()           -> controlla se le entità si pussono muovere nelle desired position
         km.checkInteraction()           -> controlla le iterazioni tra sparo-nemici e nemici-giocatore
         */
         
-
+        
         map.moveAllEntities();
         printEverything(map.getVisualizedWindow(), roomSize, dimension);
         loop();

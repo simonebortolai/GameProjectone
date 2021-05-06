@@ -1,4 +1,5 @@
 #include "map.hpp"
+using namespace std;
 
 
 Map::Map(allEntityList * al, point dim) {
@@ -29,11 +30,9 @@ void Map::addRoomToTail() {
 
 
 void Map::checkPlayerPosition(roomPoint playerDesPos) {
-
     if(playerDesPos.nRoom == counter && playerDesPos.x >= boxDim.x-1)
         addRoomToTail();
 
-    
     if(playerDesPos.nRoom != (*currentRoom->value).getLevel()) {
         pRoomList tmp = firstRoom;
         for(int i = 0; i < playerDesPos.nRoom; i++)
@@ -46,6 +45,7 @@ void Map::checkPlayerPosition(roomPoint playerDesPos) {
 void Map::moveAllEntities() {
     eraseAllEntities(); //cancella le entità
     writeAllEntities(); //le scrive dove si devono muovere e setta la nuova posizione
+    changePos();
 }
 
 
@@ -60,7 +60,24 @@ void Map::writePlayer() {
 
     //setto
     writeCharInRoom('@', playerDesPos);
+}
+
+
+void Map::changePos() {
+    LivingEntity * player = this->allEntity->player;
     (*player).setPosition((*player).getDesiredPosition());
+
+    monsterList * ml = allEntity->headMonster;
+    while(ml != NULL) {
+        (*ml->value).setPosition((*ml->value).getDesiredPosition());
+        ml = ml->next;
+    }
+
+    bulletList * bl = allEntity->headBullet;
+    while(bl != NULL) {
+        (*bl->value).setPosition((*bl->value).getDesiredPosition());
+        bl = bl->next;
+    }
 }
 
 
@@ -72,7 +89,6 @@ void Map::writeAllEntities() {
     monsterList * ml = allEntity->headMonster;
     while(ml != NULL) {
         writeCharInRoom((*ml->value).getSprite(), virtualToReal((*ml->value).getDesiredPosition()));
-        (*ml->value).setPosition((*ml->value).getDesiredPosition());
         ml = ml->next;
     }
 
@@ -80,7 +96,6 @@ void Map::writeAllEntities() {
     bulletList * bl = allEntity->headBullet;
     while(bl != NULL) {
         writeCharInRoom((*bl->value).getSprite(), virtualToReal((*bl->value).getDesiredPosition()));
-        (*bl->value).setPosition((*bl->value).getDesiredPosition());
         bl = bl->next;
     }
 }
@@ -128,13 +143,15 @@ point Map::realToVirtual(roomPoint rPoint) {
 bool Map::isPointAviable(point p) {
     int room = virtualToReal(p).nRoom;                          //trovo la stanza
     point pTemp = {virtualToReal(p).x, virtualToReal(p).y};     //prendo il punto
+    //cout << "x = " << pTemp.x <<endl << "y = " << pTemp.y << endl;
     pRoomList temp = firstRoom;
 
     //ciclo per puntare alla stanza giusta
-    for (int i = 0; i <= room; i++)
+    for (int i = 0; i < room; i++)
         temp = temp->next;
 
     return temp->value->isEmpty(pTemp);
+    //return true;
 }
 
 

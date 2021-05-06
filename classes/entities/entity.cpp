@@ -1,15 +1,12 @@
 #include "entity.hpp"
 
 
-Entity::Entity(char sprite){
-    this->sprite = sprite;
-}
 
 
 Entity::Entity(point position, char sprite){
     this->sprite = sprite;
     this->position = position;
-    this->desiredPos = this->position;
+    this->desiredPos = position;
 }
 
 

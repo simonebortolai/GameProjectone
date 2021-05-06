@@ -4,6 +4,7 @@
 #include <stdlib.h>     /* srand, rand */
 
 #include <string>
+using namespace std;
 
 
 Room::Room(point size, int level) : Space2d(size) {
@@ -31,11 +32,11 @@ bool Room::isEmpty(point p) {
     if (p.x < 0 || p.x >= size.x || p.y < 0 || p.y >= size.y) {
         throw std::invalid_argument( "Qualche buon tempone chiede a Room se un pixel fori dallo schermo è voto" );
     } else if (getPixel(p) == ' ') {
-        return true;  
+        return true;
     } 
     else {
         return false; 
-    } 
+    }
 
 }
 

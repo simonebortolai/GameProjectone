@@ -13,13 +13,12 @@ class Entity {
 
     public:
         //costructors
-        Entity(char sprite);
         Entity(point position, char sprite);
 
         //set function
         void setPosition(point position);
         void setDesiredPosition(point where);
-        ;
+        void setDesiredPosition(int keyPressed);
 
         //get function
         char getSprite();
