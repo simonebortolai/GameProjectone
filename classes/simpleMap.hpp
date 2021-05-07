@@ -40,6 +40,7 @@ class SimpleMap {
 
         //get function
         char ** getVisualizedWindow();
+        int getLevel();
 
 };
 

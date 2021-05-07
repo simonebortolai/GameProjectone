@@ -83,3 +83,8 @@ void SimpleMap::writeCharInRoom(char ch, roomPoint p) {
 char ** SimpleMap::getVisualizedWindow() {
     return (*currentRoom->value).getContent();
 }
+
+
+int SimpleMap::getLevel() {
+    return counter;
+}

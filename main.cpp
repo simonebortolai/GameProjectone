@@ -18,12 +18,7 @@ int main() {
     point dimension {79, 23};    //dimensione finestra dove si gioca
     point roomSize {dimension.x-1, dimension.y-1};
     allEntityList listAllEntity {new LivingEntity({1, 10}, '@', 100, 10), NULL, NULL};
-    /*
-    LivingEntity * player = listAllEntity.player;
-    point tmp = (*player).getPosition();
-    tmp.x++;
-    listAllEntity.headBullet = newBullet(listAllEntity.headBullet, new Bullet(tmp, '-', 1, 10));
-    */
+    
     
     //Objects
     Map map(&listAllEntity, roomSize);

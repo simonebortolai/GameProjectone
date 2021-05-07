@@ -1,5 +1,6 @@
 #include "keymanager.hpp"
 
+
 KeyManager::KeyManager(allEntityList * allEnt, Map * map, point dimension) {
     allEntities = allEnt;
     this->map = map;
@@ -33,13 +34,22 @@ bool KeyManager::selectAction() {
 
 void KeyManager::entityCheck(Entity * ent, bool isBullet) {
     point p2, p1 = (*ent).getDesiredPosition();
-    if(p1.y < 0 || p1.y >= this->dimension.y-1 || p1.x < 0)     // se va fuori il campo
-        (*ent).setDesiredPosition((*ent).getPosition());            // torna a dove era prima
-    else if(!(*map).isPointAviable(p1))                         // se va in un punto occupato
-        (*ent).setDesiredPosition((*ent).getPosition());            // torna a dove era prima
-    
-    //se non è un proiettile applica gravità
-    if(!isBullet) {
+
+    if(isBullet) {
+        int level = (*map).getLevel();
+        if(p1.y < 0 || p1.y >= this->dimension.y-1 || p1.x < 0 || p1.x >= (this->dimension.x-1) * (level + 1)) {
+            //remove bullet
+            (*ent).setDesiredPosition((*ent).getPosition());
+        }else if(!(*map).isPointAviable(p1))      
+            (*ent).setDesiredPosition((*ent).getPosition());
+    } else {
+
+        if(p1.y < 0 || p1.y >= this->dimension.y-1 || p1.x < 0)     // se va fuori il campo
+            (*ent).setDesiredPosition((*ent).getPosition());            // torna a dove era prima
+        else if(!(*map).isPointAviable(p1))                         // se va in un punto occupato
+            (*ent).setDesiredPosition((*ent).getPosition());            // torna a dove era prima
+
+        //gravity
         (*ent).setDesiredPosition(KEY_DOWN);
         p2 = (*ent).getDesiredPosition();
         if(p2.y < 0 || p2.y >= this->dimension.y-1 || p2.x < 0) {
