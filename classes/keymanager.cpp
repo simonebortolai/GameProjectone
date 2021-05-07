@@ -1,6 +1,5 @@
 #include "keymanager.hpp"
 
-
 KeyManager::KeyManager(allEntityList * allEnt, Map * map, point dimension) {
     allEntities = allEnt;
     this->map = map;
@@ -23,6 +22,7 @@ bool KeyManager::selectAction() {
         point tmp = (*player).getPosition();
         tmp.x++;
         bl = newBullet(bl, new Bullet(tmp, '-', 1, 10));
+        allEntities->headBullet = bl;
     } else if (keyPressed == KEY_F(4))
         return true;
 
