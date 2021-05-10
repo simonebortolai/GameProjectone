@@ -41,6 +41,8 @@ bool Room::isEmpty(point p) {
 }
 
 
+
+
 void Room::drawPlatform(point start, int len) {
     for (int i = 0; i < len; i++) {
         point tmp {start.x + i, start.y};
@@ -119,11 +121,13 @@ int Room::getLevel() {
 }
 
 
-/*
-bool Room::is_floor(int y) {
-    if (*(*(content+y)) == '=')
-        return true;
-    else
-        return false;
+pMonster Room::generateEnemies(pMonster head, point offset) {
+    //DEBUG
+    point pos {30+offset.x, 7};
+    
+    pMonster tmp = new monsterList;
+    tmp->next = head;
+    tmp->value = new LivingEntity(pos, '#', 100, 10);
+    
+    return tmp;
 }
-*/

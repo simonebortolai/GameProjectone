@@ -43,7 +43,7 @@ roomPoint SimpleMap::virtualToReal(point p) {
 
 
 point SimpleMap::realToVirtual(roomPoint rPoint) {
-    int x = rPoint.nRoom*rPoint.x + rPoint.x;
+    int x = rPoint.nRoom*boxDim.x + rPoint.x;
     int y = rPoint.y;
     point temp {x, y};
     return temp;

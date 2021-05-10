@@ -20,6 +20,7 @@ class Map : public SimpleMap {
         void writeAllEntities();
         void checkPlayerPosition(roomPoint pPos);
         void changePos();
+        void addRoomToTail();
 
     public:
        

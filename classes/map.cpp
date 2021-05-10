@@ -7,6 +7,22 @@ Map::Map(allEntityList * al, point dim) : SimpleMap(dim) {
 }
 
 
+void Map::addRoomToTail() {
+    SimpleMap::addRoomToTail();
+    
+    //get last last room
+    pRoomList tmp = firstRoom;
+    int counter = 0;
+    while (tmp->next != NULL) {
+        tmp = tmp->next;
+        counter++;
+    }
+
+    point offset = realToVirtual({counter, 0, 0});
+    this->allEntity->headMonster = (*(tmp->value)).generateEnemies(this->allEntity->headMonster, offset);
+}
+
+
 void Map::checkPlayerPosition(roomPoint playerDesPos) {
     if(playerDesPos.nRoom == counter && playerDesPos.x >= boxDim.x-1)
         addRoomToTail();

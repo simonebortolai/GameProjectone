@@ -3,6 +3,8 @@
 
 #include "misc.hpp"
 #include "space2d.hpp"
+#include "misc.hpp"
+#include "miscFunc.hpp"
 #include <iostream>
 
 struct platformInfo {
@@ -29,6 +31,7 @@ class Room : public Space2d {
     public:
         Room(point size, int level);
         bool isEmpty(point p);
+        pMonster generateEnemies(pMonster head, point offset);
         int getLevel();
 
 };
