@@ -18,17 +18,21 @@ pMonster newMonster(pMonster list, LivingEntity * b){
 
 pBullet removeBullet(pBullet list, Bullet *b){
     pBullet prev=list, tmp_head = list, del=NULL;
-    while(tmp_head != NULL){
+    bool v = false;
+    while(tmp_head != NULL && !v){
         if(tmp_head->value == b){
             if(tmp_head == list){
-                prev = list->next;
+                del = tmp_head;
                 tmp_head = list->next;
                 list = list->next;
+                delete del;
+                v = true;
             }
             else{
                 del = tmp_head;
                 prev->next = tmp_head->next;
                 delete del;
+                v = true;
             }
         }
         tmp_head = tmp_head->next;
