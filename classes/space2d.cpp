@@ -1,6 +1,4 @@
 #include "space2d.hpp"
-#include <stdexcept>
-#include <string>
 
 
 Space2d::Space2d(point size) {

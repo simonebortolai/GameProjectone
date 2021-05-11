@@ -2,6 +2,8 @@
 #define SPACE2D_HPP_INCLUDED
 
 #include "misc.hpp"
+#include <stdexcept>
+#include <string>
 
 /*
 Questa classe serve a gestire uno spazio bidimensionale, permettendomi di accedere ai singoli caratteri e modificarne il contenuto.

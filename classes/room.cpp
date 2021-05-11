@@ -1,10 +1,4 @@
 #include "room.hpp"
-#include <stdexcept>
-
-#include <stdlib.h>     /* srand, rand */
-
-#include <string>
-using namespace std;
 
 
 Room::Room(point size, int level) : Space2d(size) {

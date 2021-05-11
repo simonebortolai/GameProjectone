@@ -2,13 +2,10 @@
 #define MAP_HPP_INCLUDED
 
 #include <ncurses.h>
-#include <iostream>
 #include "misc.hpp"
 #include "miscFunc.hpp"
 #include "room.hpp"
-#include "printer.hpp"
 #include "simpleMap.hpp"
-
 
 
 class Map : public SimpleMap {

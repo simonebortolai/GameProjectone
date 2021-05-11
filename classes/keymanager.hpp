@@ -11,10 +11,11 @@ class KeyManager{
         Map * map;
         point dimension;
 
-        void entityCheck(Entity * ml, bool isBullet);
+        bool entityCheck(Entity * ml, bool isBullet);
         void moveBullets();
         void moveMonster();
-        bool iteractionBulletMonster(LivingEntity * monster, Bullet * bullet);
+        bool interactionBulletMonster(LivingEntity * monster, Bullet * bullet);
+        void interactionMonsterPlayer(LivingEntity * player, LivingEntity * monster);
 
     public:
         KeyManager(allEntityList * allEnt, Map * map, point dimension);
@@ -24,8 +25,6 @@ class KeyManager{
         void checkAllMovement();
         void checkInteraction();
 
-        //funzioni da fare
-        //interaction()
 };
 
 #endif

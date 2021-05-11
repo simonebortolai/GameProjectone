@@ -32,7 +32,6 @@ void SimpleMap::addRoomToTail() {
 }
 
 
-
 roomPoint SimpleMap::virtualToReal(point p) {
     int nRoom = p.x/boxDim.x;
     int x = p.x%boxDim.x;
@@ -75,8 +74,6 @@ void SimpleMap::writeCharInRoom(char ch, roomPoint p) {
 
     temp->value->setPixel({p.x,p.y}, ch);
 }
-
-
 
 
 /*telecamera fissa -> ritorna la current room*/

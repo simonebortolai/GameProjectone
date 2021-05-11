@@ -3,9 +3,12 @@
 
 #include "misc.hpp"
 #include "space2d.hpp"
-#include "misc.hpp"
+#include <stdexcept>
+#include <stdlib.h>     /* srand, rand */
+#include <string>
 #include "miscFunc.hpp"
 #include <iostream>
+
 
 struct platformInfo {
     int y; 
@@ -17,7 +20,6 @@ struct platformInfo {
 };
 
 
-
 class Room : public Space2d {
     protected:
         int level;
@@ -26,7 +28,6 @@ class Room : public Space2d {
         void generatePlatform(platformInfo & info);
         void generateAllPlatform(int n, int y_span, platformInfo & info);
         void drawPlatform(point start, int len);
-        //lista nemici?
 
     public:
         Room(point size, int level);
@@ -35,8 +36,6 @@ class Room : public Space2d {
         int getLevel();
 
 };
-
-
 
 
 #endif

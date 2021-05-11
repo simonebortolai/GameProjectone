@@ -32,16 +32,18 @@ bool KeyManager::selectAction() {
 }
 
 
-void KeyManager::entityCheck(Entity * ent, bool isBullet) {
+bool KeyManager::entityCheck(Entity * ent, bool isBullet) {
     point p2, p1 = (*ent).getDesiredPosition();
 
     if(isBullet) {
         int level = (*map).getLevel();
-        if(p1.y < 0 || p1.y >= this->dimension.y-1 || p1.x < 0 || p1.x >= (this->dimension.x-1) * (level + 1)) {
-            //remove bullet
+        if(p1.x >= (this->dimension.x-1) * (level + 1)) {
             (*ent).setDesiredPosition((*ent).getPosition());
-        }else if(!(*map).isPointAviable(p1))      
+            return true;
+        }else if(!(*map).isPointAviable(p1)) {
             (*ent).setDesiredPosition((*ent).getPosition());
+            return true;
+        }
     } else {
 
         if(p1.y < 0 || p1.y >= this->dimension.y-1 || p1.x < 0)     // se va fuori il campo
@@ -62,6 +64,7 @@ void KeyManager::entityCheck(Entity * ent, bool isBullet) {
         else
             (*ent).setDesiredPosition(p1);
     }
+    return false;
 }
 
 
@@ -84,9 +87,9 @@ void KeyManager::moveMonster() {
     // va verso il giocatore
     while (ml != NULL) {
         mPos = (*ml->value).getPosition();
-        if(pPos.x > mPos.x)
+        if(pPos.x+3 < mPos.x)
             mPos.x--;
-        else if(pPos.x < mPos.x)
+        else if(pPos.x-3 > mPos.x)
             mPos.x++;
         (*ml->value).setDesiredPosition(mPos);
         ml = ml->next;
@@ -95,15 +98,23 @@ void KeyManager::moveMonster() {
 
 
 //togliere punti al mostro se sono vicini
-bool KeyManager::iteractionBulletMonster(LivingEntity * monster, Bullet * bullet) {
+bool KeyManager::interactionBulletMonster(LivingEntity * monster, Bullet * bullet) {
     point bp = (*bullet).getPosition(), mp = (*monster).getPosition();
     if(bp.y == mp.y){
-        if(mp.x - bp.x <= 1 && mp.x - bp.x >= 0) {
+        if(mp.x - bp.x == 1 || mp.x - bp.x == 0 || mp.x - bp.x == -1) {
             (*monster).subLife((*bullet).getDamage());
             return true;
         }
     }
     return false;
+}
+
+void KeyManager::interactionMonsterPlayer(LivingEntity * pl, LivingEntity * mn) {
+    point playerPoint = (*pl).getPosition(), monsterPoint = (*mn).getPosition();
+    if(playerPoint.y == monsterPoint.y){
+        if(monsterPoint.x - playerPoint.x <= 2 && monsterPoint.x - playerPoint.x >= -2)
+            (*pl).subLife((*mn).getStrength()/10);
+    }
 }
 
 
@@ -116,6 +127,7 @@ void KeyManager::moveEntities() {
 void KeyManager::checkAllMovement() {
     monsterList * ml = allEntities->headMonster;
     bulletList * bl = allEntities->headBullet;
+    bool elim;
 
     entityCheck(allEntities->player, false);
 
@@ -125,25 +137,57 @@ void KeyManager::checkAllMovement() {
     }
     
     while (bl!= NULL) {
-        entityCheck(bl->value, true);
-        bl = bl->next;
+        elim = entityCheck(bl->value, true);
+        if(elim) {
+            Bullet * b = bl->value;
+            bl = bl->next;
+            (*map).writeCharInRoom(' ', (*map).virtualToReal((*b).getPosition()));
+            allEntities->headBullet = removeBullet(allEntities->headBullet, b);
+        } else {
+            bl = bl->next;
+        }
     }
 }
 
 void KeyManager::checkInteraction() {
-    bool hitted;
+    bool hitted = false, death = false;
     monsterList * ml = allEntities->headMonster;
     bulletList * bl = allEntities->headBullet;
 
-    while (bl!= NULL) {
-        while (ml!= NULL) {
-            hitted = iteractionBulletMonster(ml->value, bl->value);
+    /* controllo se ogni sparo è vicino a un mostro */
+    while (ml!= NULL) {
+        death = false;
+        hitted = false;
+        bl = allEntities->headBullet;
 
-            if(hitted)
-                removeBullet(allEntities->headBullet, bl->value);
-
-            ml = ml->next;
+        while (bl != NULL && !hitted) {
+            hitted = interactionBulletMonster(ml->value, bl->value);
+            if(!hitted)
+                bl = bl->next;
         }
-        bl = bl->next;
-    }  
+
+        if(hitted) {
+            if((*ml->value).getLife() <= 0) {
+                death = true;
+                LivingEntity * m = ml->value;
+                ml = ml->next;
+                allEntities->headMonster = removeMonster(allEntities->headMonster, m);
+                (*map).writeCharInRoom(' ', (*map).virtualToReal((*m).getPosition()));
+            }
+
+            Bullet * b = bl->value;
+            (*map).writeCharInRoom(' ', (*map).virtualToReal((*b).getPosition()));
+            allEntities->headBullet = removeBullet(allEntities->headBullet, b);
+        }
+
+        if(!death)
+            ml = ml->next;
+    }
+
+    /* controllo se ogni mostro è vicino al giocatore */
+    ml = allEntities->headMonster;
+    while (ml!= NULL) {
+        interactionMonsterPlayer(allEntities->player, ml->value);
+        ml = ml->next;
+    }
 }

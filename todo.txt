@@ -1,7 +1,7 @@
-Gestione tastiera
-Generazione mostri (fatta nelle stanze)
-Implementazione spari
-Gestione iterazioni
-Gravità
-Salto
-Oggetti bonus
+Generazione mostri (fatta nelle stanze) -> Fabio
+Salto                                   -> Geno/Fabio
+Oggetti bonus                           -> Simo e Ceci
+Boss/Nemici diversi                     -> Simo e Ceci
+
+Implementazione spari   -> da finire e testare
+Gestione iterazioni     -> da testare

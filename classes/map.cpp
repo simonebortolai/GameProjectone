@@ -1,5 +1,4 @@
 #include "map.hpp"
-using namespace std;
 
 
 Map::Map(allEntityList * al, point dim) : SimpleMap(dim) {
