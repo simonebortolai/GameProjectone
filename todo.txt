@@ -1,6 +1,9 @@
 Da fare:
     Salto fatto bene                        -> Geno/Fabio
     Ottimizzazione dei movimenti            -> Geno/Fabio
+    Generazione dei nemici sensata          -> Fabio
+        - Più nemici in base al livello
+        - Nemici più forti in base al livello
     Oggetti bonus                           -> Simo/Ceci
     Boss/Nemici diversi                     -> Simo/Ceci
     UI del giocatore da stampare            -> Simo/Ceci
@@ -9,4 +12,5 @@ Varie:
     testing vario
     definire dove usiamo delle variabili importanti e farle define
     cleaning del codice
+        - Soprattutto map, riorganizzare la logica
     riordinare keymanager
