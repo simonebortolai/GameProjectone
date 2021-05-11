@@ -1,9 +1,15 @@
 Da fare:
-    Salto fatto bene                        -> Geno/Fabio
-    Ottimizzazione dei movimenti            -> Geno/Fabio
-    Oggetti bonus                           -> Simo/Ceci
-    Boss/Nemici diversi                     -> Simo/Ceci
-    UI del giocatore da stampare            -> Simo/Ceci
+    Salto fatto bene
+    Oggetti bonus
+    Boss/Nemici diversi
+    UI del giocatore da stampare
+    Direzione spari
+
+Eventuale:
+    Cooldown per gli spari
+    Ottimizzazione dei movimenti
+    Colorare i blocchi in modo diverso
+    Box usando ncurses
 
 Varie:
     testing vario

@@ -32,6 +32,7 @@ class Room : public Space2d {
     public:
         Room(point size, int level);
         bool isEmpty(point p);
+        bool isFloor(point p);
         pMonster generateEnemies(pMonster head, point offset);
         int getLevel();
 

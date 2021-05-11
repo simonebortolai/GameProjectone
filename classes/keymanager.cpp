@@ -1,5 +1,5 @@
 #include "keymanager.hpp"
-
+using namespace std;
 
 KeyManager::KeyManager(allEntityList * allEnt, Map * map, point dimension) {
     allEntities = allEnt;
@@ -17,16 +17,21 @@ bool KeyManager::selectAction() {
     if(player->getLife() <= 0)
         return true;
     
-    if (keyPressed == KEY_UP || keyPressed == KEY_LEFT || keyPressed == KEY_RIGHT)
+    if (keyPressed == KEY_LEFT || keyPressed == KEY_RIGHT)
         (*player).setDesiredPosition(keyPressed);
-    else if ((char)keyPressed == 'e'){
+    else if (keyPressed == KEY_UP){
+        point tmp = (*player).getPosition();
+        tmp.y++;
+        if((*map).isPointFloor(tmp))
+            (*player).jump();
+    } else if ((char)keyPressed == 'e'){
         point tmp = (*player).getPosition();
         tmp.x++;
         bl = newBullet(bl, new Bullet(tmp, '-', 1, 10));
         allEntities->headBullet = bl;
     } else if (keyPressed == KEY_F(4))
         return true;
-
+    
 
     return false;
 }

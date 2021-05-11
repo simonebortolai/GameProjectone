@@ -33,6 +33,7 @@ class SimpleMap {
         roomPoint virtualToReal(point p);
         point realToVirtual(roomPoint rPoint);
         bool isPointAviable(point p);
+        bool isPointFloor(point p);
 
         //set function
         void writeCharInRoom(char ch, roomPoint rPoint);

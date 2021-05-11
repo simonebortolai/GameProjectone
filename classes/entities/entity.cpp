@@ -1,12 +1,16 @@
 #include "entity.hpp"
+using namespace std;
 
-
-
+#define NODIR -1
+#define RIGHT 0
+#define LEFT 1
 
 Entity::Entity(point position, char sprite){
     this->sprite = sprite;
     this->position = position;
     this->desiredPos = position;
+    direction = NODIR;
+    isJumping = false;
 }
 
 
@@ -16,17 +20,14 @@ void Entity::setPosition(point position){
 
 
 void Entity::setDesiredPosition(int keyPressed) {
-    if (keyPressed == KEY_UP) {
-        desiredPos.y--;
-        //jump
-    }else if(keyPressed == KEY_LEFT) {
+    if (keyPressed == KEY_LEFT) {
         desiredPos.x--;
-    }else if(keyPressed == KEY_RIGHT) {
+        direction = LEFT;
+    } else if(keyPressed == KEY_RIGHT) {
         desiredPos.x++;
-    } else if(keyPressed == KEY_DOWN) {
+        direction = RIGHT;
+    } else if(keyPressed == KEY_DOWN)
         desiredPos.y++;
-        //gravity
-    }
 }
 
 void Entity::setDesiredPosition(point where) {
@@ -48,7 +49,7 @@ point Entity::getDesiredPosition(){
 }
 
 
-const char * Entity::toString() {
-    const char * temp = "Sono un entità";
-    return temp;
+void Entity::jump() {
+    desiredPos.y--;
+    isJumping = true;
 }

@@ -2,18 +2,25 @@
 #define ENTITY_HPP_INCLUDED
 
 #include <ncurses.h>
+#include <iostream>
 #include "../misc.hpp"
 
 class Entity {
     protected:
-        int idUnico; // DA IMPLEMENTARE!!
-        struct point position;
-        struct point desiredPos;
+        point position;
+        point desiredPos;
         char sprite;
+
+        //jump
+        int direction;
+        bool isJumping;
 
     public:
         //costructors
         Entity(point position, char sprite);
+
+        void jump();
+        void animation();
 
         //set function
         void setPosition(point position);
@@ -24,8 +31,6 @@ class Entity {
         char getSprite();
         point getPosition();
         point getDesiredPosition();
-
-        const char * toString();
 
 };
 

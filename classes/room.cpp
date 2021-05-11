@@ -23,18 +23,26 @@ void Room::generateRoom(int level) {
 
 
 bool Room::isEmpty(point p) {
-    if (p.x < 0 || p.x >= size.x || p.y < 0 || p.y >= size.y) {
+    if (p.x < 0 || p.x >= size.x || p.y < 0 || p.y >= size.y)
         throw std::invalid_argument( "Qualche buon tempone chiede a Room se un pixel fori dallo schermo è voto" );
-    } else if (getPixel(p) == ' ') {
+    else if (getPixel(p) == ' ')
         return true;
-    } 
-    else {
+    else
         return false; 
-    }
-
 }
 
 
+
+bool Room::isFloor(point p) {
+    if (p.x < 0 || p.x >= size.x || p.y < 0)
+        throw std::invalid_argument( "Qualche buon tempone chiede a Room se un pixel fori dallo schermo è voto" );
+    else if (p.y >= size.y)
+        return true;    
+    else if(getPixel(p) == '=')
+        return true;
+    else
+        return false; 
+}
 
 
 void Room::drawPlatform(point start, int len) {

@@ -53,7 +53,6 @@ point SimpleMap::realToVirtual(roomPoint rPoint) {
 bool SimpleMap::isPointAviable(point p) {
     int room = virtualToReal(p).nRoom;                          //trovo la stanza
     point pTemp = {virtualToReal(p).x, virtualToReal(p).y};     //prendo il punto
-    //cout << "x = " << pTemp.x <<endl << "y = " << pTemp.y << endl;
     pRoomList temp = firstRoom;
 
     //ciclo per puntare alla stanza giusta
@@ -61,7 +60,19 @@ bool SimpleMap::isPointAviable(point p) {
         temp = temp->next;
 
     return temp->value->isEmpty(pTemp);
-    //return true;
+}
+
+
+bool SimpleMap::isPointFloor(point p) {
+    int room = virtualToReal(p).nRoom;                          //trovo la stanza
+    point pTemp = {virtualToReal(p).x, virtualToReal(p).y};     //prendo il punto
+    pRoomList temp = firstRoom;
+
+    //ciclo per puntare alla stanza giusta
+    for (int i = 0; i < room; i++)
+        temp = temp->next;
+
+    return temp->value->isFloor(pTemp);
 }
 
 
