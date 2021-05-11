@@ -1,7 +1,12 @@
-Generazione mostri (fatta nelle stanze) -> Fabio
-Salto                                   -> Geno/Fabio
-Oggetti bonus                           -> Simo e Ceci
-Boss/Nemici diversi                     -> Simo e Ceci
+Da fare:
+    Salto fatto bene                        -> Geno/Fabio
+    Ottimizzazione dei movimenti            -> Geno/Fabio
+    Oggetti bonus                           -> Simo/Ceci
+    Boss/Nemici diversi                     -> Simo/Ceci
+    UI del giocatore da stampare            -> Simo/Ceci
 
-Implementazione spari   -> da finire e testare
-Gestione iterazioni     -> da testare
+Varie:
+    testing vario
+    definire dove usiamo delle variabili importanti e farle define
+    cleaning del codice
+    riordinare keymanager
