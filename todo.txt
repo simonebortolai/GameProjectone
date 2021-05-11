@@ -4,15 +4,19 @@ Da fare:
     Boss/Nemici diversi
     UI del giocatore da stampare
     Direzione spari
+    Generazione dei nemici sensata          -> Fabio
+        - Più nemici in base al livello
+        - Nemici più forti in base al livello
 
 Eventuale:
     Cooldown per gli spari
     Ottimizzazione dei movimenti
     Colorare i blocchi in modo diverso
     Box usando ncurses
-
+    
 Varie:
     testing vario
     definire dove usiamo delle variabili importanti e farle define
     cleaning del codice
+        - Soprattutto map, riorganizzare la logica
     riordinare keymanager
