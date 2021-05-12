@@ -24,7 +24,6 @@ class LivingEntity : public Entity {
         int getLife();
         int getStrength();
 
-        char * toString();
 };
 
 

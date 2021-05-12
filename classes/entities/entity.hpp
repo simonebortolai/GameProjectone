@@ -32,6 +32,7 @@ class Entity {
         char getSprite();
         point getPosition();
         point getDesiredPosition();
+        int getIsJumping();
 
 };
 

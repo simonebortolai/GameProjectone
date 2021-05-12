@@ -1,6 +1,7 @@
 #include "keymanager.hpp"
 using namespace std;
 
+
 KeyManager::KeyManager(allEntityList * allEnt, Map * map, point dimension) {
     allEntities = allEnt;
     this->map = map;
@@ -11,7 +12,6 @@ KeyManager::KeyManager(allEntityList * allEnt, Map * map, point dimension) {
 bool KeyManager::selectAction() {
     int keyPressed = getch();
     LivingEntity * player = this->allEntities->player;
-    bulletList * bl = allEntities->headBullet;
 
     //se il giocatore muore finisce il gioco
     if(player->getLife() <= 0) {
@@ -30,8 +30,7 @@ bool KeyManager::selectAction() {
     } else if ((char)keyPressed == 'e'){
         point tmp = (*player).getPosition();
         tmp.x++;
-        bl = newBullet(bl, new Bullet(tmp, '-', 1, 10));
-        allEntities->headBullet = bl;
+        allEntities->headBullet = newBullet(allEntities->headBullet, new Bullet(tmp, '-', 1, 10));
     } else if (keyPressed == KEY_F(4)) {
         printf("premuto f4");
         return true;
@@ -48,8 +47,8 @@ bool KeyManager::entityCheck(Entity * ent, bool isBullet) {
 
     if(isBullet) {
         int level = (*map).getLevel();
-        if(p1.x >= (this->dimension.x-1) * (level + 1)) {
-            (*ent).setDesiredPosition((*ent).getPosition());
+        if(p1.x >= (this->dimension.x-1) * (level + 1)) {           //se vuole andare oltre alla mappa creata per ora
+            (*ent).setDesiredPosition((*ent).getPosition());            //lo cancello
             return true;
         }else if(!(*map).isPointAviable(p1)) {
             (*ent).setDesiredPosition((*ent).getPosition());
@@ -63,17 +62,21 @@ bool KeyManager::entityCheck(Entity * ent, bool isBullet) {
             (*ent).setDesiredPosition((*ent).getPosition());            // torna a dove era prima
 
         //gravity
-        (*ent).setDesiredPosition(KEY_DOWN);
-        p2 = (*ent).getDesiredPosition();
-        if(p2.y < 0 || p2.y >= this->dimension.y-1 || p2.x < 0) {
-            if(p1.y < 0 || p1.y >= this->dimension.y-1 || p1.x < 0)
-                (*ent).setDesiredPosition((*ent).getPosition());
-            else
+        if((*ent).getIsJumping() == 0) {
+            (*ent).setDesiredPosition(KEY_DOWN);
+            p2 = (*ent).getDesiredPosition();
+            if(p2.y < 0 || p2.y >= this->dimension.y-1 || p2.x < 0) {
+                if(p1.y < 0 || p1.y >= this->dimension.y-1 || p1.x < 0)
+                    (*ent).setDesiredPosition((*ent).getPosition());
+                else
+                    (*ent).setDesiredPosition(p1);
+            } else if ((*map).isPointAviable(p2)){
+                (*ent).setDesiredPosition(p2);
+            } else {
+                //cout << "non ce poi andà" << endl;
                 (*ent).setDesiredPosition(p1);
-        } else if ((*map).isPointAviable(p2))
-            (*ent).setDesiredPosition(p2);
-        else
-            (*ent).setDesiredPosition(p1);
+            }
+        }
     }
     return false;
 }

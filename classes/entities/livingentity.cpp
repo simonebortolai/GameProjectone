@@ -29,7 +29,3 @@ int LivingEntity::getLife(){
 int LivingEntity::getStrength(){
     return strength;
 }
-
-char * LivingEntity::toString(){
-    return "sono vivo";
-}

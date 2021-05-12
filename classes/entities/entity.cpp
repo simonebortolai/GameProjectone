@@ -28,7 +28,7 @@ void Entity::setDesiredPosition(int keyPressed) {
         desiredPos.x++;
         direction = RIGHT;
     } else if(keyPressed == KEY_DOWN) {
-        if(!isJumping)
+        if(isJumping == 0)
             desiredPos.y++;
     }
 }
@@ -52,16 +52,22 @@ point Entity::getDesiredPosition(){
 }
 
 
+int Entity::getIsJumping() {
+    return isJumping;
+}
+
+
 void Entity::jump() {
-    cout << "ciao" << endl;
     isJumping = 1;
 }
 
 void Entity::animation() {
     if(isJumping == 1) {
         
-        if(jumpTicks >= 4) {
+        if(jumpTicks > 5) {
             desiredPos.y--;
+        } else {
+            //desiredPos.y++; ????
         }
 
         if(direction == LEFT) {
@@ -76,8 +82,6 @@ void Entity::animation() {
     if(jumpTicks <= 0) {
         isJumping = 0;
         jumpTicks = 10;
-        printf(" %d \n", isJumping);
-        timeout(100000);
     }
 
 }
