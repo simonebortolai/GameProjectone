@@ -13,7 +13,8 @@ class Entity {
 
         //jump
         int direction;
-        bool isJumping;
+        int jumpTicks;
+        int isJumping;
 
     public:
         //costructors

@@ -40,6 +40,7 @@ int main() {
         loop();                                                             //eseguo opearazioni ricorrenti ogni ciclo
     }
     
+    printf("FINE PROGRAMMA");
     endwin();
     
 }

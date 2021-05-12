@@ -23,6 +23,8 @@ class LivingEntity : public Entity {
         //get function
         int getLife();
         int getStrength();
+
+        char * toString();
 };
 
 

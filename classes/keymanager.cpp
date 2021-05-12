@@ -14,9 +14,11 @@ bool KeyManager::selectAction() {
     bulletList * bl = allEntities->headBullet;
 
     //se il giocatore muore finisce il gioco
-    if(player->getLife() <= 0)
+    if(player->getLife() <= 0) {
+        printf("giocatore morto");
         return true;
-    
+    }
+
     if (keyPressed == KEY_LEFT || keyPressed == KEY_RIGHT)
         (*player).setDesiredPosition(keyPressed);
     else if (keyPressed == KEY_UP){
@@ -24,14 +26,18 @@ bool KeyManager::selectAction() {
         tmp.y++;
         if((*map).isPointFloor(tmp))
             (*player).jump();
+
     } else if ((char)keyPressed == 'e'){
         point tmp = (*player).getPosition();
         tmp.x++;
         bl = newBullet(bl, new Bullet(tmp, '-', 1, 10));
         allEntities->headBullet = bl;
-    } else if (keyPressed == KEY_F(4))
+    } else if (keyPressed == KEY_F(4)) {
+        printf("premuto f4");
         return true;
+    }
     
+    (*player).animation();
 
     return false;
 }

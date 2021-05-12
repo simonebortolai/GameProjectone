@@ -6,12 +6,12 @@ LivingEntity::LivingEntity(point dim, char sprite,int life, int strength) : Enti
     this->strength = strength;
 }
 
-void LivingEntity::addLife(int life){
-    this->life=this->life+life;
+void LivingEntity::addLife(int n){
+    this->life += n;
 }
 
-void LivingEntity::subLife(int life){
-    this->life=this->life-life;
+void LivingEntity::subLife(int n){
+    this->life -= n;
 }
 
 void LivingEntity::setLife(int life){
@@ -28,4 +28,8 @@ int LivingEntity::getLife(){
 
 int LivingEntity::getStrength(){
     return strength;
+}
+
+char * LivingEntity::toString(){
+    return "sono vivo";
 }

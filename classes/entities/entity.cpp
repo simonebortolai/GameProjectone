@@ -10,7 +10,8 @@ Entity::Entity(point position, char sprite){
     this->position = position;
     this->desiredPos = position;
     direction = NODIR;
-    isJumping = false;
+    jumpTicks = 10;
+    isJumping = 0;
 }
 
 
@@ -26,8 +27,10 @@ void Entity::setDesiredPosition(int keyPressed) {
     } else if(keyPressed == KEY_RIGHT) {
         desiredPos.x++;
         direction = RIGHT;
-    } else if(keyPressed == KEY_DOWN)
-        desiredPos.y++;
+    } else if(keyPressed == KEY_DOWN) {
+        if(!isJumping)
+            desiredPos.y++;
+    }
 }
 
 void Entity::setDesiredPosition(point where) {
@@ -50,6 +53,31 @@ point Entity::getDesiredPosition(){
 
 
 void Entity::jump() {
-    desiredPos.y--;
-    isJumping = true;
+    cout << "ciao" << endl;
+    isJumping = 1;
+}
+
+void Entity::animation() {
+    if(isJumping == 1) {
+        
+        if(jumpTicks >= 4) {
+            desiredPos.y--;
+        }
+
+        if(direction == LEFT) {
+            desiredPos.x--;
+        } else if (direction == RIGHT) {
+            desiredPos.x++;
+        }
+
+        jumpTicks--;
+    }
+
+    if(jumpTicks <= 0) {
+        isJumping = 0;
+        jumpTicks = 10;
+        printf(" %d \n", isJumping);
+        timeout(100000);
+    }
+
 }
