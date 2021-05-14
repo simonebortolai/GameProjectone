@@ -14,6 +14,15 @@ Entity::Entity(point position, char sprite){
     isJumping = 0;
 }
 
+Entity::Entity(point pos, char s, int dir) {
+    this->sprite = s;
+    this->position = pos;
+    this->desiredPos = pos;
+    jumpTicks = 10;
+    isJumping = 0;
+    this->direction = dir;
+}
+
 
 void Entity::setPosition(point position){
     this->position = position;
@@ -60,6 +69,12 @@ int Entity::getIsJumping() {
 void Entity::jump() {
     isJumping = 1;
 }
+
+
+int Entity::getDirection() {
+    return this->direction;
+}
+
 
 void Entity::animation() {
     if(isJumping == 1) {

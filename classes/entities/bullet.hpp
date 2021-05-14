@@ -1,6 +1,7 @@
 #ifndef BULLET_HPP_INCLUDED
 #define BULLET_HPP_INCLUDED
 
+#include <iostream>
 #include "entity.hpp"
 #include "../misc.hpp"
 
@@ -11,7 +12,7 @@ class Bullet : public Entity {
         
     public:
         //costruttori
-        Bullet(point position, char sprite, int speed, int damage);
+        Bullet(point position, char sprite, int speed, int damage, int direction);
 
         void goForward();
 

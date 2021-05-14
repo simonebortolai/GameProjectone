@@ -2,6 +2,10 @@
 using namespace std;
 
 
+#define NODIR -1
+#define RIGHT 0
+#define LEFT 1
+
 KeyManager::KeyManager(allEntityList * allEnt, Map * map, point dimension) {
     allEntities = allEnt;
     this->map = map;
@@ -29,8 +33,12 @@ bool KeyManager::selectAction() {
 
     } else if ((char)keyPressed == 'e'){
         point tmp = (*player).getPosition();
-        tmp.x++;
-        allEntities->headBullet = newBullet(allEntities->headBullet, new Bullet(tmp, '-', 1, 10));
+        int dir = (*player).getDirection();
+        if(dir == LEFT) 
+            tmp.x--;
+        else
+            tmp.x++;
+        allEntities->headBullet = newBullet(allEntities->headBullet, new Bullet(tmp, '-', 1, 10, dir));
     } else if (keyPressed == KEY_F(4)) {
         printf("premuto f4");
         return true;
@@ -47,8 +55,8 @@ bool KeyManager::entityCheck(Entity * ent, bool isBullet) {
 
     if(isBullet) {
         int level = (*map).getLevel();
-        if(p1.x >= (this->dimension.x-1) * (level + 1)) {           //se vuole andare oltre alla mappa creata per ora
-            (*ent).setDesiredPosition((*ent).getPosition());            //lo cancello
+        if(p1.x < 0 || p1.x >= (this->dimension.x-1) * (level + 1)) {       //se vuole andare oltre alla mappa creata per ora
+            (*ent).setDesiredPosition((*ent).getPosition());                    //lo cancello
             return true;
         }else if(!(*map).isPointAviable(p1)) {
             (*ent).setDesiredPosition((*ent).getPosition());
@@ -84,11 +92,9 @@ bool KeyManager::entityCheck(Entity * ent, bool isBullet) {
 
 void KeyManager::moveBullets() {
     bulletList * bl = allEntities->headBullet;
-    point tmp;
+
     while (bl != NULL) {
-        tmp = (*bl->value).getPosition();
-        tmp.x += (*bl->value).getSpeed();
-        (*bl->value).setDesiredPosition(tmp);
+        (*bl->value).goForward();
         bl = bl->next;
     }
 }

@@ -19,6 +19,7 @@ class Entity {
     public:
         //costructors
         Entity(point position, char sprite);
+        Entity(point position, char sprite, int direction);
 
         void jump();
         void animation();
@@ -32,6 +33,7 @@ class Entity {
         char getSprite();
         point getPosition();
         point getDesiredPosition();
+        int getDirection();
         int getIsJumping();
 
 };
