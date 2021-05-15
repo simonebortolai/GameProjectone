@@ -35,7 +35,7 @@ int main() {
         km.moveEntities();                                                  //imposto dove si vogliono muovere i mostri e gli spari
         km.checkInteraction();                                              //controllo le iterazioni tra le entità
         km.checkAllMovement();                                              //controllo i movimenti di tutte le entità
-        map.moveAllEntities();                                              //scrivo nella mappa e muovo le entità
+        map.moveAllEntities();                                              //scrivo nella mappa le entità
         printEverything(map.getVisualizedWindow(), roomSize, dimension);    //scrivo a schermo la mappa disualizzata dal player
         loop();                                                             //eseguo opearazioni ricorrenti ogni ciclo
     }

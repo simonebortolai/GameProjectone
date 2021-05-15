@@ -2,7 +2,6 @@
 #define SIMPLEMAP_HPP_INCLUDED
 
 #include <ncurses.h>
-#include <iostream>
 #include "misc.hpp"
 #include "miscFunc.hpp"
 #include "room.hpp"

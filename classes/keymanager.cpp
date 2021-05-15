@@ -28,7 +28,8 @@ bool KeyManager::selectAction() {
     } else if ((char)keyPressed == 'e'){
         if(dir == LEFT) tmp.x--;
         else            tmp.x++;
-        allEntities->headBullet = newBullet(allEntities->headBullet, new Bullet(tmp, '-', 1, 10, dir));
+        if(tmp.x < 0) {}
+        else if((*map).isPointAviable(tmp)) allEntities->headBullet = newBullet(allEntities->headBullet, new Bullet(tmp, '-', 1, 10, dir));
     } else if (keyPressed == KEY_F(4))
         return true;
     
@@ -88,7 +89,7 @@ void KeyManager::moveMonster() {
     monsterList * ml = allEntities->headMonster;
     
     while (ml != NULL) {
-        (*ml->value).animation(1);
+        (*ml->value).animation(true);
         ml = ml->next;
     }
 }
@@ -116,7 +117,7 @@ void KeyManager::interactionMonsterPlayer(LivingEntity * pl, LivingEntity * mn) 
 
 
 void KeyManager::moveEntities() {
-    (*allEntities->player).animation(0);
+    (*allEntities->player).animation(false);
     moveBullets();
     moveMonster();
 }

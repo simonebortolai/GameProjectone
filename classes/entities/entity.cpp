@@ -78,8 +78,8 @@ int Entity::getDirection() {
 }
 
 
-void Entity::animation(int isMonster) {
-    if(isMonster == 0) {
+void Entity::animation(bool isMonster) {
+    if(!isMonster) {
         if(isJumping == 1) {
             if(jumpTicks > 5)
                 desiredPos.y--;
