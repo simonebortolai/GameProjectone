@@ -7,9 +7,6 @@
 #include "./classes/map.hpp"
 #include "./classes/keymanager.hpp"
 
-#include <iostream>
-using namespace std;
-
 
 int main() {
     
@@ -36,12 +33,6 @@ int main() {
     while(!exit) {
         exit = km.selectAction();                                           //imposto dove si vuole muovere il player
         km.moveEntities();                                                  //imposto dove si vogliono muovere i mostri e gli spari
-        
-        //DEBUG
-        point p = listAllEntity.player->getDesiredPosition();
-        //cout << "(" << p.x << ", " << p.y<< ")" <<endl;
-
-
         km.checkInteraction();                                              //controllo le iterazioni tra le entità
         km.checkAllMovement();                                              //controllo i movimenti di tutte le entità
         map.moveAllEntities();                                              //scrivo nella mappa e muovo le entità

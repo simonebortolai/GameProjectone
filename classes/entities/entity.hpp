@@ -22,7 +22,7 @@ class Entity {
         Entity(point position, char sprite, int direction);
 
         void jump();
-        void animation();
+        void animation(int isMonster);
 
         //set function
         void setPosition(point position);

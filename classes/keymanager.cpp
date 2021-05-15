@@ -1,6 +1,4 @@
 #include "keymanager.hpp"
-using namespace std;
-
 
 #define NODIR -1
 #define RIGHT 0
@@ -14,47 +12,35 @@ KeyManager::KeyManager(allEntityList * allEnt, Map * map, point dimension) {
 
 
 bool KeyManager::selectAction() {
-    int keyPressed = getch();
     LivingEntity * player = this->allEntities->player;
+    int dir = (*player).getDirection(), keyPressed = getch();
+    point tmp = (*player).getPosition();
 
-    //se il giocatore muore finisce il gioco
-    if(player->getLife() <= 0) {
-        printf("giocatore morto");
+    if(player->getLife() <= 0)  //se il giocatore è morto finisce il gioco
         return true;
-    }
 
     if (keyPressed == KEY_LEFT || keyPressed == KEY_RIGHT)
         (*player).setDesiredPosition(keyPressed);
     else if (keyPressed == KEY_UP){
-        point tmp = (*player).getPosition();
         tmp.y++;
         if((*map).isPointFloor(tmp))
             (*player).jump();
-
     } else if ((char)keyPressed == 'e'){
-        point tmp = (*player).getPosition();
-        int dir = (*player).getDirection();
-        if(dir == LEFT) 
-            tmp.x--;
-        else
-            tmp.x++;
+        if(dir == LEFT) tmp.x--;
+        else            tmp.x++;
         allEntities->headBullet = newBullet(allEntities->headBullet, new Bullet(tmp, '-', 1, 10, dir));
-    } else if (keyPressed == KEY_F(4)) {
-        printf("premuto f4");
+    } else if (keyPressed == KEY_F(4))
         return true;
-    }
     
-    (*player).animation();
-
     return false;
 }
 
 
 bool KeyManager::entityCheck(Entity * ent, bool isBullet) {
-    point p2, p1 = (*ent).getDesiredPosition();
+    int level = (*map).getLevel();
+    point p1 = (*ent).getDesiredPosition(), p2;
 
     if(isBullet) {
-        int level = (*map).getLevel();
         if(p1.x < 0 || p1.x >= (this->dimension.x-1) * (level + 1)) {       //se vuole andare oltre alla mappa creata per ora
             (*ent).setDesiredPosition((*ent).getPosition());                    //lo cancello
             return true;
@@ -78,12 +64,10 @@ bool KeyManager::entityCheck(Entity * ent, bool isBullet) {
                     (*ent).setDesiredPosition((*ent).getPosition());
                 else
                     (*ent).setDesiredPosition(p1);
-            } else if ((*map).isPointAviable(p2)){
+            } else if ((*map).isPointAviable(p2))
                 (*ent).setDesiredPosition(p2);
-            } else {
-                //cout << "non ce poi andà" << endl;
+            else
                 (*ent).setDesiredPosition(p1);
-            }
         }
     }
     return false;
@@ -102,16 +86,9 @@ void KeyManager::moveBullets() {
 
 void KeyManager::moveMonster() {
     monsterList * ml = allEntities->headMonster;
-    point mPos, pPos = (*this->allEntities->player).getPosition();
     
-    // va verso il giocatore
     while (ml != NULL) {
-        mPos = (*ml->value).getPosition();
-        if(pPos.x+3 < mPos.x)
-            mPos.x--;
-        else if(pPos.x-3 > mPos.x)
-            mPos.x++;
-        (*ml->value).setDesiredPosition(mPos);
+        (*ml->value).animation(1);
         ml = ml->next;
     }
 }
@@ -139,6 +116,7 @@ void KeyManager::interactionMonsterPlayer(LivingEntity * pl, LivingEntity * mn) 
 
 
 void KeyManager::moveEntities() {
+    (*allEntities->player).animation(0);
     moveBullets();
     moveMonster();
 }

@@ -1,18 +1,20 @@
 #include "entity.hpp"
-using namespace std;
+
 
 #define NODIR -1
 #define RIGHT 0
 #define LEFT 1
 
-Entity::Entity(point position, char sprite){
-    this->sprite = sprite;
-    this->position = position;
-    this->desiredPos = position;
+
+Entity::Entity(point p, char s){
+    this->sprite = s;
+    this->position = p;
+    this->desiredPos = p;
     direction = NODIR;
     jumpTicks = 10;
     isJumping = 0;
 }
+
 
 Entity::Entity(point pos, char s, int dir) {
     this->sprite = s;
@@ -76,27 +78,34 @@ int Entity::getDirection() {
 }
 
 
-void Entity::animation() {
-    if(isJumping == 1) {
-        
-        if(jumpTicks > 5) {
-            desiredPos.y--;
-        } else {
-            //desiredPos.y++; ????
-        }
+void Entity::animation(int isMonster) {
+    if(isMonster == 0) {
+        if(isJumping == 1) {
+            if(jumpTicks > 5)
+                desiredPos.y--;
+            
+            if(direction == LEFT)
+                desiredPos.x--;
+            else if (direction == RIGHT)
+                desiredPos.x++;
 
-        if(direction == LEFT) {
-            desiredPos.x--;
-        } else if (direction == RIGHT) {
-            desiredPos.x++;
+            jumpTicks--;
         }
+        if(jumpTicks <= 0) {
+            isJumping = 0;
+            jumpTicks = 10;
+        }
+    } else {
+        if(jumpTicks >=5)
+            desiredPos.y--;
+        else if(jumpTicks <= 0 && jumpTicks > -5)
+            desiredPos.x--;
+        else if(jumpTicks <= -5 && jumpTicks > -10)
+            desiredPos.x++;
+        else if(jumpTicks <= -10)
+            jumpTicks = 11;
 
         jumpTicks--;
-    }
-
-    if(jumpTicks <= 0) {
-        isJumping = 0;
-        jumpTicks = 10;
     }
 
 }
