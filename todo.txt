@@ -9,6 +9,7 @@ Da fare:
           varibile che si alza ogni volta che si cambia stanza)
 
 Eventuale:
+    Calcolo dei punti in base a mostri uccisi, stanze passate, bonus, spari usati?
     Cooldown per gli spari
     Ottimizzazione dei movimenti
     Colorare i blocchi in modo diverso
@@ -20,3 +21,48 @@ Varie:
     cleaning del codice
         - Soprattutto map, riorganizzare la logica
     riordinare keymanager
+
+
+Considerazioni su come fare i bonus:
+
+    Li infiliamo nella struct allEntity per non perderle se cambiamo stanza.
+    Io direi di implementare i bonus solo a livello di codice, senza creare una classe specifica.
+    Ci basta la classe entity:
+        - Ci serve sapere la posizione del bonus generato (forse) alla creazione della stanza (Fabio)
+        - Ci serve lo sprite di riconoscimento che per me basta sia una lettera tipo
+            P = +punti
+            I = invicibilità
+            V = +vità
+            D = +danni
+            M = -velocità di sparo
+            S = +velocità
+            L = laser
+
+    Quindi basta mettere nella classe iteratrice degli if dove si prende la
+    lettera vicino al player e si esegue gli effetti dei bonus o malus.
+    Volendo possiamo farli a tempo o permanenti.
+    Per stamparli nelle stanze bisogna modificare la classe map.
+    Per aggiungerli alla lista bisogna modificare miscFunc
+
+by Genos
+
+Spari mostri: ~
+
+Nemici diversi e più potenti:
+
+    Quando vengono creati i mostri per le stanze si può inserire un parametro che è la loro potenza,
+    che poi va a moltiplicare i danni che fanno. Questo paramentro aumenta più si va avanti con le stanze.
+    
+    Probabilmente si riesce a fare con le classi che abbiamo adesso ma viene scomodo.
+
+    Per fare mostri diversi forse conviene fare una classe.
+    Perché per fare nemici diversi si devono muovere e sparare in modo diverso,
+    ma ora abbiamo una classe living entity che non distinugue tra mostri o giocatore.
+
+    Idee:
+        Classe Mostro Base:
+            Animazione di base che c'è adesso
+        Classe Mostro Miniboss
+            Sta fermo ma spara in qualche direzione
+        Classe Boss
+            Ti segue e spara
