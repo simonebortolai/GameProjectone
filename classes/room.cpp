@@ -129,7 +129,7 @@ pMonster Room::generateEnemies(pMonster head, point offset) {
     
     pMonster tmp = new monsterList;
     tmp->next = head;
-    tmp->value = new LivingEntity(pos, '#', 100, 10);
+    tmp->value = new LivingEntity(pos, '#', 100, 10, 10);
     
     return tmp;
 }

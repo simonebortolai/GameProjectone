@@ -168,6 +168,7 @@ void KeyManager::checkInteraction() {
         if(hitted) {
             if((*ml->value).getLife() <= 0) {
                 death = true;
+                allEntities->player->setPoints(allEntities->player->getPoints()+(*ml->value).getPoints());
                 LivingEntity * m = ml->value;
                 ml = ml->next;
                 allEntities->headMonster = removeMonster(allEntities->headMonster, m);

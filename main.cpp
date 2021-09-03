@@ -18,7 +18,7 @@ int main() {
     //Structs
     point dimension {79, 23};    //dimensione finestra dove si gioca
     point roomSize {dimension.x-1, dimension.y-1};
-    allEntityList listAllEntity {new LivingEntity({1, 10}, '@', 100, 10), NULL, NULL};
+    allEntityList listAllEntity {new LivingEntity({1, 10}, '@', 100, 10, 0), NULL, NULL};
     
     
     //Objects
@@ -36,7 +36,7 @@ int main() {
         km.checkInteraction();                                              //controllo le iterazioni tra le entità
         km.checkAllMovement();                                              //controllo i movimenti di tutte le entità
         map.moveAllEntities();                                              //scrivo nella mappa le entità
-        printEverything(map.getVisualizedWindow(), roomSize, dimension);    //scrivo a schermo la mappa disualizzata dal player
+        printEverything(map.getVisualizedWindow(), roomSize, dimension, listAllEntity.player);    //scrivo a schermo la mappa disualizzata dal player
         loop();                                                             //eseguo opearazioni ricorrenti ogni ciclo
     }
     
