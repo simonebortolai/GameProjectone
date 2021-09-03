@@ -131,16 +131,14 @@ pMonster Room::generateEnemies(pMonster head, point offset) {
 
     if(level%10 == 0){
         tmp->next=head;
-        //generare moniboss
+        //generare miniboss
     }
     else{
-
-    tmp->next = head;
-    int life, strength;
-    life = 100+level*10;
-    strength=10+level*2;
-    tmp->value = new LivingEntity(pos, '#', life, strength);
-    
+        tmp->next = head;
+        int life, strength;
+        life = 100+level*10;
+        strength=10+level*2;
+        tmp->value = new LivingEntity(pos, '#', life, strength);
     }
 
     return tmp;
