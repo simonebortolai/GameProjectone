@@ -128,13 +128,13 @@ pMonster Room::generateEnemies(pMonster head, point offset) {
     point pos {30+offset.x, 7};
     
     pMonster tmp = new monsterList;
+    tmp->next=head;
 
     if(level%10 == 0){
-        //tmp->next=head;
         //generare miniboss
+        return head; //temporary
     }
     else{
-        tmp->next = head;
         int life, strength, points;
         life = 100+level*10;
         strength=10+level*2;
@@ -146,6 +146,5 @@ pMonster Room::generateEnemies(pMonster head, point offset) {
 }
 
 char Room::getChar(point pos){
-    
     return getPixel(pos);
 }

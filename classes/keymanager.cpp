@@ -33,7 +33,12 @@ bool KeyManager::selectAction() {
     } else if (keyPressed == KEY_F(4)){
         return true;
     } else if((char)keyPressed == 'f'){
-        isBonus(tmp);
+        tmp.x += 1;
+        if((*map).isPointAviable(tmp))
+            this->isBonus(tmp);
+        tmp.x -= 2;
+        if((*map).isPointAviable(tmp))
+            this->isBonus(tmp);
     }
 
     return false;
@@ -205,7 +210,6 @@ void KeyManager::checkInteraction() {
 */
 //controlla che bonus c'è a destra del personaggio
 void KeyManager::isBonus(point pos){
-    pos.x=pos.x +1;
     if((*map).getChar(pos) == 'P'){
         
     }
