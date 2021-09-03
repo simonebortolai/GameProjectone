@@ -16,6 +16,7 @@ class KeyManager{
         void moveMonster();
         bool interactionBulletMonster(LivingEntity * monster, Bullet * bullet);
         void interactionMonsterPlayer(LivingEntity * player, LivingEntity * monster);
+        void isBonus(point pos);
 
     public:
         KeyManager(allEntityList * allEnt, Map * map, point dimension);

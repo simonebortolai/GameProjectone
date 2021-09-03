@@ -124,12 +124,29 @@ int Room::getLevel() {
 
 
 pMonster Room::generateEnemies(pMonster head, point offset) {
-    //DEBUG
+     //DEBUG
     point pos {30+offset.x, 7};
     
     pMonster tmp = new monsterList;
+
+    if(level%10 == 0){
+        tmp->next=head;
+        //generare moniboss
+    }
+    else{
+
     tmp->next = head;
-    tmp->value = new LivingEntity(pos, '#', 100, 10);
+    int life, strength;
+    life = 100+level*10;
+    strength=10+level*2;
+    tmp->value = new LivingEntity(pos, '#', life, strength);
     
+    }
+
     return tmp;
+}
+
+char Room::getChar(point pos){
+    
+    return getPixel(pos);
 }
