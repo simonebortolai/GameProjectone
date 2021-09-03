@@ -7,7 +7,7 @@
 
 /*
 Questa classe serve a gestire uno spazio bidimensionale, permettendomi di accedere ai singoli caratteri e modificarne il contenuto.
-Sono costretto a dichiarare content pointer of pointer anche se in realtà il size è fissato e conosciuto durante la compilazione, C++ non è abbastanza intelligente per capirlo.
+Sono costretto a dichiarare content come puntatore a puntatori anche se in realtà il size è fissato e conosciuto durante la compilazione
 */
 
 

@@ -12,11 +12,11 @@ void Room::generateRoom(int level) {
     setPixel(tmp, (char)((int)'a' + level));
 
     platformInfo info;
-    info.y = 4; 
+    info.y = 4;
     info.lastX = -1;
     info.lastLen = -1;
     info.sideSpace = 7;
-    info.minLen = 7; 
+    info.minLen = 7;
     info.maxLen = 30;
     generateAllPlatform(4, 5, info);
 }
@@ -53,15 +53,6 @@ void Room::drawPlatform(point start, int len) {
 }
 
 
-/*
-void Room::calculatePositionAndLength(platformInfo & info, int & x, int & len) {
-    len = random(info.minLen, info.maxLen);
-
-    if (info.lastX != -1 && (info.lastX - len < info.sideSpace && info.lastX + info.lastLen + len > size.x - info.sideSpace) ) {
-        len = max(info.lastX - info.sideSpace, (size.x - info.sideSpace) - (info.lastX + info.lastLen));
-    }
-}
-*/
 
 
 
@@ -72,20 +63,25 @@ void Room::generatePlatform(platformInfo & info) {
 
     /* Decide se randomizzare x, o cacciarlo a sinistra o a destra della scorsa piattaforma */
     if (info.lastX == -1)
+        /* è la prima piattaforma, posso metterla dove voglio */
         start.x = random(info.sideSpace, size.x - info.sideSpace - length);
     else {
         bool excedLeft = info.lastX - length < info.sideSpace;
         bool excedRight = info.lastX + info.lastLen + length > size.x-info.sideSpace;
         
+        /* se eccedesse da destra o sinistra tocca accorciare la lunghezza, prendiamo quella max */
         if (excedLeft && excedRight) {
             int leftFreeSpace = info.lastX - info.sideSpace;
             int rightFreeSpace = size.x - info.sideSpace - info.lastX - info.lastLen;
             length = max(leftFreeSpace, rightFreeSpace);
+
+            /* visto che è cambiata length bisogna ricalcolare queste due var */
+            excedLeft = info.lastX - length < info.sideSpace;
+            excedRight = info.lastX + info.lastLen + length > size.x-info.sideSpace;
         }
 
-        excedLeft = info.lastX - length < info.sideSpace;
-        excedRight = info.lastX + info.lastLen + length > size.x-info.sideSpace;
         
+        /* sceglie in da che parte far iniziare la piattaforma */
         if (excedLeft) start.x = info.lastX + info.lastLen;
         else if (excedRight) start.x = info.lastX;
         else {
@@ -95,19 +91,25 @@ void Room::generatePlatform(platformInfo & info) {
 
         if (info.lastX == start.x) destra = false;    
 
-        /* lancio errori quando invade sideSpace */
+        /*
+        // lancio errori quando invade sideSpace 
         if ( (start.x - length < info.sideSpace && !destra) || (start.x + length > size.x - info.sideSpace   && destra)) {
             std::string a = "("  + std::to_string(start.x) + ", " + std::to_string(start.y) + ")\ncon length: " + std::to_string(length) + "\nlastX:" + std::to_string(info.lastX) + "    lastLen: " + std::to_string(info.lastLen) + "\ndestra:" + std::to_string(destra) + "\n start.x - length < 7:" + std::to_string(start.x - length < 7) + "\n("  + std::to_string(excedRight) + ", " + std::to_string(excedLeft) + ")\n" ;
             throw std::runtime_error(std::string("Bad platform") + a);
         }
+        */
     }
 
+    /* 
+    se devo creare la piattaforma a sinistra di start.x allora ricalcolo start.x
+        poi disegno la piattaforma 
+    */
     if (!destra) start.x = start.x - length;
     drawPlatform(start, length);
 
+    /* cambio i parametri di info per la prossima piattaforma da generare */
     info.lastX = start.x;
     info.lastLen = length;
-    
 }
 
 

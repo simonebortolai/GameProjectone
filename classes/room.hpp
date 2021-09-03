@@ -10,6 +10,12 @@
 #include <iostream>
 
 
+/*
+serve a tenere le informazione per generare le piattaforme di una stanza:
+    altezza, posizione e lunghezza della piattaforma precedente (-1 se non esistente), spazio
+    da tenere libero ai lati e lunghezza massima e minima della piattaforma 
+    Le raggruppo per non dover passare 6 parametri alla funzione che genera
+*/
 struct platformInfo {
     int y; 
     int lastX;
