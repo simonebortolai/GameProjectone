@@ -113,3 +113,17 @@ void Map::eraseAllEntities() {
         bl = bl->next;
     }
 }
+
+//funzione che restituisce il carattere che e' nella posizione
+char Map::getChar(point pos){
+    roomPoint r = virtualToReal(pos);
+    pRoomList tmp = firstRoom;
+    while(r.nRoom != 1){
+        tmp = tmp->next;
+        r.nRoom--;
+    }
+    point tmpPoint;
+    tmpPoint.x=r.x;
+    tmpPoint.y=r.y;
+    return currentRoom->value->getChar(tmpPoint);
+}

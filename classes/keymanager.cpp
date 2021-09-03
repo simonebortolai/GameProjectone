@@ -30,9 +30,12 @@ bool KeyManager::selectAction() {
         else            tmp.x++;
         if(tmp.x < 0) {}
         else if((*map).isPointAviable(tmp)) allEntities->headBullet = newBullet(allEntities->headBullet, new Bullet(tmp, '-', 1, 10, dir));
-    } else if (keyPressed == KEY_F(4))
+    } else if (keyPressed == KEY_F(4)){
         return true;
-    
+    } else if((char)keyPressed == 'f'){
+        isBonus(tmp);
+    }
+
     return false;
 }
 
@@ -189,5 +192,33 @@ void KeyManager::checkInteraction() {
     while (ml!= NULL) {
         interactionMonsterPlayer(allEntities->player, ml->value);
         ml = ml->next;
+    }
+}
+/*          
+            P = +punti
+            I = invicibilità
+            V = +vità
+            D = +danni
+            
+            S = +velocità
+            
+*/
+//controlla che bonus c'è a destra del personaggio
+void KeyManager::isBonus(point pos){
+    pos.x=pos.x +1;
+    if((*map).getChar(pos) == 'P'){
+        
+    }
+    else if((*map).getChar(pos) == 'I'){
+
+    }
+    else if((*map).getChar(pos) == 'V'){
+
+    }
+    else if((*map).getChar(pos) == 'D'){
+
+    }
+    else if((*map).getChar(pos) == 'S'){
+
     }
 }

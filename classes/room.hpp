@@ -35,6 +35,7 @@ class Room : public Space2d {
         bool isFloor(point p);
         pMonster generateEnemies(pMonster head, point offset);
         int getLevel();
+        char getChar(point pos);
 
 };
 
