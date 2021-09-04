@@ -23,7 +23,7 @@ class KeyManager{
         KeyManager(allEntityList * allEnt, Map * map, point dimension);
 
         bool selectAction();
-        void moveEntities();
+        void setDesiredPositionOfAllEntities();
         void checkAllMovement();
         void checkInteraction();
 

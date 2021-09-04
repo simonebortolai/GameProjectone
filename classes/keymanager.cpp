@@ -16,16 +16,16 @@ bool KeyManager::selectAction() {
     int dir = (*player).getDirection(), keyPressed = getch();
     point tmp = (*player).getPosition();
 
-    if(player->getLife() <= 0)  //se il giocatore è morto finisce il gioco
+    if(player->getLife() <= 0)              // se il giocatore è morto finisce il gioco
         return true;
 
     if (keyPressed == KEY_LEFT || keyPressed == KEY_RIGHT)
         (*player).setDesiredPosition(keyPressed);
     else if (keyPressed == KEY_UP){
         tmp.y++;
-        if((*map).isPointFloor(tmp))
+        if((*map).isPointFloor(tmp))        // se il punto sotto il giocatore è un pavimento può saltare
             (*player).jump();
-    } else if ((char)keyPressed == 'e'){
+    } else if ((char)keyPressed == 'e'){    // sparo
         if(dir == LEFT) tmp.x--;
         else            tmp.x++;
         if(tmp.x < 0) {}
@@ -47,6 +47,7 @@ bool KeyManager::selectAction() {
 }
 
 
+//funzione che controlla la desiredPosition di un entità generica e la gestisce
 bool KeyManager::entityCheck(Entity * ent, bool isBullet) {
     int level = (*map).getLevel();
     point p1 = (*ent).getDesiredPosition(), p2;
@@ -105,7 +106,7 @@ void KeyManager::moveMonster() {
 }
 
 
-//togliere punti al mostro se sono vicini
+//toglie vita al mostro se sono vicini
 bool KeyManager::interactionBulletMonster(LivingEntity * monster, Bullet * bullet) {
     point bp = (*bullet).getPosition(), mp = (*monster).getPosition();
     if(bp.y == mp.y){
@@ -117,6 +118,7 @@ bool KeyManager::interactionBulletMonster(LivingEntity * monster, Bullet * bulle
     return false;
 }
 
+//toglie vita al player se sono vicini
 void KeyManager::interactionMonsterPlayer(LivingEntity * pl, LivingEntity * mn) {
     point playerPoint = (*pl).getPosition(), monsterPoint = (*mn).getPosition();
     if(playerPoint.y == monsterPoint.y){
@@ -126,7 +128,7 @@ void KeyManager::interactionMonsterPlayer(LivingEntity * pl, LivingEntity * mn) 
 }
 
 
-void KeyManager::moveEntities() {
+void KeyManager::setDesiredPositionOfAllEntities() {
     (*allEntities->player).animation(false);
     moveBullets();
     moveMonster();

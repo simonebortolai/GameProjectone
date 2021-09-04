@@ -31,18 +31,27 @@ int main() {
 
     /* game loop: esco se viene premuto F4 o il giocatore muore */
     while(!exit) {
-        exit = km.selectAction();                                           
-        //imposto dove si vuole muovere il player
-        km.moveEntities();                                                  
-        //imposto dove si vogliono muovere i mostri e gli spari
-        km.checkInteraction();                                              
+
+        //riconosco il tasto premuto e imposto la desiredPosition del player
+        exit = km.selectAction();
+
+        //imposto le desiredPosition di mostri e spari
+        km.setDesiredPositionOfAllEntities();
+
         //controllo le iterazioni tra le entità
-        km.checkAllMovement();                                              
-        //controllo i movimenti di tutte le entità
-        map.moveAllEntities();                                              
-        //scrivo nella mappa le entità
-        printEverything(map.getVisualizedWindow(), roomSize, dimension, listAllEntity.player);    //scrivo a schermo la mappa disualizzata dal player
-        loop();                                                             //eseguo opearazioni ricorrenti ogni ciclo
+        km.checkInteraction();
+
+        //controllo le desiredPosition di tutte le entità e le gestisco
+        km.checkAllMovement();
+
+        //scrivo nella mappa tutte entità
+        map.writeOnMapAllEntities();
+
+        //stampo a schermo la mappa visualizzata dal player e UI di gioco
+        printEverything(map.getVisualizedWindow(), roomSize, dimension, listAllEntity.player);
+
+         //eseguo opearazioni ricorrenti ogni ciclo
+        loop();
     }
     
     endwin();

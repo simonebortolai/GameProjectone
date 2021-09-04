@@ -22,7 +22,7 @@ class Map : public SimpleMap {
     public:
        
         Map(allEntityList * al, point dim);
-        void moveAllEntities();
+        void writeOnMapAllEntities();
         char getChar(point pos);
 };
 

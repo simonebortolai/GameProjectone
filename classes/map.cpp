@@ -41,7 +41,7 @@ void Map::checkPlayerPosition(roomPoint playerDesPos) {
 }
 
 
-void Map::moveAllEntities() {
+void Map::writeOnMapAllEntities() {
     eraseAllEntities(); //cancella le entità
     writeAllEntities(); //le scrive dove si devono muovere e setta la nuova posizione
     changePos();
@@ -134,21 +134,11 @@ void Map::eraseAllEntities() {
     } 
 }
 
-//funzione che restituisce il carattere che e' nella posizione
+//restituisce il carattere nella posizione specificata nella finistra del giocatore
+//non era necessario farlo generico per prendere punti di altre stanze
 char Map::getChar(point pos){
     roomPoint r = virtualToReal(pos);
-    /*
-    //Era questa parte di codice che dava segfault!
-    //Se vogliamo rendere la funzione più generica dobbiamo fare per bene il ciclo delle stanze
-
-    pRoomList tmp = firstRoom;
-    while(r.nRoom != 0){
-        tmp = tmp->next;
-        r.nRoom--;
-    }*/
-    point tmpPoint;
-    tmpPoint.x=r.x;
-    tmpPoint.y=r.y;
+    point tmpPoint {r.x, r.y};
     return currentRoom->value->getPixel(tmpPoint);
 }
 
