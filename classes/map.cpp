@@ -117,13 +117,17 @@ void Map::eraseAllEntities() {
 //funzione che restituisce il carattere che e' nella posizione
 char Map::getChar(point pos){
     roomPoint r = virtualToReal(pos);
+    /*
+    //Era questa parte di codice che dava segfault!
+    //Se vogliamo rendere la funzione più generica dobbiamo fare per bene il ciclo delle stanze
+
     pRoomList tmp = firstRoom;
-    while(r.nRoom != 1){
+    while(r.nRoom != 0){
         tmp = tmp->next;
         r.nRoom--;
-    }
+    }*/
     point tmpPoint;
     tmpPoint.x=r.x;
     tmpPoint.y=r.y;
-    return currentRoom->value->getChar(tmpPoint);
+    return currentRoom->value->getPixel(tmpPoint);
 }
