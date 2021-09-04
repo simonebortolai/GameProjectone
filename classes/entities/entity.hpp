@@ -2,7 +2,6 @@
 #define ENTITY_HPP_INCLUDED
 
 #include <ncurses.h>
-#include <iostream>
 #include "../misc.hpp"
 #include "element.hpp"
 

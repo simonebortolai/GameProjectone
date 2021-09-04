@@ -1,5 +1,4 @@
 #include "bullet.hpp"
-using namespace std;
 
 #define NODIR -1
 #define RIGHT 0

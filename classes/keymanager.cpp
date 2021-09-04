@@ -144,6 +144,7 @@ void KeyManager::checkAllMovement() {
         elim = bonusCheck(bonTemp->value, allEntities->player);
         if (elim) {
             Element * toBeDel = bonTemp->value;
+            bonTemp = bonTemp->next;
             (*map).writeCharInRoom(' ', (*map).virtualToReal((*toBeDel).getPosition()));
             allEntities->headBonus = removeBonus(allEntities->headBonus, toBeDel);
         } else {

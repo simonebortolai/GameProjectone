@@ -80,10 +80,11 @@ pMonster removeMonster(pMonster list, LivingEntity *b){
     return list;
 }
 
-hdsauighuiaergjc controlla qua
+//hdsauighuiaergjc controlla qua
 pBonus removeBonus(pBonus list, Element *b){
-    pBonus prev = list, tmp_head = list, del=NULL;
-    while(tmp_head != NULL){
+    pBonus prev=list, tmp_head = list, del=NULL;
+    bool v = false;
+    while(tmp_head != NULL && !v){
         if(tmp_head->value == b){
             if(tmp_head == list){
                 del = list;

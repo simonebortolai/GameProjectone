@@ -1,7 +1,6 @@
 #ifndef BULLET_HPP_INCLUDED
 #define BULLET_HPP_INCLUDED
 
-#include <iostream>
 #include "entity.hpp"
 #include "../misc.hpp"
 
