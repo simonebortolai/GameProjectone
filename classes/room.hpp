@@ -40,6 +40,9 @@ class Room : public Space2d {
         bool isEmpty(point p);
         bool isFloor(point p);
         pMonster generateEnemies(pMonster head, point offset);
+        pBonus generateBonus(pBonus head, point offset);
+
+        //get methods
         int getLevel();
         char getChar(point pos);
 

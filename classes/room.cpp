@@ -147,6 +147,16 @@ pMonster Room::generateEnemies(pMonster head, point offset) {
     return tmp;
 }
 
+
+pBonus Room::generateBonus(pBonus head, point offset) {
+    point pos {4+offset.x, 21};
+    pBonus tmp = new bonusList;
+    tmp->value = new Element(pos, 'L');
+    tmp->next = head;
+    return tmp; 
+}
+
+
 char Room::getChar(point pos){
     return getPixel(pos);
 }

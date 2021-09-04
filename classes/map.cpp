@@ -19,6 +19,12 @@ void Map::addRoomToTail() {
 
     point offset = realToVirtual({counter, 0, 0});
     this->allEntity->headMonster = (*(tmp->value)).generateEnemies(this->allEntity->headMonster, offset);
+
+    //genera il bonus (una volta su 3)
+    int chance = random(1, 2);
+    if (chance == 1) {
+        this->allEntity->headBonus = (*(tmp->value)).generateBonus(this->allEntity->headBonus, offset);
+    }
 }
 
 
@@ -91,6 +97,13 @@ void Map::writeAllEntities() {
         writeCharInRoom((*bl->value).getSprite(), virtualToReal((*bl->value).getDesiredPosition()));
         bl = bl->next;
     }
+
+    //write bonus
+    pBonus bonTmp = allEntity->headBonus;
+    while(bonTmp != NULL) {
+        writeCharInRoom((*bonTmp->value).getSprite(), virtualToReal((*bonTmp->value).getPosition()));
+        bonTmp = bonTmp->next;
+    } 
 }
 
 
@@ -112,6 +125,13 @@ void Map::eraseAllEntities() {
         writeCharInRoom(' ', virtualToReal((*bl->value).getPosition()));
         bl = bl->next;
     }
+
+    //erase bonuses
+    pBonus bonTmp = allEntity->headBonus;
+    while(bonTmp != NULL) {
+        writeCharInRoom(' ', virtualToReal((*bonTmp->value).getPosition()));
+        bonTmp = bonTmp->next;
+    } 
 }
 
 //funzione che restituisce il carattere che e' nella posizione
@@ -131,3 +151,4 @@ char Map::getChar(point pos){
     tmpPoint.y=r.y;
     return currentRoom->value->getPixel(tmpPoint);
 }
+

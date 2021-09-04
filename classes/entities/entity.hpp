@@ -4,12 +4,11 @@
 #include <ncurses.h>
 #include <iostream>
 #include "../misc.hpp"
+#include "element.hpp"
 
-class Entity {
+class Entity : public Element {
     protected:
-        point position;
         point desiredPos;
-        char sprite;
 
         //jump
         int direction;
@@ -30,8 +29,6 @@ class Entity {
         void setDesiredPosition(int keyPressed);
 
         //get function
-        char getSprite();
-        point getPosition();
         point getDesiredPosition();
         int getDirection();
         int getIsJumping();

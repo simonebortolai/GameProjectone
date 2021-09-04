@@ -1,6 +1,6 @@
 
-main: main.o printer.o misc.o entity.o livingentity.o miscFunc.o bullet.o space2d.o room.o simpleMap.o map.o keymanager.o 
-	g++ -o main main.o printer.o misc.o entity.o livingentity.o miscFunc.o bullet.o space2d.o room.o simpleMap.o map.o keymanager.o  -lcurses	
+main: main.o printer.o misc.o element.o entity.o livingentity.o miscFunc.o bullet.o space2d.o room.o simpleMap.o map.o keymanager.o 
+	g++ -o main main.o printer.o misc.o element.o entity.o livingentity.o miscFunc.o bullet.o space2d.o room.o simpleMap.o map.o keymanager.o -lcurses	
 
 main.o: main.cpp
 	g++ -c -Wall main.cpp
@@ -37,6 +37,9 @@ keymanager.o: ./classes/keymanager.cpp
 
 simpleMap.o: ./classes/simpleMap.cpp
 	g++ -c -Wall ./classes/simpleMap.cpp
+
+element.o: ./classes/entities/element.cpp
+	g++ -c -Wall ./classes/entities/element.cpp
 
 clean:
 	rm *.o

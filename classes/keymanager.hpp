@@ -12,11 +12,12 @@ class KeyManager{
         point dimension;
 
         bool entityCheck(Entity * ml, bool isBullet);
+        bool bonusCheck(Element * bonus, LivingEntity * player);
         void moveBullets();
         void moveMonster();
         bool interactionBulletMonster(LivingEntity * monster, Bullet * bullet);
         void interactionMonsterPlayer(LivingEntity * player, LivingEntity * monster);
-        void isBonus(point pos);
+        void useBonus(Element * bonus);
 
     public:
         KeyManager(allEntityList * allEnt, Map * map, point dimension);

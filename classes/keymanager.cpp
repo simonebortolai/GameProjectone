@@ -33,12 +33,14 @@ bool KeyManager::selectAction() {
     } else if (keyPressed == KEY_F(4)){
         return true;
     } else if((char)keyPressed == 'f'){
+       /*
         tmp.x += 1;
         if((*map).isPointAviable(tmp))
             this->isBonus(tmp);
         tmp.x -= 2;
         if((*map).isPointAviable(tmp))
             this->isBonus(tmp);
+            */
     }
 
     return false;
@@ -134,7 +136,21 @@ void KeyManager::moveEntities() {
 void KeyManager::checkAllMovement() {
     monsterList * ml = allEntities->headMonster;
     bulletList * bl = allEntities->headBullet;
+    pBonus bonTemp = allEntities->headBonus;
     bool elim;
+
+    //controllo i bonus (non sono Entity :( )
+    while (bonTemp != NULL) {
+        elim = bonusCheck(bonTemp->value, allEntities->player);
+        if (elim) {
+            Element * toBeDel = bonTemp->value;
+            (*map).writeCharInRoom(' ', (*map).virtualToReal((*toBeDel).getPosition()));
+            allEntities->headBonus = removeBonus(allEntities->headBonus, toBeDel);
+        } else {
+            bonTemp = bonTemp->next;
+        }
+    }
+
 
     entityCheck(allEntities->player, false);
 
@@ -154,7 +170,22 @@ void KeyManager::checkAllMovement() {
             bl = bl->next;
         }
     }
+
+    
 }
+
+
+bool KeyManager::bonusCheck(Element * bonus, LivingEntity * player) {
+    point desPos = (*player).getDesiredPosition();
+    point bonusPos = (*bonus).getPosition();
+    if (bonusPos.x == desPos.x && bonusPos.y == desPos.y) {
+        useBonus(bonus);
+        return true;
+    } else {
+        return false;
+    }
+}
+
 
 void KeyManager::checkInteraction() {
     bool hitted = false, death = false;
@@ -209,20 +240,20 @@ void KeyManager::checkInteraction() {
             
 */
 //controlla che bonus c'è a destra del personaggio
-void KeyManager::isBonus(point pos){
-    if((*map).getChar(pos) == 'P'){
+void KeyManager::useBonus(Element * bonus){
+    if((*bonus).getSprite() == 'P'){
         
     }
-    else if((*map).getChar(pos) == 'I'){
+    else if((*bonus).getSprite() == 'I'){
 
     }
-    else if((*map).getChar(pos) == 'V'){
+    else if((*bonus).getSprite() == 'V'){
 
     }
-    else if((*map).getChar(pos) == 'D'){
+    else if((*bonus).getSprite() == 'D'){
 
     }
-    else if((*map).getChar(pos) == 'S'){
+    else if((*bonus).getSprite() == 'S'){
 
     }
 }

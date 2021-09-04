@@ -6,9 +6,7 @@
 #define LEFT 1
 
 
-Entity::Entity(point p, char s){
-    this->sprite = s;
-    this->position = p;
+Entity::Entity(point p, char s) : Element(p, s) {
     this->desiredPos = p;
     direction = NODIR;
     jumpTicks = 10;
@@ -16,9 +14,7 @@ Entity::Entity(point p, char s){
 }
 
 
-Entity::Entity(point pos, char s, int dir) {
-    this->sprite = s;
-    this->position = pos;
+Entity::Entity(point pos, char s, int dir) : Element(pos, s) {
     this->desiredPos = pos;
     jumpTicks = 10;
     isJumping = 0;
@@ -47,16 +43,6 @@ void Entity::setDesiredPosition(int keyPressed) {
 void Entity::setDesiredPosition(point where) {
     desiredPos = where;
 }
-
-char Entity::getSprite() {
-    return sprite;
-}
-
-
-point Entity::getPosition(){
-    return position;
-}
-
 
 point Entity::getDesiredPosition(){
     return desiredPos;
