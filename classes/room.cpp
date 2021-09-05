@@ -25,6 +25,7 @@ void Room::generateRoom(int level) {
 bool Room::isEmpty(point p) {
     if (p.x < 0 || p.x >= size.x || p.y < 0 || p.y >= size.y) {
         /* cerchiamo di accedere fuori dalla memoria */
+        return false;
     }
     else if (getPixel(p) == ' ')
         return true;
@@ -37,6 +38,7 @@ bool Room::isEmpty(point p) {
 bool Room::isFloor(point p) {
     if (p.x < 0 || p.x >= size.x || p.y < 0) {
         /* cerchiamo di accedere fuori dalla memoria, di nuovo */
+        return false;
     }
     else if (p.y >= size.y)
         return true;    

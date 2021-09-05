@@ -37,6 +37,7 @@ char Space2d::getPixel(point p) {
         return (*(*(this->content+row)+col));
     } else {
         //qualcuno cerca di leggere fuori dalla mappa
+        return 'x';
     }
 }
 
