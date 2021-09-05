@@ -236,22 +236,12 @@ void KeyManager::checkInteraction() {
 
 
 
-<<<<<<< HEAD
-/*          
-        P = +punti
-        V = +vità
-        D = +danni
-*/
-
-//controlla che bonus c'è a destra del personaggio
-=======
 /*
     P = +punti
     V = +vità
     D = +danni
     controlla che bonus c'è a destra del personaggio
 */
->>>>>>> 574966a7d41ad3f61cdabfd0f04dd6532234cbe6
 void KeyManager::useBonus(Element * bonus){
     if((*bonus).getSprite() == 'P'){
         int points =  (*(allEntities->player)).getPoints() + 10;
