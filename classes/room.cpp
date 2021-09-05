@@ -90,14 +90,6 @@ void Room::generatePlatform(platformInfo & info) {
         }
 
         if (info.lastX == start.x) destra = false;    
-
-        /*
-        // lancio errori quando invade sideSpace 
-        if ( (start.x - length < info.sideSpace && !destra) || (start.x + length > size.x - info.sideSpace   && destra)) {
-            std::string a = "("  + std::to_string(start.x) + ", " + std::to_string(start.y) + ")\ncon length: " + std::to_string(length) + "\nlastX:" + std::to_string(info.lastX) + "    lastLen: " + std::to_string(info.lastLen) + "\ndestra:" + std::to_string(destra) + "\n start.x - length < 7:" + std::to_string(start.x - length < 7) + "\n("  + std::to_string(excedRight) + ", " + std::to_string(excedLeft) + ")\n" ;
-            throw std::runtime_error(std::string("Bad platform") + a);
-        }
-        */
     }
 
     /* 
@@ -126,24 +118,42 @@ int Room::getLevel() {
 
 
 pMonster Room::generateEnemies(pMonster head, point offset) {
-     //DEBUG
-    point pos {30+offset.x, 7};
+    //DEBUG
+    point pos {35+offset.x, 7};
     
     pMonster tmp = new monsterList;
     tmp->next=head;
 
-    if(level%10 == 0){
-        //generare miniboss
-        return head; //temporary
-    }
-    else{
-        int life, strength, points;
-        life = 100+level*10;
-        strength=10+level*2;
-        points = 10 + level*3;
-        tmp->value = new LivingEntity(pos, '#', life, strength, points);
-    }
+    /*
+    Tre tipi di mostri: #  &  ?
+    devo fare tre pattern diversi
+    */
+    int sel = random(1, 4);
+    char skin = '0';
+    int life, strength, points;
 
+    if (sel == 1) {
+        skin = '#';
+        life = 100;
+        strength=10;
+        points = 10;
+    } else if (sel == 2) {
+        skin = '&';
+        life = 300;
+        strength=5;
+        points = 20;
+    } else if (sel == 3) {
+        skin = '?';
+        life = 70;
+        strength=25;
+        points = 15;
+    } 
+    
+    life += level*5;
+    strength += level*2;
+    points += level*3;
+    tmp->value = new LivingEntity(pos, skin, life, strength, points);
+    
     return tmp;
 }
 

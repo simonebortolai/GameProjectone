@@ -32,17 +32,7 @@ bool KeyManager::selectAction() {
         else if((*map).isPointAviable(tmp)) allEntities->headBullet = newBullet(allEntities->headBullet, new Bullet(tmp, '-', 1, 10, dir));
     } else if (keyPressed == KEY_F(4)){
         return true;
-    } else if((char)keyPressed == 'f'){
-       /*
-        tmp.x += 1;
-        if((*map).isPointAviable(tmp))
-            this->isBonus(tmp);
-        tmp.x -= 2;
-        if((*map).isPointAviable(tmp))
-            this->isBonus(tmp);
-            */
-    }
-
+    } 
     return false;
 }
 

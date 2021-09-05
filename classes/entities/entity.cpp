@@ -66,6 +66,7 @@ int Entity::getDirection() {
 
 void Entity::animation(bool isMonster) {
     if(!isMonster) {
+        //siamo il giocatore, se stiamo saltando va eseguita la animazione
         if(isJumping == 1) {
             if(jumpTicks > 5)
                 desiredPos.y--;
@@ -82,16 +83,36 @@ void Entity::animation(bool isMonster) {
             jumpTicks = 10;
         }
     } else {
-        if(jumpTicks >=5)
-            desiredPos.y--;
-        else if(jumpTicks <= 0 && jumpTicks > -5)
-            desiredPos.x--;
-        else if(jumpTicks <= -5 && jumpTicks > -10)
-            desiredPos.x++;
-        else if(jumpTicks <= -10)
-            jumpTicks = 11;
+        //eseguo l'animazione del mostro
+        if (sprite == '#') {
+            if(jumpTicks >=5)
+                desiredPos.y--;
+            else if(jumpTicks <= 0 && jumpTicks > -5)
+                desiredPos.x--;
+            else if(jumpTicks <= -5 && jumpTicks > -10)
+                desiredPos.x++;
+            else if(jumpTicks <= -10)
+                jumpTicks = 11;
 
-        jumpTicks--;
+            jumpTicks--;
+        } else if (sprite == '?') {
+            if(jumpTicks <= 0 && jumpTicks > -5)
+                desiredPos.x--;
+            else if(jumpTicks <= -10)
+                jumpTicks = 11;
+
+            jumpTicks--;
+        } else if (sprite == '&') {
+            if(jumpTicks <= 0 && jumpTicks > -5)
+                desiredPos.x--;
+            else if(jumpTicks <= -5 && jumpTicks > -10)
+                desiredPos.x++;
+            else if(jumpTicks <= -10)
+                jumpTicks = 11;
+            jumpTicks--;
+        }
+
+        
     }
 
 }
