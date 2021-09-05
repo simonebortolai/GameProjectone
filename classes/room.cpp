@@ -6,10 +6,10 @@ Room::Room(point size, int level) : Space2d(size) {
     generateRoom(level);
 }
 
-
+/* genera il contenuto fisso (nemici e bonus esclusi della stanza) */
 void Room::generateRoom(int level) {
     point tmp {size.x-1, 0};
-    setPixel(tmp, (char)((int)'a' + level));
+    setPixel(tmp, (char)((int)'a' + level));    //indicatore della stanza
 
     platformInfo info;
     info.y = 4;
@@ -23,8 +23,9 @@ void Room::generateRoom(int level) {
 
 
 bool Room::isEmpty(point p) {
-    if (p.x < 0 || p.x >= size.x || p.y < 0 || p.y >= size.y)
-        throw std::invalid_argument( "Qualche buon tempone chiede a Room se un pixel fori dallo schermo è voto" );
+    if (p.x < 0 || p.x >= size.x || p.y < 0 || p.y >= size.y) {
+        /* cerchiamo di accedere fuori dalla memoria */
+    }
     else if (getPixel(p) == ' ')
         return true;
     else
@@ -34,8 +35,9 @@ bool Room::isEmpty(point p) {
 
 
 bool Room::isFloor(point p) {
-    if (p.x < 0 || p.x >= size.x || p.y < 0)
-        throw std::invalid_argument( "Qualche buon tempone chiede a Room se un pixel fori dallo schermo è voto" );
+    if (p.x < 0 || p.x >= size.x || p.y < 0) {
+        /* cerchiamo di accedere fuori dalla memoria, di nuovo */
+    }
     else if (p.y >= size.y)
         return true;    
     else if(getPixel(p) == '=')
@@ -45,14 +47,13 @@ bool Room::isFloor(point p) {
 }
 
 
+/* Scrive nelle varie celle la piattaforma */
 void Room::drawPlatform(point start, int len) {
     for (int i = 0; i < len; i++) {
         point tmp {start.x + i, start.y};
         setPixel(tmp, '=');
     }
 }
-
-
 
 
 
@@ -122,11 +123,10 @@ pMonster Room::generateEnemies(pMonster head, point offset) {
     point pos {35+offset.x, 7};
     
     pMonster tmp = new monsterList;
-    tmp->next=head;
 
     /*
     Tre tipi di mostri: #  &  ?
-    devo fare tre pattern diversi
+    ne viene scelto uno casualmente.
     */
     int sel = random(1, 4);
     char skin = '0';
@@ -147,33 +147,39 @@ pMonster Room::generateEnemies(pMonster head, point offset) {
         life = 70;
         strength=25;
         points = 15;
-    } 
+    }
     
+    //aumentiamo le statistiche in base al livello
     life += level*5;
     strength += level*2;
     points += level*3;
-    tmp->value = new LivingEntity(pos, skin, life, strength, points);
-    
+
+    /* lo aggiungo in testa alla lista dei nemici */
+    tmp->value = new LivingEntity(pos, skin, life, strength, points); 
+    tmp->next=head;
     return tmp;
 }
 
 
 pBonus Room::generateBonus(pBonus head, point offset) {
-    point pos {4+offset.x, 21};
+    point pos {55+offset.x, 21};
     pBonus tmp = new bonusList;
 
+    /* scelgo casualmente che tipo di bonus generare */
     int bonusType = random(1, 4);
     char type = '!';
     if (bonusType == 1) type = 'P';
     else if (bonusType == 2) type = 'V';
     else if (bonusType == 3) type = 'D';
 
+    /* Lo aggiungo in testa alla lista dei bonus */
     tmp->value = new Element(pos, type);
     tmp->next = head;
     return tmp; 
 }
 
 
+/* ritorna il carattere che c'è in quella posizione */
 char Room::getChar(point pos){
     return getPixel(pos);
 }

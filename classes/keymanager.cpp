@@ -227,14 +227,11 @@ void KeyManager::checkInteraction() {
 
 
 /*          
-            P = +punti
-            I = invicibilità
-            V = +vità
-            D = +danni
-            
-            S = +velocità
-            
+        P = +punti
+        V = +vità
+        D = +danni
 */
+
 //controlla che bonus c'è a destra del personaggio
 void KeyManager::useBonus(Element * bonus){
     if((*bonus).getSprite() == 'P'){

@@ -3,9 +3,7 @@
 
 #include "misc.hpp"
 #include "space2d.hpp"
-#include <stdexcept>
 #include <stdlib.h>     /* srand, rand */
-#include <string>
 #include "miscFunc.hpp"
 #include <iostream>
 
@@ -30,7 +28,7 @@ class Room : public Space2d {
     protected:
         int level;
         void generateRoom(int level);
-
+    
         void generatePlatform(platformInfo & info);
         void generateAllPlatform(int n, int y_span, platformInfo & info);
         void drawPlatform(point start, int len);
