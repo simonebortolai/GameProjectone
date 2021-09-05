@@ -25,8 +25,6 @@ Varie:
 
 Considerazioni su come fare i bonus:
 
-    Li infiliamo nella struct allEntity per non perderle se cambiamo stanza.
-    Io direi di implementare i bonus solo a livello di codice, senza creare una classe specifica.
     Ci basta la classe entity:
         - Ci serve sapere la posizione del bonus generato (forse) alla creazione della stanza (Fabio)
         - Ci serve lo sprite di riconoscimento che per me basta sia una lettera tipo
@@ -38,11 +36,6 @@ Considerazioni su come fare i bonus:
             S = +velocità
             L = laser
 
-    Quindi basta mettere nella classe iteratrice degli if dove si prende la
-    lettera vicino al player e si esegue gli effetti dei bonus o malus.
-    Volendo possiamo farli a tempo o permanenti.
-    Per stamparli nelle stanze bisogna modificare la classe map.
-    Per aggiungerli alla lista bisogna modificare miscFunc
 
 by Genos
 

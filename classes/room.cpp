@@ -151,7 +151,14 @@ pMonster Room::generateEnemies(pMonster head, point offset) {
 pBonus Room::generateBonus(pBonus head, point offset) {
     point pos {4+offset.x, 21};
     pBonus tmp = new bonusList;
-    tmp->value = new Element(pos, 'L');
+
+    int bonusType = random(1, 4);
+    char type = '!';
+    if (bonusType == 1) type = 'P';
+    else if (bonusType == 2) type = 'V';
+    else if (bonusType == 3) type = 'D';
+
+    tmp->value = new Element(pos, type);
     tmp->next = head;
     return tmp; 
 }

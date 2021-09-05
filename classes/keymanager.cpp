@@ -233,6 +233,9 @@ void KeyManager::checkInteraction() {
         ml = ml->next;
     }
 }
+
+
+
 /*          
             P = +punti
             I = invicibilità
@@ -245,18 +248,15 @@ void KeyManager::checkInteraction() {
 //controlla che bonus c'è a destra del personaggio
 void KeyManager::useBonus(Element * bonus){
     if((*bonus).getSprite() == 'P'){
-        
-    }
-    else if((*bonus).getSprite() == 'I'){
-
+        int points =  (*(allEntities->player)).getPoints() + 10;
+        (*(allEntities->player)).setPoints(points);
     }
     else if((*bonus).getSprite() == 'V'){
-
+        int life =  20;
+        (*(allEntities->player)).addLife(life);
     }
     else if((*bonus).getSprite() == 'D'){
-
-    }
-    else if((*bonus).getSprite() == 'S'){
-
+        int strength =  (*(allEntities->player)).getStrength() + 5;
+        (*(allEntities->player)).setStrength(strength);
     }
 }
