@@ -24,11 +24,12 @@ pBonus newBonus(pBonus list, Element * b) {
 }
 
 
-/* nota bene, qua per controllare quale oggetto eliminare viene controllato
+/* 
+    nota bene, qua per controllare quale oggetto eliminare viene controllato
     che l'indirizzo di b sia uguale all'indirizzo degli elementi dentro list
     non so quanto sia giusto, forse dovremmo dare agli oggetti un ID personale e
     controllare quello 
- */
+*/
 pBullet removeBullet(pBullet list, Bullet *b){
     pBullet prev=list, tmp_head = list, del=NULL;
     bool v = false;
@@ -80,7 +81,7 @@ pMonster removeMonster(pMonster list, LivingEntity *b){
     return list;
 }
 
-//hdsauighuiaergjc controlla qua
+
 pBonus removeBonus(pBonus list, Element *b){
     pBonus prev=list, tmp_head = list, del=NULL;
     bool v = false;
