@@ -53,7 +53,9 @@ int main() {
          //eseguo opearazioni ricorrenti ogni ciclo
         loop();
     }
-    
+
     endwin();
+
+    printf("Game over! Hai totalizzato %d punti.\n", listAllEntity.player->getPoints());
     
 }

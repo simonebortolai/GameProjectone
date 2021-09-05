@@ -11,6 +11,7 @@ KeyManager::KeyManager(allEntityList * allEnt, Map * map, point dimension) {
 }
 
 
+// a seconda di cosa viene premuto esegue una azione
 bool KeyManager::selectAction() {
     LivingEntity * player = this->allEntities->player;
     int dir = (*player).getDirection(), keyPressed = getch();
@@ -57,7 +58,7 @@ bool KeyManager::entityCheck(Entity * ent, bool isBullet) {
         else if(!(*map).isPointAviable(p1))                         // se va in un punto occupato
             (*ent).setDesiredPosition((*ent).getPosition());            // torna a dove era prima
 
-        //gravity
+        // applica la gravità alle entità mostro e player
         if((*ent).getIsJumping() == 0) {
             (*ent).setDesiredPosition(KEY_DOWN);
             p2 = (*ent).getDesiredPosition();
@@ -76,6 +77,7 @@ bool KeyManager::entityCheck(Entity * ent, bool isBullet) {
 }
 
 
+// muove gli spari avanti
 void KeyManager::moveBullets() {
     bulletList * bl = allEntities->headBullet;
 
@@ -86,6 +88,7 @@ void KeyManager::moveBullets() {
 }
 
 
+// muove i mostri con il pattern di animazione
 void KeyManager::moveMonster() {
     monsterList * ml = allEntities->headMonster;
     
@@ -119,19 +122,20 @@ void KeyManager::interactionMonsterPlayer(LivingEntity * pl, LivingEntity * mn) 
 
 
 void KeyManager::setDesiredPositionOfAllEntities() {
-    (*allEntities->player).animation(false);
+    (*allEntities->player).animation(false); // continua l'animazione del jump
     moveBullets();
     moveMonster();
 }
 
 
+// controlla i movimenti di tutte le entità tramite entityCheck (tranne i bonus, che vengono controllati da bonusCheck)
 void KeyManager::checkAllMovement() {
     monsterList * ml = allEntities->headMonster;
     bulletList * bl = allEntities->headBullet;
     pBonus bonTemp = allEntities->headBonus;
     bool elim;
 
-    //controllo i bonus (non sono Entity :( )
+    //controllo sui bonus: usa e rimuove il bonus
     while (bonTemp != NULL) {
         elim = bonusCheck(bonTemp->value, allEntities->player);
         if (elim) {
@@ -168,6 +172,7 @@ void KeyManager::checkAllMovement() {
 }
 
 
+// controlla se il giocatore è vicino a un bonus e lo usa
 bool KeyManager::bonusCheck(Element * bonus, LivingEntity * player) {
     point desPos = (*player).getDesiredPosition();
     point bonusPos = (*bonus).getPosition();
@@ -180,12 +185,17 @@ bool KeyManager::bonusCheck(Element * bonus, LivingEntity * player) {
 }
 
 
+/*
+controlla due tipi di interazione tra gli oggetti:
+- interazione tra sparo del personaggio e mostro
+- interazione tra mostro e personaggio
+*/
 void KeyManager::checkInteraction() {
     bool hitted = false, death = false;
     monsterList * ml = allEntities->headMonster;
     bulletList * bl = allEntities->headBullet;
 
-    /* controllo se ogni sparo è vicino a un mostro */
+    // controllo se ogni sparo è vicino a un mostro
     while (ml!= NULL) {
         death = false;
         hitted = false;
@@ -216,7 +226,7 @@ void KeyManager::checkInteraction() {
             ml = ml->next;
     }
 
-    /* controllo se ogni mostro è vicino al giocatore */
+    // controllo se ogni mostro è vicino al giocatore
     ml = allEntities->headMonster;
     while (ml!= NULL) {
         interactionMonsterPlayer(allEntities->player, ml->value);
@@ -226,6 +236,7 @@ void KeyManager::checkInteraction() {
 
 
 
+<<<<<<< HEAD
 /*          
         P = +punti
         V = +vità
@@ -233,6 +244,14 @@ void KeyManager::checkInteraction() {
 */
 
 //controlla che bonus c'è a destra del personaggio
+=======
+/*
+    P = +punti
+    V = +vità
+    D = +danni
+    controlla che bonus c'è a destra del personaggio
+*/
+>>>>>>> 574966a7d41ad3f61cdabfd0f04dd6532234cbe6
 void KeyManager::useBonus(Element * bonus){
     if((*bonus).getSprite() == 'P'){
         int points =  (*(allEntities->player)).getPoints() + 10;
