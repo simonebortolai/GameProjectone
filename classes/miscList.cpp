@@ -31,8 +31,8 @@ pBonus newBonus(pBonus list, Element * b) {
 //rimuove il proiettile desiderato dalla lista
 pBullet removeBullet(pBullet list, Bullet *b){
     pBullet prev=list, tmp_head = list, del=NULL;
-    bool v = false;
-    while(tmp_head != NULL && !v){
+    bool found = false;
+    while(tmp_head != NULL && !found){
         if(tmp_head->value == b){
             if(tmp_head == list){
                 del = list;
@@ -44,9 +44,9 @@ pBullet removeBullet(pBullet list, Bullet *b){
             }   
             delete del;
             del = NULL;
-            v = true;
+            found = true;
         }
-        if(!v) {
+        if(!found) {
             prev = tmp_head;
             tmp_head = tmp_head->next;
         }
@@ -58,8 +58,8 @@ pBullet removeBullet(pBullet list, Bullet *b){
 //rimuove il mostro desiderato dalla lista
 pMonster removeMonster(pMonster list, LivingEntity *b){
     pMonster prev=list, tmp_head = list, del=NULL;
-    bool v = false;
-    while(tmp_head != NULL && !v){
+    bool found = false;
+    while(tmp_head != NULL && !found){
         if(tmp_head->value == b){
             if(tmp_head == list){
                 del = list;
@@ -71,9 +71,9 @@ pMonster removeMonster(pMonster list, LivingEntity *b){
             }   
             delete del;
             del = NULL;
-            v = true;
+            found = true;
         }
-        if(!v) {
+        if(!found) {
             prev = tmp_head;
             tmp_head = tmp_head->next;
         }
@@ -85,8 +85,8 @@ pMonster removeMonster(pMonster list, LivingEntity *b){
 //rimuove il bonus desiderato dalla lista
 pBonus removeBonus(pBonus list, Element *b){
     pBonus prev=list, tmp_head = list, del=NULL;
-    bool v = false;
-    while(tmp_head != NULL && !v){
+    bool found = false;
+    while(tmp_head != NULL && !found){
         if(tmp_head->value == b){
             if(tmp_head == list){
                 del = list;
@@ -98,9 +98,9 @@ pBonus removeBonus(pBonus list, Element *b){
             }   
             delete del;
             del = NULL;
-            v = true;
+            found = true;
         }
-        if(!v) {
+        if(!found) {
             prev = tmp_head;
             tmp_head = tmp_head->next;
         }
