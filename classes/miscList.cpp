@@ -1,6 +1,6 @@
 #include "miscList.hpp"
 
-
+//aggiunge un nuovo proiettile alla lista
 pBullet newBullet(pBullet list, Bullet * b){
     pBullet tmp=new bulletList;
     tmp->value=b;
@@ -8,7 +8,7 @@ pBullet newBullet(pBullet list, Bullet * b){
     return tmp;
 }
 
-
+//aggiunge un nuovo mostro alla lista 
 pMonster newMonster(pMonster list, LivingEntity * b){
     pMonster tmp=new monsterList;
     tmp->value=b;
@@ -16,6 +16,7 @@ pMonster newMonster(pMonster list, LivingEntity * b){
     return tmp;
 }
 
+//aggiunge un nuovo bunus alla lisat
 pBonus newBonus(pBonus list, Element * b) {
     pBonus tmp = new bonusList;
     tmp->value = b;
@@ -24,12 +25,7 @@ pBonus newBonus(pBonus list, Element * b) {
 }
 
 
-/* 
-    nota bene, qua per controllare quale oggetto eliminare viene controllato
-    che l'indirizzo di b sia uguale all'indirizzo degli elementi dentro list
-    non so quanto sia giusto, forse dovremmo dare agli oggetti un ID personale e
-    controllare quello 
-*/
+//rimuove il proiettile desiderato dalla lista
 pBullet removeBullet(pBullet list, Bullet *b){
     pBullet prev=list, tmp_head = list, del=NULL;
     bool v = false;
@@ -55,7 +51,7 @@ pBullet removeBullet(pBullet list, Bullet *b){
     return list;
 }
 
-
+//rimuove il mostro desiderato dalla lista
 pMonster removeMonster(pMonster list, LivingEntity *b){
     pMonster prev=list, tmp_head = list, del=NULL;
     bool v = false;
@@ -81,7 +77,7 @@ pMonster removeMonster(pMonster list, LivingEntity *b){
     return list;
 }
 
-
+//rimuove il bonus desiderato dalla lista
 pBonus removeBonus(pBonus list, Element *b){
     pBonus prev=list, tmp_head = list, del=NULL;
     bool v = false;
