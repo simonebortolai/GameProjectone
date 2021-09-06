@@ -5,7 +5,7 @@
 #include "miscList.hpp"
 #include "map.hpp"
 
-class KeyManager{
+class KeyManager {
     private:
         allEntityList * allEntities;
         Map * map;
@@ -26,7 +26,6 @@ class KeyManager{
         void setDesiredPositionOfAllEntities();
         void checkAllMovement();
         void checkInteraction();
-
 };
 
 #endif

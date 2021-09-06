@@ -7,7 +7,6 @@
 #include "room.hpp"
 #include "simpleMap.hpp"
 
-
 class Map : public SimpleMap {
     protected:
         allEntityList * allEntity;
@@ -23,7 +22,6 @@ class Map : public SimpleMap {
        
         Map(allEntityList * al, point dim);
         void writeOnMapAllEntities();
-        char getChar(point pos);
 };
 
 #endif

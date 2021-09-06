@@ -5,7 +5,6 @@
 #include "space2d.hpp"
 #include <stdlib.h>     /* srand, rand */
 #include "miscList.hpp"
-#include <iostream>
 
 
 /*

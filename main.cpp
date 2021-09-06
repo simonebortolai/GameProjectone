@@ -50,7 +50,7 @@ int main() {
         //stampo a schermo la mappa visualizzata dal player e UI di gioco
         printEverything(map.getVisualizedWindow(), roomSize, dimension, listAllEntity.player);
 
-         //eseguo opearazioni ricorrenti ogni ciclo
+        //eseguo opearazioni ricorrenti ogni ciclo
         loop();
     }
 

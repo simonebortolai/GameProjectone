@@ -6,7 +6,8 @@ Room::Room(point size, int level) : Space2d(size) {
     generateRoom(level);
 }
 
-/* genera il contenuto fisso (nemici e bonus esclusi della stanza) */
+
+// genera il contenuto fisso (nemici e bonus esclusi della stanza)
 void Room::generateRoom(int level) {
     point tmp {size.x-1, 0};
     setPixel(tmp, (char)((int)'a' + level));    //indicatore della stanza
@@ -34,7 +35,6 @@ bool Room::isEmpty(point p) {
 }
 
 
-
 bool Room::isFloor(point p) {
     if (p.x < 0 || p.x >= size.x || p.y < 0) {
         /* cerchiamo di accedere fuori dalla memoria, di nuovo */
@@ -56,7 +56,6 @@ void Room::drawPlatform(point start, int len) {
         setPixel(tmp, '=');
     }
 }
-
 
 
 void Room::generatePlatform(platformInfo & info) {
@@ -114,6 +113,7 @@ void Room::generateAllPlatform(int n, int y_span, platformInfo & info) {
         info.y += y_span;
     }
 }
+
 
 int Room::getLevel() {
     return level;

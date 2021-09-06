@@ -10,7 +10,6 @@ class Bullet : public Entity {
         int damage;
         
     public:
-        //costruttori
         Bullet(point position, char sprite, int speed, int damage, int direction);
 
         void goForward();
@@ -23,6 +22,5 @@ class Bullet : public Entity {
         int getSpeed();
         int getDamage();
 };
-
 
 #endif

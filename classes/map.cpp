@@ -9,7 +9,7 @@ Map::Map(allEntityList * al, point dim) : SimpleMap(dim) {
 void Map::addRoomToTail() {
     SimpleMap::addRoomToTail();
     
-    //get last last room
+    // get last room
     pRoomList tmp = firstRoom;
     int counter = 0;
     while (tmp->next != NULL) {
@@ -28,6 +28,7 @@ void Map::addRoomToTail() {
 }
 
 
+// crea una nuova stanza se il giocatore vuole cambiare stanza e non esiste
 void Map::checkPlayerPosition(roomPoint playerDesPos) {
     if(playerDesPos.nRoom == counter && playerDesPos.x >= boxDim.x-1)
         addRoomToTail();
@@ -42,8 +43,8 @@ void Map::checkPlayerPosition(roomPoint playerDesPos) {
 
 
 void Map::writeOnMapAllEntities() {
-    eraseAllEntities(); //cancella le entità
-    writeAllEntities(); //le scrive dove si devono muovere e setta la nuova posizione
+    eraseAllEntities(); // cancella le entità
+    writeAllEntities(); // le scrive dove si devono muovere e setta la nuova posizione
     changePos();
 }
 
@@ -54,14 +55,14 @@ void Map::writePlayer() {
     //prendo in che stanza è il giocatore
     roomPoint playerDesPos = virtualToReal((*player).getDesiredPosition());
     
-
     checkPlayerPosition(playerDesPos); //controlli sulla posizione del player
 
     //setto
-    writeCharInRoom('@', playerDesPos);
+    writeCharInRoom(player->getSprite(), playerDesPos);
 }
 
 
+// cambia la posizione delle entità a quella desiderata
 void Map::changePos() {
     LivingEntity * player = this->allEntity->player;
     (*player).setPosition((*player).getDesiredPosition());
@@ -80,6 +81,7 @@ void Map::changePos() {
 }
 
 
+// scrive nelle stanze tutte le entità
 void Map::writeAllEntities() {
     //write player
     writePlayer();
@@ -133,12 +135,3 @@ void Map::eraseAllEntities() {
         bonTmp = bonTmp->next;
     } 
 }
-
-//restituisce il carattere nella posizione specificata nella finistra del giocatore
-//non era necessario farlo generico per prendere punti di altre stanze
-char Map::getChar(point pos){
-    roomPoint r = virtualToReal(pos);
-    point tmpPoint {r.x, r.y};
-    return currentRoom->value->getPixel(tmpPoint);
-}
-

@@ -1,6 +1,5 @@
 #include "entity.hpp"
 
-
 #define NODIR -1
 #define RIGHT 0
 #define LEFT 1
@@ -40,9 +39,11 @@ void Entity::setDesiredPosition(int keyPressed) {
     }
 }
 
+
 void Entity::setDesiredPosition(point where) {
     desiredPos = where;
 }
+
 
 point Entity::getDesiredPosition(){
     return desiredPos;
@@ -64,6 +65,7 @@ int Entity::getDirection() {
 }
 
 
+// movimento per mostri e salti
 void Entity::animation(bool isMonster) {
     if(!isMonster) {
         //siamo il giocatore, se stiamo saltando va eseguita la animazione

@@ -5,22 +5,12 @@ void startDraw() {
     erase();
 }
 
+
 //disegna le tutto in una volta quello che c'è nel buffer
 void endDraw() {
     refresh();
 }
 
-//disegna un carattere ch in una posizione definita (x,y)
-void printChar(point point, char ch) {
-    move(point.y, point.x);
-    printw("%c", ch);
-}
-
-//scrive una stringa in una posizione definita (x,y)
-void printString(point point, const char* string) {
-    move(point.y, point.x);
-    printw("%s", string);
-}
 
 //date basi e altezza disegna un rettangolo 
 void drawRect(int startX, int startY, int mwidth, int mheigth) {
@@ -41,6 +31,7 @@ void drawRect(int startX, int startY, int mwidth, int mheigth) {
         }
     }
 }
+
 
 void printRoom(char ** cont, point start, point size) {
     for (int i = 0; i < size.y; i++) {
