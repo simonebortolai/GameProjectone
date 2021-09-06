@@ -1,5 +1,5 @@
-#ifndef MISCFUNC_HPP_INCLUDED
-#define MISCFUNC_HPP_INCLUDED
+#ifndef miscList_HPP_INCLUDED
+#define miscList_HPP_INCLUDED
 
 #include <ncurses.h>
 #include "./entities/bullet.hpp"

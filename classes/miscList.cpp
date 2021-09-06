@@ -1,4 +1,4 @@
-#include "miscFunc.hpp"
+#include "miscList.hpp"
 
 
 pBullet newBullet(pBullet list, Bullet * b){

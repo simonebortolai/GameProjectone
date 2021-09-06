@@ -3,7 +3,7 @@
 
 #include <ncurses.h>
 #include "misc.hpp"
-#include "miscFunc.hpp"
+#include "miscList.hpp"
 #include "room.hpp"
 #include "simpleMap.hpp"
 

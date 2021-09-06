@@ -4,7 +4,7 @@
 #include "misc.hpp"
 #include "space2d.hpp"
 #include <stdlib.h>     /* srand, rand */
-#include "miscFunc.hpp"
+#include "miscList.hpp"
 #include <iostream>
 
 

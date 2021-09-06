@@ -2,7 +2,7 @@
 #define KEYMANAGER_HPP_INCLUDED
 
 #include <ncurses.h>
-#include "miscFunc.hpp"
+#include "miscList.hpp"
 #include "map.hpp"
 
 class KeyManager{

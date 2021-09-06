@@ -2,7 +2,7 @@
 #include <stdlib.h>   /* srand, rand */
 #include <time.h>     /* time (per srand e rand) */
 #include "./classes/misc.hpp"
-#include "./classes/miscFunc.hpp"
+#include "./classes/miscList.hpp"
 #include "./classes/printer.hpp"
 #include "./classes/map.hpp"
 #include "./classes/keymanager.hpp"
