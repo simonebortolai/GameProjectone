@@ -46,9 +46,6 @@ pBonus newBonus(pBonus list, Element * b);
 
 pBullet removeBullet(pBullet list, Bullet * b);//eliminaSparo
 pMonster removeMonster(pMonster list, LivingEntity * b);//eliminaMostro
-<<<<<<< HEAD:classes/miscFunc.hpp
-=======
 pBonus removeBonus(pBonus list, Element * b);
->>>>>>> addBonus:classes/miscList.hpp
 
 #endif
