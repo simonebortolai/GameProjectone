@@ -8,7 +8,6 @@ Questa classe serve a gestire uno spazio bidimensionale, permettendomi di accede
 Sono costretto a dichiarare content come puntatore a puntatori anche se in realtà il size è fissato e conosciuto durante la compilazione
 */
 
-
 class Space2d {
     protected:
         point size;
@@ -22,8 +21,5 @@ class Space2d {
         char getPixel(point p);
 
 };
-
-
-
 
 #endif

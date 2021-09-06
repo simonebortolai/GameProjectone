@@ -1,7 +1,6 @@
 #ifndef ENTITY_HPP_INCLUDED
 #define ENTITY_HPP_INCLUDED
 
-#include <ncurses.h>
 #include "../misc.hpp"
 #include "element.hpp"
 
@@ -15,7 +14,6 @@ class Entity : public Element {
         int isJumping;
 
     public:
-        //costructors
         Entity(point position, char sprite);
         Entity(point position, char sprite, int direction);
 

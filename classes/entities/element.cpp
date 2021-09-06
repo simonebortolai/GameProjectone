@@ -6,9 +6,11 @@ Element::Element(point p, char s){
     this->position = p;
 };
 
+
 char Element::getSprite() {
     return sprite;
 }
+
 
 point Element::getPosition(){
     return position;

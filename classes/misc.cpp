@@ -1,5 +1,6 @@
 #include "misc.hpp"
 
+
 //iniziallizza lo schermo
 void initScreen() {
     initscr();

@@ -4,7 +4,6 @@
 #include "entity.hpp"
 #include "../misc.hpp"
 
-
 class LivingEntity : public Entity {
     private:
         int life;
@@ -12,7 +11,6 @@ class LivingEntity : public Entity {
         int points;
 
     public:
-        //costruttori
         LivingEntity(point dim, char sprite, int life, int strength, int points);
 
         //set function
@@ -28,6 +26,5 @@ class LivingEntity : public Entity {
         int getPoints();
 
 };
-
 
 #endif

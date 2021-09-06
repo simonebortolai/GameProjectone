@@ -4,6 +4,7 @@
 #define RIGHT 0
 #define LEFT 1
 
+
 Bullet::Bullet(point position, char sprite, int speed, int damage, int direction) : Entity(position, sprite, direction) {
     this->speed = speed;
     this->damage = damage;

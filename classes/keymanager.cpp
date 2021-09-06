@@ -4,6 +4,7 @@
 #define RIGHT 0
 #define LEFT 1
 
+
 KeyManager::KeyManager(allEntityList * allEnt, Map * map, point dimension) {
     allEntities = allEnt;
     this->map = map;
@@ -110,6 +111,7 @@ bool KeyManager::interactionBulletMonster(LivingEntity * monster, Bullet * bulle
     }
     return false;
 }
+
 
 //toglie vita al player se sono vicini
 void KeyManager::interactionMonsterPlayer(LivingEntity * pl, LivingEntity * mn) {
@@ -233,7 +235,6 @@ void KeyManager::checkInteraction() {
         ml = ml->next;
     }
 }
-
 
 
 /*

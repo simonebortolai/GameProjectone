@@ -1,5 +1,6 @@
 #include "miscList.hpp"
 
+
 //aggiunge un nuovo proiettile alla lista
 pBullet newBullet(pBullet list, Bullet * b){
     pBullet tmp=new bulletList;
@@ -8,6 +9,7 @@ pBullet newBullet(pBullet list, Bullet * b){
     return tmp;
 }
 
+
 //aggiunge un nuovo mostro alla lista 
 pMonster newMonster(pMonster list, LivingEntity * b){
     pMonster tmp=new monsterList;
@@ -15,6 +17,7 @@ pMonster newMonster(pMonster list, LivingEntity * b){
     tmp->next=list;
     return tmp;
 }
+
 
 //aggiunge un nuovo bunus alla lisat
 pBonus newBonus(pBonus list, Element * b) {
@@ -51,6 +54,7 @@ pBullet removeBullet(pBullet list, Bullet *b){
     return list;
 }
 
+
 //rimuove il mostro desiderato dalla lista
 pMonster removeMonster(pMonster list, LivingEntity *b){
     pMonster prev=list, tmp_head = list, del=NULL;
@@ -76,6 +80,7 @@ pMonster removeMonster(pMonster list, LivingEntity *b){
     }
     return list;
 }
+
 
 //rimuove il bonus desiderato dalla lista
 pBonus removeBonus(pBonus list, Element *b){

@@ -27,8 +27,8 @@ class SimpleMap {
 
 
     public:
-       
         SimpleMap(point dim);
+        
         roomPoint virtualToReal(point p);
         point realToVirtual(roomPoint rPoint);
         bool isPointAviable(point p);
@@ -40,7 +40,6 @@ class SimpleMap {
         //get function
         char ** getVisualizedWindow();
         int getLevel();
-
 };
 
 #endif

@@ -14,6 +14,7 @@ struct bulletList {
 
 typedef bulletList *pBullet;
 
+
 struct monsterList {
     LivingEntity *value;
     monsterList *next;
@@ -40,12 +41,12 @@ struct allEntityList {
 typedef allEntityList *pEntity;
 
 
-pBullet newBullet(pBullet list, Bullet * b);//nuovoSparo
-pMonster newMonster(pMonster list, LivingEntity * b);//nuovoMostro
+pBullet newBullet(pBullet list, Bullet * b);
+pMonster newMonster(pMonster list, LivingEntity * b);
 pBonus newBonus(pBonus list, Element * b);
 
-pBullet removeBullet(pBullet list, Bullet * b);//eliminaSparo
-pMonster removeMonster(pMonster list, LivingEntity * b);//eliminaMostro
+pBullet removeBullet(pBullet list, Bullet * b);
+pMonster removeMonster(pMonster list, LivingEntity * b);
 pBonus removeBonus(pBonus list, Element * b);
 
 #endif
