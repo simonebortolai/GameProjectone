@@ -1,9 +1,30 @@
 #include "map.hpp"
-using namespace std;
 
 
 Map::Map(allEntityList * al, point dim) : SimpleMap(dim) {
     this->allEntity = al;
+}
+
+
+void Map::addRoomToTail() {
+    SimpleMap::addRoomToTail();
+    
+    //get last last room
+    pRoomList tmp = firstRoom;
+    int counter = 0;
+    while (tmp->next != NULL) {
+        tmp = tmp->next;
+        counter++;
+    }
+
+    point offset = realToVirtual({counter, 0, 0});
+    this->allEntity->headMonster = (*(tmp->value)).generateEnemies(this->allEntity->headMonster, offset);
+
+    //genera il bonus (una volta su 3)
+    int chance = random(1, 2);
+    if (chance == 1) {
+        this->allEntity->headBonus = (*(tmp->value)).generateBonus(this->allEntity->headBonus, offset);
+    }
 }
 
 
@@ -20,7 +41,7 @@ void Map::checkPlayerPosition(roomPoint playerDesPos) {
 }
 
 
-void Map::moveAllEntities() {
+void Map::writeOnMapAllEntities() {
     eraseAllEntities(); //cancella le entità
     writeAllEntities(); //le scrive dove si devono muovere e setta la nuova posizione
     changePos();
@@ -76,6 +97,13 @@ void Map::writeAllEntities() {
         writeCharInRoom((*bl->value).getSprite(), virtualToReal((*bl->value).getDesiredPosition()));
         bl = bl->next;
     }
+
+    //write bonus
+    pBonus bonTmp = allEntity->headBonus;
+    while(bonTmp != NULL) {
+        writeCharInRoom((*bonTmp->value).getSprite(), virtualToReal((*bonTmp->value).getPosition()));
+        bonTmp = bonTmp->next;
+    } 
 }
 
 
@@ -97,4 +125,20 @@ void Map::eraseAllEntities() {
         writeCharInRoom(' ', virtualToReal((*bl->value).getPosition()));
         bl = bl->next;
     }
+
+    //erase bonuses
+    pBonus bonTmp = allEntity->headBonus;
+    while(bonTmp != NULL) {
+        writeCharInRoom(' ', virtualToReal((*bonTmp->value).getPosition()));
+        bonTmp = bonTmp->next;
+    } 
 }
+
+//restituisce il carattere nella posizione specificata nella finistra del giocatore
+//non era necessario farlo generico per prendere punti di altre stanze
+char Map::getChar(point pos){
+    roomPoint r = virtualToReal(pos);
+    point tmpPoint {r.x, r.y};
+    return currentRoom->value->getPixel(tmpPoint);
+}
+

@@ -1,5 +1,6 @@
 #include "printer.hpp"
 
+
 void startDraw() {
     erase();
 }
@@ -50,9 +51,30 @@ void printRoom(char ** cont, point start, point size) {
     }
 }
 
-void printEverything(char ** room, point roomSize, point dim) {
-    //startDraw();
+
+void printUI(int dim, LivingEntity* player) {
+    move(1,dim+1);
+    printw("PUNTEGGIO");
+    move(1,dim+11);
+    printw("%d",(*player).getPoints());
+    move(3,dim+1);
+    printw("STATISTICHE");
+    move(5,dim+1);
+    printw("Vita:");
+    move(5,dim+11);
+    printw("%d",(*player).getLife());
+    move(7,dim+1);
+    printw("Forza:");
+    move(7,dim+11);
+    printw("%d",(*player).getStrength());
+}
+
+
+void printEverything(char ** room, point roomSize, point dim, LivingEntity* player) {
+    startDraw();
     printRoom(room, {1,1}, roomSize);
     drawRect(0,0, dim.x, dim.y);
+    drawRect(dim.x,0,25,15);
+    printUI(dim.x,player);
     endDraw();
 }

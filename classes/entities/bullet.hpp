@@ -11,7 +11,7 @@ class Bullet : public Entity {
         
     public:
         //costruttori
-        Bullet(point position, char sprite, int speed, int damage);
+        Bullet(point position, char sprite, int speed, int damage, int direction);
 
         void goForward();
 

@@ -3,17 +3,24 @@
 
 #include <ncurses.h>
 #include "../misc.hpp"
+#include "element.hpp"
 
-class Entity {
+class Entity : public Element {
     protected:
-        int idUnico; // DA IMPLEMENTARE!!
-        struct point position;
-        struct point desiredPos;
-        char sprite;
+        point desiredPos;
+
+        //jump
+        int direction;
+        int jumpTicks;
+        int isJumping;
 
     public:
         //costructors
         Entity(point position, char sprite);
+        Entity(point position, char sprite, int direction);
+
+        void jump();
+        void animation(bool isMonster);
 
         //set function
         void setPosition(point position);
@@ -21,11 +28,9 @@ class Entity {
         void setDesiredPosition(int keyPressed);
 
         //get function
-        char getSprite();
-        point getPosition();
         point getDesiredPosition();
-
-        const char * toString();
+        int getDirection();
+        int getIsJumping();
 
 };
 

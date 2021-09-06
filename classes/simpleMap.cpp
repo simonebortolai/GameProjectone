@@ -32,7 +32,6 @@ void SimpleMap::addRoomToTail() {
 }
 
 
-
 roomPoint SimpleMap::virtualToReal(point p) {
     int nRoom = p.x/boxDim.x;
     int x = p.x%boxDim.x;
@@ -43,7 +42,7 @@ roomPoint SimpleMap::virtualToReal(point p) {
 
 
 point SimpleMap::realToVirtual(roomPoint rPoint) {
-    int x = rPoint.nRoom*rPoint.x + rPoint.x;
+    int x = rPoint.nRoom*boxDim.x + rPoint.x;
     int y = rPoint.y;
     point temp {x, y};
     return temp;
@@ -54,7 +53,6 @@ point SimpleMap::realToVirtual(roomPoint rPoint) {
 bool SimpleMap::isPointAviable(point p) {
     int room = virtualToReal(p).nRoom;                          //trovo la stanza
     point pTemp = {virtualToReal(p).x, virtualToReal(p).y};     //prendo il punto
-    //cout << "x = " << pTemp.x <<endl << "y = " << pTemp.y << endl;
     pRoomList temp = firstRoom;
 
     //ciclo per puntare alla stanza giusta
@@ -62,7 +60,19 @@ bool SimpleMap::isPointAviable(point p) {
         temp = temp->next;
 
     return temp->value->isEmpty(pTemp);
-    //return true;
+}
+
+
+bool SimpleMap::isPointFloor(point p) {
+    int room = virtualToReal(p).nRoom;                          //trovo la stanza
+    point pTemp = {virtualToReal(p).x, virtualToReal(p).y};     //prendo il punto
+    pRoomList temp = firstRoom;
+
+    //ciclo per puntare alla stanza giusta
+    for (int i = 0; i < room; i++)
+        temp = temp->next;
+
+    return temp->value->isFloor(pTemp);
 }
 
 
@@ -75,8 +85,6 @@ void SimpleMap::writeCharInRoom(char ch, roomPoint p) {
 
     temp->value->setPixel({p.x,p.y}, ch);
 }
-
-
 
 
 /*telecamera fissa -> ritorna la current room*/

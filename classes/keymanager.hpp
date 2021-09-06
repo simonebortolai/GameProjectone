@@ -2,7 +2,7 @@
 #define KEYMANAGER_HPP_INCLUDED
 
 #include <ncurses.h>
-#include "miscFunc.hpp"
+#include "miscList.hpp"
 #include "map.hpp"
 
 class KeyManager{
@@ -11,21 +11,22 @@ class KeyManager{
         Map * map;
         point dimension;
 
-        void entityCheck(Entity * ml, bool isBullet);
+        bool entityCheck(Entity * ml, bool isBullet);
+        bool bonusCheck(Element * bonus, LivingEntity * player);
         void moveBullets();
         void moveMonster();
-        bool iteractionBulletMonster(LivingEntity * monster, Bullet * bullet);
+        bool interactionBulletMonster(LivingEntity * monster, Bullet * bullet);
+        void interactionMonsterPlayer(LivingEntity * player, LivingEntity * monster);
+        void useBonus(Element * bonus);
 
     public:
         KeyManager(allEntityList * allEnt, Map * map, point dimension);
 
         bool selectAction();
-        void moveEntities();
+        void setDesiredPositionOfAllEntities();
         void checkAllMovement();
         void checkInteraction();
 
-        //funzioni da fare
-        //interaction()
 };
 
 #endif

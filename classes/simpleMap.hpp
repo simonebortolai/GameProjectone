@@ -2,11 +2,9 @@
 #define SIMPLEMAP_HPP_INCLUDED
 
 #include <ncurses.h>
-#include <iostream>
 #include "misc.hpp"
-#include "miscFunc.hpp"
+#include "miscList.hpp"
 #include "room.hpp"
-#include "printer.hpp"
 
 
 struct roomList {
@@ -34,6 +32,7 @@ class SimpleMap {
         roomPoint virtualToReal(point p);
         point realToVirtual(roomPoint rPoint);
         bool isPointAviable(point p);
+        bool isPointFloor(point p);
 
         //set function
         void writeCharInRoom(char ch, roomPoint rPoint);

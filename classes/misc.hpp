@@ -29,11 +29,9 @@ void initScreen();
 void loop();
 
 
-
 /* General purpouse functionz :) */
 int max(int a, int b);
 int random(int min, int max);
-
 
 
 #endif

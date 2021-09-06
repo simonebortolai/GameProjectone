@@ -2,13 +2,10 @@
 #define MAP_HPP_INCLUDED
 
 #include <ncurses.h>
-#include <iostream>
 #include "misc.hpp"
-#include "miscFunc.hpp"
+#include "miscList.hpp"
 #include "room.hpp"
-#include "printer.hpp"
 #include "simpleMap.hpp"
-
 
 
 class Map : public SimpleMap {
@@ -20,12 +17,13 @@ class Map : public SimpleMap {
         void writeAllEntities();
         void checkPlayerPosition(roomPoint pPos);
         void changePos();
+        void addRoomToTail();
 
     public:
        
         Map(allEntityList * al, point dim);
-        void moveAllEntities();
-
+        void writeOnMapAllEntities();
+        char getChar(point pos);
 };
 
 #endif
