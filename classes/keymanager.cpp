@@ -237,10 +237,11 @@ void KeyManager::checkInteraction() {
 
 
 /*
+    Si occupa di mostrare gli effetti causati dal bonus, andando a modificare
+    le statistiche del giocarore
     P = +punti
     V = +vità
     D = +danni
-    controlla che bonus c'è a destra del personaggio
 */
 void KeyManager::useBonus(Element * bonus){
     if((*bonus).getSprite() == 'P'){

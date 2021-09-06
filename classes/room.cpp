@@ -64,7 +64,7 @@ void Room::generatePlatform(platformInfo & info) {
     bool destra = true;
     int length = random(info.minLen, info.maxLen);
 
-    /* Decide se randomizzare x, o cacciarlo a sinistra o a destra della scorsa piattaforma */
+    /* Decide se randomizzare x o metterlo a sinistra o a destra della scorsa piattaforma */
     if (info.lastX == -1)
         /* è la prima piattaforma, posso metterla dove voglio */
         start.x = random(info.sideSpace, size.x - info.sideSpace - length);
@@ -137,17 +137,17 @@ pMonster Room::generateEnemies(pMonster head, point offset) {
     if (sel == 1) {
         skin = '#';
         life = 100;
-        strength=10;
+        strength=20;
         points = 10;
     } else if (sel == 2) {
         skin = '&';
         life = 300;
-        strength=5;
+        strength=10;
         points = 20;
     } else if (sel == 3) {
         skin = '?';
         life = 70;
-        strength=25;
+        strength=30;
         points = 15;
     }
     

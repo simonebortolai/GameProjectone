@@ -21,7 +21,7 @@ void Map::addRoomToTail() {
     this->allEntity->headMonster = (*(tmp->value)).generateEnemies(this->allEntity->headMonster, offset);
 
     //genera il bonus (una volta su 3)
-    int chance = random(1, 2);
+    int chance = random(1, 4);
     if (chance == 1) {
         this->allEntity->headBonus = (*(tmp->value)).generateBonus(this->allEntity->headBonus, offset);
     }

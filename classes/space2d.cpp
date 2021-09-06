@@ -12,7 +12,10 @@ void Space2d::allocateContent() {
     int height = this->size.y;
     int width = this->size.x;
 
-    /* Inizializzo tutto con ' ' per evitare memoria sporca */
+    /* Inizializzo tutto con ' ' per evitare memoria sporca 
+        *(start + n) mi fa accedere alla n-esima riga
+        *(*(start + n) + m) mi fa accedere alla m-esima colonna della n-esima riga
+    */
     char** start = new char * [height];
     for (int row = 0; row < height; row++) {
         *(start+row) = new char [width];
